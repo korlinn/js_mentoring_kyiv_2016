@@ -1,0 +1,74 @@
+@import 'variables.scss';
+
+body {
+	margin: 0;
+}
+
+header {
+	height: 100px;	
+}
+
+.menu {
+	width: 100%;
+	margin: auto;
+}
+
+#{$menuItem} {
+	width: 25%;
+	height: 300px;
+	position: relative;
+	float: left;
+	font-size: 32px;
+	text-align: center;
+	color: $main_bgcolor;
+
+	.overlay {
+		width: 100%;
+		height: 300px;
+		vertical-align: middle;
+		position: absolute;
+		top: 0;
+		left: 0;
+		background-color: $main_bgcolor;
+		opacity: 0;
+		color: white;
+	}
+
+	&:hover .overlay {
+		cursor: pointer;
+		opacity: 0.85;
+		transition: opacity 0.7s;
+	}
+
+	&__about {
+		background-color: $about_bgcolor;	
+	}
+
+	&__cats {
+		background-color: $cats_bgcolor;
+	}
+
+	&__landscapes {
+		background-color: $landscape_bgcolor;
+	}
+
+	&__flowers {
+		background-color: $flowers_bgcolor;
+	}
+
+	&__stilllife {
+		background-color: $stilllife_bgcolor;
+	}
+
+	&__filter {
+		background-color: $filter_bgcolor;
+	}	
+
+	&__contacts {
+		background-color: $contacts_bgcolor;
+	}
+}
+
+footer {
+	height: 250px;
+}
