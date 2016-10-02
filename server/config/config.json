@@ -1,6 +1,6 @@
 {
   "port": 3000,
   "db": {
-      "connection": "mongodb://admin:nimda@ds044979.mlab.com:44979/foodadviser"
+      "url": "mongodb://admin:nimda@ds044979.mlab.com:44979/foodadviser"
   }
 }

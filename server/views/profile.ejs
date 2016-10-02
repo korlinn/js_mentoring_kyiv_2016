@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FoodAdviser</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <h3>Hello, <%= username %>!</h3>
+        <h2>Welcome to FoodAdviser</h2>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">Your profile data:</div>
+            <div class="panel-body">
+                <p>Login: <%= login %></p>
+                <p>Password: <%= password %></p>
+                <p>First Name: <%= username %></p>
+                <p>Gender: <%= gender %></p>
+                <p>Age: <%= age %></p>
+                <p>Height: <%= height %></p>
+                <p>Weight: <%= weight %></p>
+                <p>Calorie Norm: <%= cnorm %></p>
+            </div>
+        </div>
+
+        <div>
+            <a class="btn btn-primary" href="/updateprofile" role="button">Edit Account</a>
+            <a class="btn btn-primary" href="/removeprofile" role="button">Remove Account</a>
+        </div>
+    </div>
+</body>
+</html>

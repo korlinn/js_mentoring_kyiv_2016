@@ -4,7 +4,7 @@ const express = require('express');
 const router = express.Router();
 const user = require('./user.controller');
 
-router.route('')
+router.route('/')
     .get(user.get)
     .post(user.post);
 
