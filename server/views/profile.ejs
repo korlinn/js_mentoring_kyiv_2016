@@ -13,7 +13,6 @@
             <div class="panel-heading">Your profile data:</div>
             <div class="panel-body">
                 <p>Login: <%= login %></p>
-                <p>Password: <%= password %></p>
                 <p>First Name: <%= username %></p>
                 <p>Gender: <%= gender %></p>
                 <p>Age: <%= age %></p>
@@ -24,8 +23,8 @@
         </div>
 
         <div>
-            <a class="btn btn-primary" href="/updateprofile" role="button">Edit Account</a>
-            <a class="btn btn-primary" href="/removeprofile" role="button">Remove Account</a>
+            <a class="btn btn-primary" href="/user/edit/<%= _id %>" role="button">Edit Account</a>
+            <a class="btn btn-primary" href="/user/del/<%= _id %>" role="button">Remove Account</a>
         </div>
     </div>
 </body>

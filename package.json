@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "./server/app.js",
+  "scripts": {
+    "start": "node server/app.js",
+    "watch": "nodemon server/app.js"
+  },
   "author": "",
   "license": "ISC",
   "devDependencies": {
@@ -28,6 +32,7 @@
     "crypto": "0.0.3",
     "ejs": "^2.5.2",
     "express": "^4.14.0",
+    "lodash": "^4.16.2",
     "mongodb": "^2.2.9",
     "mongoose": "^4.6.2",
     "nconf": "^0.8.4",

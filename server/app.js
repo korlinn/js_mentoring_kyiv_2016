@@ -16,16 +16,14 @@ db.on('error', function (err) {
 });
 
 db.once('open', function(callback) {
-    console.log("MongoDB connected successful");
+    console.log('MongoDB connected');
 });
 
 var app = express();
 
 app.set('port', config.get('port'));
-app.set('views', './views/');
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
-require('./routes')(app);
 
 app.listen(app.get('port'), function () {
     console.log('Express server listening on ' + app.get('port'));
@@ -34,6 +32,8 @@ app.listen(app.get('port'), function () {
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
+
+require('./routes')(app);
 
 app.get('/', function(req, res) {
     res.render('index');

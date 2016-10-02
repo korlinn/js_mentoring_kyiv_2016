@@ -1,5 +1,6 @@
 'use strict';
 
+var _ = require('lodash');
 var User = require('./user.model');
 
 var STATUS = {
@@ -10,6 +11,7 @@ var STATUS = {
 
 var exports = module.exports = {};
 
+// Get all users
 exports.get = function(req, res) {
     return User.find(req.params)
         .then(function (result) {
@@ -24,24 +26,51 @@ exports.get = function(req, res) {
         });
 };
 
+// Get one user by id
+exports.getById = function(req, res) {
+    return User.findById(req.params.id)
+        .then(function (result) {
+            res.status(STATUS.OK).render('profile', result);
+            res.status(STATUS.OK).json(data);
+        })
+        .catch(function (err) {
+            res.status(STATUS.NOT_FOUND).json(err);
+        });
+};
+
+// Get registration page
+exports.registration = function(req, res) {
+    res.render('registration');
+};
+
+// Post new user
 exports.post = function(req, res) {
     var newUser = new User(req.body);
     return newUser.save()
         .then(function (result) {
-            res.status(STATUS.CREATED).json({
-                status: 'success',
-                response: result
-            });
+            res.status(STATUS.CREATED).redirect('/user/' + result.id);
         })
         .catch(function (err) {
             res.send(err);
         });
 };
 
+// Get edit profile page
+exports.edit = function(req, res) {
+    return User.findById(req.params.id)
+        .then(function (result) {
+            res.status(STATUS.OK).render('updateprofile', result);
+        })
+        .catch(function (err) {
+            res.status(STATUS.NOT_FOUND).json(err);
+        });
+};
+
+// Update user by id
 exports.put = function(req, res) {
     return User.findById(req.params.id)
         .then(function (modelInstance) {
-            var updatedInstance = _lodash.extend(modelInstance, req.body);
+            var updatedInstance = _.extend(modelInstance, req.body);
             return updatedInstance.save();
         })
         .then(function (result) {
@@ -55,6 +84,7 @@ exports.put = function(req, res) {
         });
 };
 
+// Delete user by id
 exports.delete = function(req, res) {
     return User.remove({_id: req.params.id})
         .then(function (result) {
@@ -67,14 +97,3 @@ exports.delete = function(req, res) {
             res.send(err);
         });
 };
-
-exports.getById = function(req, res) {
-    return User.findById(req.params.id)
-        .then(function (result) {
-            res.status(STATUS.OK).json(result);
-        })
-        .catch(function (err) {
-            res.status(STATUS.NOT_FOUND).json(err);
-        });
-};
-
