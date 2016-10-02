@@ -8,7 +8,7 @@ var api = require('./api');
 var app = express();
 //var router = express.Router();
 app.set('port', config.get('port'));
-app.set('views', './templates/');
+app.set('views', './views/');
 app.set('view engine', 'ejs');
 
 app.listen(app.get('port'), function () {
@@ -21,17 +21,19 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', function(req, res) {
-    res.render('index', {
-        title: 'Uhahaha'
-    });
+    res.render('index');
 });
 
 app.get('/login', function(req, res) {
     res.render('login');
 });
 
+app.get('/registration', function(req, res) {
+    res.render('registration');
+});
+
 app.get('/welcome', function(req, res) {
-    res.render('welcome', {
+    res.render('profile', {
         username: 'User'
     });
 });
@@ -41,6 +43,6 @@ app.use(function(err, req, res, next) {
        var errorHandler = express.errorHandler();
        errorHandler(err, req, res, next);
    } else {
-       res.send(500);
+       res.status(500).send('Something broke!');
    }
 });
