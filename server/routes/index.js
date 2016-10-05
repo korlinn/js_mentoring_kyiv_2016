@@ -2,6 +2,4 @@
 
 module.exports = function(app) {
     app.use('/user', require('./user'));
-    app.use('/users', require('./user'));
-    app.use('/login', require('./login'));
 };

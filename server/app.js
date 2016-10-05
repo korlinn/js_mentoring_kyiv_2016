@@ -5,6 +5,9 @@ var errorHandler = require('errorhandler');
 var config = require('./config');
 
 var mongoose = require('mongoose');
+var routes = require('./routes');
+var auth = require('./services/auth');
+
 mongoose.Promise = require('Q').Promise;
 
 mongoose.connect(config.get('db').url);
@@ -33,7 +36,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-require('./routes')(app);
+routes(app);
+auth.initialize();
+app.use(auth.authenticate);
 
 app.get('/', function(req, res) {
     res.render('index');

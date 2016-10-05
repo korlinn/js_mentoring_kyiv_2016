@@ -1,9 +1,9 @@
 'use strict';
 
-var crypto = require('crypto');
-var mongoose = require('mongoose');
+const crypto = require('crypto');
+const mongoose = require('mongoose');
 
-var UserSchema = new mongoose.Schema({
+const UserSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true
@@ -22,7 +22,9 @@ var UserSchema = new mongoose.Schema({
     height: Number,
     weight: Number,
     cnorm: Number
-}, {collection: 'users'});
+}, {
+    collection: 'users'
+});
 
 UserSchema.methods.encryptPassword = function(password) {
     return crypto.createHmac('sha1', this.salt).update(password).digest('hex');

@@ -1,19 +1,19 @@
 'use strict';
 
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const path = require('path');
 
 const ENV_MODE = {
 	DEV: 'development',
 	PROD: 'production'
 };
 
-var PATH = {
+const PATH = {
 	SRC: path.join(__dirname, 'app'),
 	BUILD: path.join(__dirname, 'public')
 };
 
-var NODE_ENV = process.env.NODE_ENV || ENV_MODE.DEV;
+const NODE_ENV = process.env.NODE_ENV || ENV_MODE.DEV;
 
 module.exports = {
 	context: PATH.SRC,
