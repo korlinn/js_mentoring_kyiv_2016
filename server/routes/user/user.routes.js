@@ -13,11 +13,10 @@ router.route('/login')
 
 router.get('/logout', user.logout);
 
-router.get('/new', user.getRegistrationForm);
-
 router.get('/', auth.authMiddleware, user.getAll);
 
-router.post('/new', auth.authMiddleware, user.postRegistrationForm);
+router.get('/new', user.getRegistrationForm);
+router.post('/new', user.postRegistrationForm);
 
 router.get('/:id', auth.authMiddleware, user.getById);
 

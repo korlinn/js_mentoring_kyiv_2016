@@ -68,13 +68,16 @@ function postRegistrationForm(req, res) {
                 res.status(STATUS.CONFLICT).send({ message: 'User already exist.'});
             } else {
                 let newUser = new User(req.body);
-
                 return newUser.save();
             }
         })
         .then(function (result) {
-            req.login();
-            res.status(STATUS.CREATED).redirect('/user/' + result.id);
+            req.login(result._doc, function (err) {
+                if (err) {
+                    return next(err);
+                }
+                return res.status(STATUS.CREATED).redirect('/user/' + result._doc._id.toString());
+            });
         })
         .catch(function (err) {
             res.send(err);
