@@ -3,30 +3,26 @@
 const express = require('express');
 const router = express.Router();
 const user = require('./user.controller');
-const auth = require('../../services/auth');
+const auth = require('../../services/auth/auth.local');
 
 module.exports = router;
 
-router.get('/', user.getAll);
-
 router.route('/login')
     .get(user.getLoginForm)
-    .post(user.login);
+    .post(auth.localAuth);
 
 router.get('/logout', user.logout);
 
-router.route('/new')
-    .get(user.getRegistrationForm)
-    .post(user.postRegistrationForm);
+router.get('/', auth.authMiddleware, user.getAll);
 
-router.get('/:id', user.getById);
+router.get('/new', auth.authMiddleware, user.getRegistrationForm);
+router.post('/new', auth.authMiddleware, user.postRegistrationForm);
 
-//router.get('/edit/:id', user.getEditForm);
-// router.put('/edit/:id', user.putEditForm);
-// router.delete('/del/:id', user.deleteById);
+router.get('/:id', auth.authMiddleware, user.getById);
 
-router.get('/edit/:id', auth.authenticate, user.getEditForm);
-router.put('/edit/:id', auth.authenticate, user.putEditForm);
-router.delete('/del/:id', auth.authenticate, user.deleteById);
+router.get('/edit/:id', auth.authMiddleware, user.getEditForm);
+router.put('/edit/:id', auth.authMiddleware, user.putEditForm);
+router.delete('/del/:id', auth.authMiddleware, user.deleteById);
+
 
 

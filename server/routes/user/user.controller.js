@@ -1,7 +1,5 @@
 'use strict';
 
-const jwt = require('jwt-simple');
-const config = require('../../config');
 const User = require('./user.model');
 
 const STATUS = {
@@ -23,7 +21,6 @@ module.exports = {
     putEditForm,
     deleteById,
     getLoginForm,
-    login,
     logout
 };
 
@@ -45,16 +42,17 @@ function getAll(req, res) {
 // Get one user by id
 function getById(req, res) {
     return User.findById(req.params.id)
-        .then(function(result) {
+        .then(function (result) {
             if (result) {
                 res.status(STATUS.OK).render('profile', result);
             } else {
-                res.status(STATUS.NOTFOUND).json({ message: 'User not found.' });
+                res.status(STATUS.NOTFOUND).json({message: 'User not found.'});
             }
         })
-        .catch(function(err) {
+        .catch(function (err) {
             res.status(STATUS.SERVERERROR).json(err);
         });
+
 }
 
 // Get registration page
@@ -101,7 +99,9 @@ function putEditForm(req, res) {
                 let updatedUser = result._doc;
 
                 for (let key in req.body) {
-                    updatedUser.key = req.body[key];
+                    if (updatedUser.hasOwnProperty(key)) {
+                        updatedUser.key = req.body[key];
+                    }
                 }
 
                 return updatedUser.save();
@@ -138,35 +138,6 @@ function deleteById(req, res) {
 // Get Login page
 function getLoginForm(req, res) {
     return res.render('login');
-}
-
-// User login
-function login(req, res) {
-    if (!req.body.email || !req.body.password) {
-        res.status(STATUS.BADREQUEST);
-    }
-
-    return User.findOne({ email: req.body.email })
-        .then(function(result) {
-            if (result) {
-                let user = new User(result._doc);
-
-                if (user.checkPassword(req.body.password)) {
-                    let payload = {id: result._doc._id.toString()};
-                    let token = jwt.encode(payload, config.get('jwt').secret);
-
-                    res.status(STATUS.OK).send({ token: token });
-                } else {
-                    res.status(STATUS.UNAUTHORIZED).json({ message: 'Incorrect password.' });
-                }
-            } else {
-                res.status(STATUS.UNAUTHORIZED).send({ message: 'Incorrect email.' });
-            }
-        })
-        .catch(function(err) {
-            res.send(err);
-        });
-
 }
 
 function logout(req, res) {

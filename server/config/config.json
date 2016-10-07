@@ -3,8 +3,6 @@
   "db": {
     "url": "mongodb://admin:nimda@ds044979.mlab.com:44979/foodadviser"
 },
-  "jwt": {
-    "secret": "EPAM-2016.foodadviser",
-    "session": "false"
-}
+  "jwtSecret": "EPAM-2016.foodadviser",
+  "jwtSession": "false"
 }

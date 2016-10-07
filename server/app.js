@@ -1,17 +1,24 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var path = require('path');
-var errorHandler = require('errorhandler');
-var config = require('./config');
+'use strict';
 
-var mongoose = require('mongoose');
-var routes = require('./routes');
-var auth = require('./services/auth');
+const path = require('path');
+const express = require('express');
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const errorHandler = require('errorhandler');
+const passport = require('passport');
+const mongoose = require('mongoose');
+const MongoStore = require('connect-mongo')(session);
+
+const config = require('./config');
+const routes = require('./routes');
+
+const sessionStore = new MongoStore({mongooseConnection: mongoose.connection});
 
 mongoose.Promise = require('Q').Promise;
 
 mongoose.connect(config.get('db').url);
-var db = mongoose.connection;
+const db = mongoose.connection;
 
 db.on('error', function (err) {
     console.error('MongoDB connection error: ' + err);
@@ -22,32 +29,42 @@ db.once('open', function(callback) {
     console.log('MongoDB connected');
 });
 
-var app = express();
+const app = express();
 
 app.set('port', config.get('port'));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.listen(app.get('port'), function () {
-    console.log('Express server listening on ' + app.get('port'));
-});
-
-app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(session({
+    secret: 'SECRET',
+    resave: false,
+    saveUninitialized: false,
+    maxAge: 8640000000000,
+    store: sessionStore
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 routes(app);
-auth.initialize();
-app.use(auth.authenticate);
 
 app.get('/', function(req, res) {
     res.render('index');
 });
 
-// app.use(function(err, req, res, next) {
-//    if (app.get('env') === 'development') {
-//        return errorHandler(err, req, res, next);
-//    } else {
-//        res.status(500).send('Something broke!');
-//    }
-// });
+app.listen(app.get('port'), function () {
+    console.log('Express server listening on ' + app.get('port'));
+});
+
+app.use(function(err, req, res, next) {
+   if (app.get('env') === 'development') {
+       return errorHandler(err, req, res, next);
+   } else {
+       res.status(500).send('Something broke!');
+   }
+});
