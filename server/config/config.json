@@ -1,8 +1,0 @@
-{
-  "port": 3000,
-  "db": {
-    "url": "mongodb://admin:nimda@ds044979.mlab.com:44979/foodadviser"
-},
-  "jwtSecret": "EPAM-2016.foodadviser",
-  "jwtSession": "false"
-}

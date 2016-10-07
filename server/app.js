@@ -1,6 +1,7 @@
 'use strict';
 
 const path = require('path');
+const env= require('process-env');
 const express = require('express');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
@@ -10,14 +11,15 @@ const passport = require('passport');
 const mongoose = require('mongoose');
 const MongoStore = require('connect-mongo')(session);
 
-const config = require('./config');
+env.load('./.env');
+
 const routes = require('./routes');
 
 const sessionStore = new MongoStore({mongooseConnection: mongoose.connection});
 
 mongoose.Promise = require('Q').Promise;
 
-mongoose.connect(config.get('db').url);
+mongoose.connect(process.env.MONGOURI);
 const db = mongoose.connection;
 
 db.on('error', function (err) {
@@ -31,7 +33,7 @@ db.once('open', function(callback) {
 
 const app = express();
 
-app.set('port', config.get('port'));
+app.set('port', process.env.PORT);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 

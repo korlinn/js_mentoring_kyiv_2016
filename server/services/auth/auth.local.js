@@ -4,16 +4,15 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const User = require('../../routes/user/user.model');
 
-var localAuth = passport.authenticate('local', {
+const localAuth = passport.authenticate('local', {
     successRedirect : '/user',
     failureRedirect : '/user/login'
 });
 
 module.exports = {
-    localAuth: localAuth,
+    localAuth,
     authMiddleware
 };
-
 
 passport.use(new LocalStrategy({
     usernameField: 'email',
