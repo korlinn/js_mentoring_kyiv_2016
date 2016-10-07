@@ -73,6 +73,7 @@ function postRegistrationForm(req, res) {
             }
         })
         .then(function (result) {
+            req.login();
             res.status(STATUS.CREATED).redirect('/user/' + result.id);
         })
         .catch(function (err) {
