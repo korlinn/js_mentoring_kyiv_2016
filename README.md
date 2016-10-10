@@ -9,7 +9,7 @@ Installing:
 > npm i
 
 Create in project root the file .env and configure it. There must be specified:
-1. PORT - port? on which the application will be started.
+1. PORT - port on which the application will be started.
 2. MONGOURI - the path to the database atore/
 An example of .env, see below
 
@@ -18,6 +18,7 @@ An example of .env, see below
 
 
 ## Start server
+
 
 1. simple start
 > npm start
@@ -34,7 +35,13 @@ An example of .env, see below
 
 For user login local strategy is used - authentication via email and password. Information about user store in node session.
 
-##List of REST
+Test user has created:
+email: lisentia.ua@gmail.com
+password: 12345
+
+
+## List of RESTs
+
 
 For demo EJS templater is used
 

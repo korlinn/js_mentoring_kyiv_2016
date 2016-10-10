@@ -1,5 +1,6 @@
 'use strict';
 
+const CONST = require('../../common/const');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const User = require('../../routes/user/user.model');
@@ -20,7 +21,7 @@ passport.use(new LocalStrategy({
 },
 function (email, password, done) {
     User.findOne({email: email})
-        .then(function (result) {
+        .then(result => {
             if (result) {
                 let user = new User(result._doc);
 
@@ -33,19 +34,17 @@ function (email, password, done) {
                 return done(null, false, {message: 'Incorrect email.'});
             }
         })
-        .catch(function (err) {
-            return done(err);
-        });
+        .catch(err => done(CONST.STATUS.SERVERERROR, false, err));
 }));
 
 
-passport.serializeUser(function(email, done) {
+passport.serializeUser((email, done) => {
     done(null, email);
 });
 
-passport.deserializeUser(function(email, done) {
+passport.deserializeUser((email, done) => {
     User.findOne({ email: email })
-        .then(function(result) {
+        .then(result => {
             if (result) {
                 let user = new User(result._doc);
                 done(null, user);
@@ -53,9 +52,7 @@ passport.deserializeUser(function(email, done) {
                 done(null, false, { message: 'User not found.' });
             }
         })
-        .catch(function(err) {
-            return done(err);
-        });
+        .catch(err => done(CONST.STATUS.SERVERERROR, false, err));
 });
 
 function authMiddleware(req, res, next) {
