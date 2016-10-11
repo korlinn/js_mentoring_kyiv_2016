@@ -8,28 +8,12 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const errorHandler = require('errorhandler');
 const passport = require('passport');
-const mongoose = require('mongoose');
-const MongoStore = require('connect-mongo')(session);
+const routes = require('./routes');
+const mongodb = require('./bootstrap/mongodb');
+const CONST = require('./common/const');
 
 env.load('./.env');
-
-const routes = require('./routes');
-
-const sessionStore = new MongoStore({mongooseConnection: mongoose.connection});
-
-mongoose.Promise = require('Q').Promise;
-
-mongoose.connect(process.env.MONGOURI);
-const db = mongoose.connection;
-
-db.on('error', function (err) {
-    console.error('MongoDB connection error: ' + err);
-    process.exit(-1);
-});
-
-db.once('open', function(callback) {
-    console.log('MongoDB connected');
-});
+mongodb.init(process.env.MONGOURI);
 
 const app = express();
 
@@ -47,7 +31,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     maxAge: 8640000000000,
-    store: sessionStore
+    store: mongodb.sessionStore
 }));
 
 app.use(passport.initialize());
@@ -64,9 +48,9 @@ app.listen(app.get('port'), function () {
 });
 
 app.use(function(err, req, res, next) {
-   if (app.get('env') === 'development') {
-       return errorHandler(err, req, res, next);
-   } else {
-       res.status(500).send('Something broke!');
-   }
+    if (app.get('env') === 'development') {
+        return errorHandler(err, req, res, next);
+    } else {
+        res.status(CONST.STATUS.SERVERERROR).send('Something broke!');
+    }
 });
