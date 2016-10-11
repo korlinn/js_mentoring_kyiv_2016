@@ -56,7 +56,7 @@ module.exports = {
 				test: /\.(jpg|png)$/,
 				loader: 'file?name=[path]/[name].[ext]'
 			}
-    	]
+		]
 	},
 	plugins: [
         new ExtractTextPlugin('/bundle.css')
@@ -64,8 +64,5 @@ module.exports = {
 
     watch: NODE_ENV === ENV_MODE.DEV,
 
-    devtool: 'source-map'
-    // watchOptions: {
-    // 	agregateTimeout: 500
-    // }
+    devtool: NODE_ENV === ENV_MODE.DEV ? 'source-map': ''
 };
