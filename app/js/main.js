@@ -10,8 +10,17 @@ $(document).ready(function(){
         responsive: [
             {
                 breakpoint: 768,
-                arrows: false,
-                dots: true
+                settings: {
+                    arrows: false
+                }
+
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    arrows: false,
+                    dots: true
+                }
 
             }
         ]
@@ -42,7 +51,9 @@ $(document).ready(function(){
                 breakpoint: 768,
                 settings: {
                     slidesToShow: 3,
-                    slidesToScroll: 3
+                    slidesToScroll: 3,
+                    arrows: false,
+                    dots: true
                 }
             }
         ]
