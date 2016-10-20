@@ -7,7 +7,9 @@
     "server_start": "node server/app.js",
     "server_watch": "nodemon server/app.js",
     "server_watchdebug": "nodemon server/app.js --debug",
-    "nodeinspector_start": "node-inspector"
+    "nodeinspector_start": "node-inspector",
+    "webpack_build": "set NODE_ENV=production&&webpack --progress --colors",
+    "webpack_watch": "set NODE_ENV=development&&webpack"
   },
   "author": "Natalia Ivanova",
   "license": "ISC",

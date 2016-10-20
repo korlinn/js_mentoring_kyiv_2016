@@ -1,0 +1,177 @@
+
+/* STYLES OF HEADER AND HIS COMPONENTS */
+
+.header {
+    width: 100%;
+    background-color: $HEADER_BG_COLOR;
+    padding: 10px 0;
+    flex: 0 0 auto;
+
+    @media #{$MOBILE} {
+        height: $HEADER_MOBILE_HEIGHT;
+    }
+
+    @media #{$TABLET_DESKTOP} {
+        height: $HEADER_HEIGHT;
+    }
+}
+
+/* BRAND LOGO STYLES*/
+
+.brand-logo {
+    display: inline-block;
+    font-family: $MAIN_FONT;
+    line-height: $HEADER_HEIGHT;
+    padding-left: 20px;
+
+    @media #{$DESKTOP} {
+        font-size: 36px;
+    }
+
+    @media #{$TABLET} {
+        font-size: 28px;
+    }
+
+    @media #{$MOBILE} {
+        font-size: 24px;
+    }
+
+    &__link {
+        color: $HEADER_TEXT_COLOR;
+        text-decoration: none;
+    }
+}
+
+/* MENU STYLES*/
+
+.menu {
+    position: relative;
+    display: inline-block;
+    font-family: $MAIN_FONT;
+    font-size: 16px;
+    line-height: $HEADER_HEIGHT;
+    text-transform: uppercase;
+
+    &__item {
+        padding: 0 10px;
+
+        a {
+            color: $HEADER_TEXT_COLOR;
+            text-decoration: none;
+        }
+
+        &:hover {
+            background-color: $HEADER_HOVER_COLOR;
+            border: 1px solid $HEADER_BG_COLOR;
+            box-sizing: border-box;
+        }
+
+        @media #{$MOBILE_TABLET} {
+            display: block;
+        }
+
+        @media #{$DESKTOP} {
+            display: inline-block;
+        }
+    }
+
+    &__toggle, &__user {
+        color: $HEADER_TEXT_COLOR;
+        text-decoration: none;
+        padding-left: 20px;
+        font-size: 22px;
+    }
+
+    &__toggle {
+        @media #{$MOBILE_TABLET} {
+            display: inline-block;
+        }
+
+        @media #{$DESKTOP} {
+            display: none;
+        }
+    }
+
+    &__toggle-wrapper {
+        list-style-type: none;
+
+        @media #{$MOBILE_TABLET} {
+            display: none;
+            position: absolute;
+            width: 250px;
+            padding-left: 0;
+            background-color: $HEADER_BG_COLOR;
+            z-index: 10;
+
+            &:hover {
+                display: block;
+            }
+        }
+
+        @media #{$DESKTOP} {
+            display: inline-block;
+        }
+    }
+
+
+    @media #{$MOBILE_TABLET} {
+        &__toggle:focus + &__toggle-wrapper,
+        &__toggle:active + &__toggle-wrapper{
+            display: block;
+        }
+    }
+}
+
+.search {
+    position: relative;
+    font-family: $MAIN_FONT;
+    height: $SEARCH_HEIGHT;
+    margin-right: 20px;
+    margin-top: 7px;
+
+    @media #{$TABLET_DESKTOP} {
+        display: inline-block;
+        width: 30%;
+        float: right;
+    }
+
+    @media #{$MOBILE} {
+        display: block;
+        width: 100%;
+        float: none;
+    }
+
+    &__input {
+        width: 100%;
+        height: 100%;
+        padding-right: $SEARCH_HEIGHT;
+        float: left;
+        font-size: 16px;
+        box-sizing: border-box;
+
+        @media #{$TABLET_DESKTOP} {
+            padding-left: 10px;
+        }
+
+        @media #{$MOBILE} {
+            padding-left: 20px;
+            border: none;
+            border-bottom: 1px solid $HEADER_BG_COLOR;
+        }
+    }
+
+    &__button {
+        width: $SEARCH_HEIGHT;
+        height: $SEARCH_HEIGHT;
+        line-height: $SEARCH_HEIGHT;
+        margin-left: -$SEARCH_HEIGHT;
+        font-size: 22px;
+        text-align: center;
+        background-color: transparent;
+        color: $HEADER_BG_COLOR;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+        float: left;
+    }
+}

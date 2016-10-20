@@ -1,0 +1,47 @@
+
+/* FONTS */
+
+@font-face {
+    font-family: 'Dosis';
+    src: url('../fonts/Dosis-Medium.ttf');
+}
+
+$MAIN_FONT: 'Dosis', sans-serif;
+
+/* COLORS*/
+
+$HEADER_TEXT_COLOR: #eee;
+$HEADER_BG_COLOR: #6e7678;
+$HEADER_HOVER_COLOR: #acb5b7;
+
+$SLIDER_FRAME_COLOR: #eee;
+
+$FOOTER_TEXT_COLOR: #eee;
+$FOOTER_BG_COLOR: #acb5b7;
+
+$SOCIAL_ICON_COLOR: #ffffff;
+$SOCIAL_BG_COLOR: #6e7678;
+
+$FACEBOOK_COLOR: #325c94;
+$TWITTER_COLOR: #6dccea;
+$YOUTUBE_COLOR: #d32d31;
+$PINTEREST_COLOR: #c31e2c;
+$INSTAGRAM_COLOR: #43779e;
+
+/* VIEW PORTS */
+
+$SMALL_MOBILE: 'screen and (max-width: 479px)';
+$MOBILE: 'screen and (max-width: 767px)';
+$TABLET: 'screen and (min-width: 768px) and (max-width: 1023px)';
+$DESKTOP: 'screen and (min-width: 1024px)';
+$MOBILE_TABLET: 'screen and (max-width: 1023px)';
+$TABLET_DESKTOP: 'screen and (min-width: 768px)';
+$MOBILE_DESKTOP: 'screen and (min-width: 480px)';
+
+/* SIZES */
+
+$CONTAINER_WIDTH: 960px;
+$SEARCH_HEIGHT: 35px;
+$HEADER_HEIGHT: 50px;
+$HEADER_MOBILE_HEIGHT: 85px;
+$FOOTER_HEIGHT: 50px;

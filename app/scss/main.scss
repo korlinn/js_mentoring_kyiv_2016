@@ -1,0 +1,25 @@
+@import 'variables.scss';
+@import 'header.scss';
+@import 'footer.scss';
+@import 'slider.scss';
+
+html, body {
+    height: 100%;
+    background-color: $FOOTER_BG_COLOR;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.content {
+    flex: 1 0 auto;
+}

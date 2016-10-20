@@ -1,0 +1,58 @@
+
+/* STYLES OF FOOTER AND HIS COMPONENTS */
+
+.footer {
+    height: $FOOTER_HEIGHT;
+    background-color: $FOOTER_BG_COLOR;
+    padding: 10px 0 0 0;
+    flex: 0 0 auto;
+}
+
+/* SOCIAL ICONS */
+
+.social {
+    width: 100%;
+    text-align: center;
+
+    &__icon {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        margin: 0 5px;
+        background-color: $SOCIAL_BG_COLOR;
+        color: $SOCIAL_ICON_COLOR;
+        border-radius: 20px;
+        text-align: center;
+        font-size: 24px;
+        line-height: 40px;
+
+        a {
+            color: $SOCIAL_ICON_COLOR;
+            text-decoration: none;
+        }
+
+        &:hover {
+            text-transform: none;
+        }
+
+        &_facebook:hover {
+            background-color: $FACEBOOK_COLOR;
+        }
+
+        &_twitter:hover {
+            background-color: $TWITTER_COLOR;
+        }
+
+        &_youtube:hover {
+            background-color: $YOUTUBE_COLOR;
+        }
+
+        &_pinterest:hover {
+            background-color: $PINTEREST_COLOR;
+        }
+
+        &_instagram:hover {
+            background-color: $INSTAGRAM_COLOR;
+        }
+    }
+}
