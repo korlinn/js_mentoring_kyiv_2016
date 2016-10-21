@@ -2,10 +2,10 @@
 
 FoodAdviser App is s service designed to make healthy eating easy.
 
+# Getting Started
 
-## Getting Started
+## Installing and configuring
 
-Installing:
 > npm i
 
 Create in project root the file .env and configure it. There must be specified:
@@ -41,6 +41,8 @@ There are two npm tasks for its.
 > npm watchdebug
 
 
+# Description of implementation
+
 ## Description of Server
 
 For demo EJS templater is used
@@ -53,7 +55,7 @@ email: lisentia.ua@gmail.com
 password: 12345
 
 
-## List of RESTs
+### List of RESTs
 
 - get main page - http://localhost:3000/main
 - get all users - http://localhost:3000/user
@@ -72,14 +74,13 @@ password: 12345
 
 Landing page can be reached by address - http://localhost:3000/
 
-There implemented:
+### There implemented:
 1) Responsive menu with search bar
 2) Responsive slider
 4) Responsive info-block with articles
 3) Responsive footer with socials
 
-
-Used technology :
+### Used technology :
 Responsive slider with preview
 Different images for desktop and mobile
 2x images for Retina display
