@@ -1,0 +1,32 @@
+
+/* STYLES OF BLOCK WITH ARTICLES AND ITS ELEMENTS */
+
+.useful-info {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+
+    &__item {
+        flex-basis: 500px;
+        padding: 5px;
+        margin: 20px 0;
+
+        color: $FORM_TEXT_COLOR;
+        font: 16px/20px $MAIN_FONT;
+        text-align: center;
+    }
+
+    &__item-title {
+        padding: 30px 10px;
+        color: $THEME_LIGHT;
+        font: 20px/24px $MAIN_FONT;
+        text-transform: uppercase;
+    }
+
+    &__more {
+        color: $THEME_LIGHT;
+        padding-left: 10px;
+    }
+}

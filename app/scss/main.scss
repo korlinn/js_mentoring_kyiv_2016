@@ -2,10 +2,10 @@
 @import 'header.scss';
 @import 'footer.scss';
 @import 'slider.scss';
+@import 'info.scss';
 
 html, body {
     height: 100%;
-    background-color: $FOOTER_BG_COLOR;
 }
 
 * {
@@ -22,4 +22,13 @@ html, body {
 
 .content {
     flex: 1 0 auto;
+
+    &_light {
+        background-color: $BODY_COLOR_LIGHT;
+    }
+
+    &_dark {
+        background-color: $BODY_COLOR_DARK;
+    }
 }
+

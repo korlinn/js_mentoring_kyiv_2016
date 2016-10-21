@@ -1,5 +1,8 @@
+
+/* STYLES OF SLIDER AND ITS ELEMENTS */
+
 .slider-wrapper {
-    max-width: 800px;
+    max-width: $SLIDER_WIDTH;
     margin: 0 auto;
 
     @media #{$MOBILE} {
@@ -14,11 +17,11 @@
 .slider {
     &__item {
         position: relative;
+    }
 
-        img {
-            width: 100%;
-            height: auto;
-        }
+    &__image {
+        width: 100%;
+        height: auto;
     }
 
     &__text {
@@ -44,12 +47,16 @@
         display: block;
     }
 
-    &__item {
-        img {
-            margin: auto;
-            padding: 3px;
-            background-color: $SLIDER_FRAME_COLOR;
-            border-radius: 3px;
-        }
+    &__image {
+        margin: auto;
+        padding: 3px;
+        background-color: $SLIDER_FRAME_COLOR;
+        border-radius: 3px;
     }
+}
+
+/* Some customization for Slick slider's elements. Make arrows of theme color */
+
+.slick-prev:before, .slick-next:before {
+    color: $THEME_LIGHT;
 }
