@@ -17,8 +17,19 @@ An example of .env, see below
 > MONGOURI=mongodb://<dbuser>:<password>@ds044979.mlab.com:44979/foodadviser
 
 
-## Start server
+## Build Frontend
 
+For build frontend webpack has used.
+There are two npm tasks for its.
+
+1. Build for prodaction
+> npm webpack_build
+
+2. Build for development with watch
+> npm webpack_watch
+
+
+## Start server
 
 1. simple start
 > npm start
@@ -30,7 +41,7 @@ An example of .env, see below
 > npm watchdebug
 
 
-## Description server
+## Description of Server
 
 For demo EJS templater is used
 
@@ -44,7 +55,7 @@ password: 12345
 
 ## List of RESTs
 
-- get homepage - http://localhost:3000/
+- get main page - http://localhost:3000/main
 - get all users - http://localhost:3000/user
 - get user by id - http://localhost:3000/user/:id
 - get form for addition new user - http://localhost:3000/user/new
@@ -55,3 +66,22 @@ password: 12345
 - het login form - http://localhost:3000/user/login
 - authenticate user (perform login) - http://localhost:3000/user/authenticate
 - logout user - http://localhost:3000/user/logout
+
+
+## Description of Frontend
+
+Landing page can be reached by address - http://localhost:3000/
+
+There implemented:
+1) Responsive menu with search bar
+2) Responsive slider
+4) Responsive info-block with articles
+3) Responsive footer with socials
+
+
+Used technology :
+Responsive slider with preview
+Different images for desktop and mobile
+2x images for Retina display
+Flexbox for info-block and other sections
+BEM methodology for styles
