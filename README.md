@@ -75,14 +75,14 @@ password: 12345
 Landing page can be reached by address - http://localhost:3000/
 
 ### There implemented:
-1) Responsive menu with search bar
-2) Responsive slider
-4) Responsive info-block with articles
-3) Responsive footer with socials
+- Responsive menu with search bar
+- Responsive slider
+- Responsive info-block with articles
+- Responsive footer with socials
 
 ### Used technology :
-Responsive slider with preview
-Different images for desktop and mobile
-2x images for Retina display
-Flexbox for info-block and other sections
-BEM methodology for styles
+- Responsive slider with preview
+- Different images for desktop and mobile
+- 2x images for Retina display
+- Flexbox for info-block and other sections
+- BEM methodology for styles
