@@ -1,7 +1,7 @@
 'use strict';
 
 require.context('./', true, /^\.\/.*\.html/);
-require.context('./img/', true, /^\.\/.*\.jpg/);
+require.context('./img/', true, /^\.\/.*\.jpg|png/);
 
 require('./scss/main.scss');
 

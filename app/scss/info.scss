@@ -20,13 +20,12 @@
 
     &__item-title {
         padding: 30px 10px;
-        color: $THEME_LIGHT;
+        color: $THEME_MIDDLE;
         font: 20px/24px $MAIN_FONT;
         text-transform: uppercase;
     }
 
     &__more {
-        color: $THEME_LIGHT;
-        padding-left: 10px;
+        color: $THEME_MIDDLE;
     }
 }

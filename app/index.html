@@ -11,31 +11,37 @@
 <body>
     <div class="wrapper">
         <header class="header">
-            <div class="brand-logo">
-                <a href="#" class="brand-logo__link">FoodAdviser</a>
+            <div class="wrapper-left">
+                <div class="brand-logo">
+                    <a href="#" class="brand-logo__link">
+                        <img src="img/logo1.png" class="brand-logo__image">
+                        FoodAdviser</a>
+                </div>
+
+                <nav class="menu">
+                    <a href="#" class="menu__toggle"><span class="fa fa-bars"></span></a>
+                    <ul class="menu__toggle-wrapper">
+                        <li class="menu__item"><a class="menu__link" href="#">What to eat</a></li>
+                        <li class="menu__item"><a class="menu__link" href="#">What to cook</a></li>
+                        <li class="menu__item"><a class="menu__link" href="#">Create a nutrition program</a></li>
+                    </ul>
+                    <a href="#" class="menu__user fa fa-user"></a>
+                </nav>
             </div>
 
-            <nav class="menu">
-                <a href="#" class="menu__toggle"><span class="fa fa-bars"></span></a>
-                <ul class="menu__toggle-wrapper">
-                    <li class="menu__item"><a href="#">What to eat</a></li>
-                    <li class="menu__item"><a href="#">What to cook</a></li>
-                    <li class="menu__item"><a href="#">Create a nutrition program</a></li>
-                </ul>
-                <a href="#" class="menu__user fa fa-user"></a>
-            </nav>
-
-            <form class="search" method="post" action="/">
-                <input type="text" class="search__input" placeholder="I'm looking for...">
-                <button type="submit" class="search__button"><span class="fa fa-search"></span></button>
-            </form>
+            <div class="wrapper-right">
+                <form class="search" method="post" action="/">
+                    <input type="text" class="search__input" placeholder="I'm looking for...">
+                    <button type="submit" class="search__button"><span class="fa fa-search"></span></button>
+                </form>
+            </div>
         </header>
 
         <div class="content content_dark">
-
             <section class="slider-wrapper">
                 <div class="slider">
-                    <div class="slider__item"><img src="img/1.jpg" alt="Photo 1" srcset="img/retina/r1.jpg 2x"
+                    <div class="slider__item">
+                        <img src="img/1.jpg" alt="Photo 1" srcset="img/retina/r1.jpg 2x"
                                                    class="slider__image">
                         <div class="slider__text">
                             <h3 class="slider__title">Photo 1</h3>
@@ -122,46 +128,44 @@
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus amet architecto, aut blanditiis
                     consectetur deleniti dolores eius eos exercitationem expedita facilis illo minima minus, mollitia
                     suscipit totam voluptatibus! Commodi debitis dolore eveniet, exercitationem, illo illum ipsum
-                    molestiae neque quas quia saepe sed vel voluptate! A asperiores atque consectetur esse omnis.<a
-                        href="#" class="useful-info__more">Read More</a></article>
+                    molestiae neque quas quia saepe sed vel voluptate! A asperiores atque consectetur esse omnis.
+                    <br><a href="#" class="useful-info__more">Read More</a></article>
                 <article class="useful-info__item">
                     <h3 class="useful-info__item-title">Cum enim in maxime voluptate.</h3>
                     Aliquam, dolorum eius molestiae nesciunt perferendis qui rem vel. Ab adipisci cum debitis, explicabo
                     fuga natus non pariatur repudiandae sunt veritatis? Aperiam architecto aspernatur autem beatae
                     blanditiis culpa cum eaque earum et exercitationem fugiat, ipsa magnam maiores non nulla qui quis
-                    quisquam recusandae sequi soluta temporibus vel vero. Mollitia, quibusdam.<a href="#"
-                                                                                                 class="useful-info__more">Read
-                    More</a></article>
+                    quisquam recusandae sequi soluta temporibus vel vero. Mollitia, quibusdam.
+                    <br><a href="#" class="useful-info__more">Read More</a></article>
                 <article class="useful-info__item">
                     <h3 class="useful-info__item-title">Cumque et expedita harum nemo.</h3>
                     Animi, beatae consequuntur distinctio ea odit quam totam! Amet consequatur distinctio error eum
                     eveniet ex facere harum hic inventore ipsa itaque maiores minus molestias necessitatibus nesciunt
                     nihil obcaecati odio, possimus quam quibusdam, quidem ratione reprehenderit sit suscipit velit
-                    veniam vero voluptas. Ab cumque cupiditate eaque enim nam, optio reiciendis voluptatum?<a href="#"
-                                                                                                              class="useful-info__more">Read
-                    More</a></article>
+                    veniam vero voluptas. Ab cumque cupiditate eaque enim nam, optio reiciendis voluptatum?
+                    <br><a href="#" class="useful-info__more">Read More</a></article>
                 <article class="useful-info__item">
                     <h3 class="useful-info__item-title">Incidunt laboriosam tempore ullam voluptatibus.</h3>
                     Aliquam aperiam aspernatur consectetur consequuntur culpa cumque dicta dignissimos enim error ex
                     illum inventore ipsum iste molestiae mollitia nam numquam, obcaecati odit pariatur porro praesentium
                     quae quaerat quam quas qui quibusdam quisquam quo ratione recusandae repudiandae saepe sapiente sed
-                    similique sint tenetur veniam vero? Aliquid architecto magnam obcaecati quia quis?<a href="#"
-                                                                                                         class="useful-info__more">Read
-                    More</a></article>
+                    similique sint tenetur veniam vero? Aliquid architecto magnam obcaecati quia quis?
+                    <br><a href="#" class="useful-info__more">Read More</a></article>
                 <article class="useful-info__item">
                     <h3 class="useful-info__item-title">Ipsum perspiciatis quibusdam saepe temporibus.</h3>
                     Autem corporis deserunt fuga laboriosam laudantium magnam non quis quisquam suscipit voluptates.
                     Aliquid aspernatur at autem beatae cumque deserunt dolore esse facilis illum, laudantium minima
                     minus molestiae natus non perspiciatis praesentium quibusdam quidem recusandae repellat
                     reprehenderit sapiente, sed unde voluptates? Dicta distinctio ducimus id omnis quia? Assumenda minus
-                    obcaecati qui!<a href="#" class="useful-info__more">Read More</a></article>
+                    obcaecati qui!
+                    <br><a href="#" class="useful-info__more">Read More</a></article>
                 <article class="useful-info__item">
                     <h3 class="useful-info__item-title">Cumque cupiditate nulla suscipit voluptas!</h3>
                     Alias aliquam aliquid amet architecto aspernatur aut commodi culpa dignissimos dolor doloribus ea
                     eligendi et excepturi exercitationem expedita explicabo hic illo illum in ipsa magni maiores natus
                     neque numquam pariatur perspiciatis placeat quam repellendus repudiandae, rerum sequi sit suscipit
-                    vitae voluptas voluptates voluptatibus voluptatum! Distinctio facere ipsam odio perferendis quaerat.<a
-                        href="#" class="useful-info__more">Read More</a></article>
+                    vitae voluptas voluptates voluptatibus voluptatum! Distinctio facere ipsam odio perferendis quaerat.
+                    <br><a href="#" class="useful-info__more">Read More</a></article>
             </section>
         </div>
 

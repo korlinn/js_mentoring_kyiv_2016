@@ -7,13 +7,20 @@
     padding: 10px 0;
     flex: 0 0 auto;
 
-    @media #{$MOBILE} {
-        height: $HEADER_MOBILE_HEIGHT;
-    }
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+}
 
-    @media #{$TABLET_DESKTOP} {
-        height: $HEADER_HEIGHT;
-    }
+.wrapper-left {
+    flex: 1 1 auto;
+    justify-content: flex-start;
+}
+
+.wrapper-right {
+    flex: 1 1 auto;
+    justify-content: flex-end;
 }
 
 /* BRAND LOGO STYLES*/
@@ -40,6 +47,20 @@
         color: $HEADER_TEXT_COLOR;
         text-decoration: none;
     }
+
+    &__image {
+        width: 40px;
+        height: 40px;
+        padding-right: 5px;
+
+        @media #{$MOBILE_TABLET} {
+            display: none;
+        }
+
+        @media #{$DESKTOP} {
+            display: inline-block;
+        }
+    }
 }
 
 /* MENU STYLES*/
@@ -55,23 +76,23 @@
     &__item {
         padding: 0 10px;
 
-        a {
-            color: $HEADER_TEXT_COLOR;
-            text-decoration: none;
-        }
-
-        &:hover {
-            background-color: $HEADER_HOVER_COLOR;
-            border: 1px solid $HEADER_BG_COLOR;
-            box-sizing: border-box;
-        }
-
         @media #{$MOBILE_TABLET} {
             display: block;
         }
 
         @media #{$DESKTOP} {
             display: inline-block;
+        }
+    }
+
+    &__link {
+        color: $HEADER_TEXT_COLOR;
+        text-decoration: none;
+
+        &:hover {
+            background-color: $HEADER_HOVER_COLOR;
+            border: 1px solid $HEADER_BG_COLOR;
+            box-sizing: border-box;
         }
     }
 
@@ -131,7 +152,7 @@
 
     @media #{$TABLET_DESKTOP} {
         display: inline-block;
-        width: 30%;
+        width: 85%;
         float: right;
     }
 
