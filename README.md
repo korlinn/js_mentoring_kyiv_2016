@@ -1,8 +1,12 @@
+
+
 # FOODADVISER APP
 
 FoodAdviser App is s service designed to make healthy eating easy.
 
+
 # Getting Started
+
 
 ## Installing and configuring
 
@@ -16,6 +20,8 @@ An example of .env, see below
 > PORT=3000
 > MONGOURI=mongodb://<dbuser>:<password>@ds044979.mlab.com:44979/foodadviser
 
+Also, in project present file .env.example and you may rename it to .env
+
 
 ## Build Frontend
 
@@ -23,22 +29,27 @@ For build frontend webpack has used.
 There are two npm tasks for its.
 
 1. Build for prodaction
-> npm webpack_build
+> npm front_build
 
 2. Build for development with watch
-> npm webpack_watch
+> npm front_watch
 
 
 ## Start server
 
 1. simple start
-> npm start
+> npm server_start
 
 2. start with watch
-> npm watch
+> npm server_watch
 
 3.  start with watch in debug mode
-> npm watchdebug
+> npm server_watchdebug
+
+
+## Start All Project
+
+> npm start
 
 
 # Description of implementation
