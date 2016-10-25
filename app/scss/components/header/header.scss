@@ -1,0 +1,24 @@
+
+/* STYLES OF HEADER AND ITS ELEMENTS */
+
+.header {
+    width: 100%;
+    background-color: $HEADER_BG_COLOR;
+    padding: 10px 0;
+    flex: 0 0 auto;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.wrapper-left {
+    flex: 1 1 auto;
+    justify-content: flex-start;
+}
+
+.wrapper-right {
+    flex: 1 1 auto;
+    justify-content: flex-end;
+}

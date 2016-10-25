@@ -1,0 +1,14 @@
+
+/* STYLES OF FOOTER GENERALLY */
+
+.footer {
+    flex: 0 0 auto;
+    flex-flow: row wrap;
+
+    display: inline-flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0;
+
+    background-color: $FOOTER_BG_COLOR;
+}

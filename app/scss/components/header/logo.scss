@@ -1,0 +1,40 @@
+
+/* BRAND LOGO STYLES*/
+
+.brand-logo {
+    display: inline-block;
+    font-family: $MAIN_FONT;
+    line-height: $HEADER_HEIGHT;
+    padding-left: 20px;
+
+    @media #{$DESKTOP} {
+        font-size: 36px;
+    }
+
+    @media #{$TABLET} {
+        font-size: 28px;
+    }
+
+    @media #{$MOBILE} {
+        font-size: 24px;
+    }
+
+    &__link {
+        color: $HEADER_TEXT_COLOR;
+        text-decoration: none;
+    }
+
+    &__image {
+        width: 40px;
+        height: 40px;
+        padding-right: 5px;
+
+        @media #{$MOBILE_TABLET} {
+            display: none;
+        }
+
+        @media #{$DESKTOP} {
+            display: inline-block;
+        }
+    }
+}

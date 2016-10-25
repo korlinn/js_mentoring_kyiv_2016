@@ -1,0 +1,86 @@
+
+/* MENU STYLES*/
+
+.menu {
+    position: relative;
+
+    display: inline-block;
+
+    font-family: $MAIN_FONT;
+    font-size: 16px;
+    line-height: $HEADER_HEIGHT;
+    text-transform: uppercase;
+
+    &__item {
+        padding: 0 10px;
+
+        @media #{$MOBILE_TABLET} {
+            display: block;
+        }
+
+        @media #{$DESKTOP} {
+            display: inline-block;
+        }
+    }
+
+    &__link {
+        color: $HEADER_TEXT_COLOR;
+        text-decoration: none;
+
+        &:hover {
+            box-sizing: border-box;
+            border: 1px solid $HEADER_BG_COLOR;
+
+            background-color: $HEADER_HOVER_COLOR;
+        }
+    }
+
+    &__toggle, &__user {
+        padding-left: 20px;
+
+        color: $HEADER_TEXT_COLOR;
+        text-decoration: none;
+        font-size: 22px;
+    }
+
+    &__toggle {
+        @media #{$MOBILE_TABLET} {
+            display: inline-block;
+        }
+
+        @media #{$DESKTOP} {
+            display: none;
+        }
+    }
+
+    &__toggle-wrapper {
+        list-style-type: none;
+
+        @media #{$MOBILE_TABLET} {
+            position: absolute;
+            width: 250px;
+            z-index: 10;
+
+            display: none;
+            padding-left: 0;
+
+            background-color: $HEADER_BG_COLOR;
+
+            &:hover {
+                display: block;
+            }
+        }
+
+        @media #{$DESKTOP} {
+            display: inline-block;
+        }
+    }
+
+
+    @media #{$MOBILE_TABLET} {
+        &__toggle:focus + &__toggle-wrapper,
+        &__toggle:active + &__toggle-wrapper{
+            display: block;
+        }
+    }
+}

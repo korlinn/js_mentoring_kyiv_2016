@@ -1,17 +1,4 @@
 
-/* STYLES OF FOOTER AND ITS ELEMENTS */
-
-.footer {
-    background-color: $FOOTER_BG_COLOR;
-    flex: 0 0 auto;
-
-    display: inline-flex;
-    flex-flow: row wrap;
-    justify-content: space-around;
-    align-items: center;
-    margin: 0;
-}
-
 /* SOCIAL ICONS */
 
 .social {
@@ -24,12 +11,14 @@
         width: 40px;
         height: 40px;
         margin: 0 5px;
+
         background-color: $SOCIAL_BG_COLOR;
         color: $SOCIAL_ICON_COLOR;
-        border-radius: 20px;
         text-align: center;
         font-size: 24px;
         line-height: 40px;
+
+        border-radius: 20px;
 
         &_facebook:hover {
             background-color: $FACEBOOK_COLOR;
@@ -59,22 +48,5 @@
         &:hover {
             text-transform: none;
         }
-    }
-}
-
-.about-block {
-    flex-basis: 500px;
-    display: inline-flex;
-    flex-flow: row wrap;
-    justify-content: space-around;
-    align-items: center;
-    margin: 20px 0;
-
-    font: 20px/24px $MAIN_FONT;
-    color: $SOCIAL_BG_COLOR;
-
-    &__about-link {
-        color: $SOCIAL_BG_COLOR;
-        text-decoration: none;
     }
 }

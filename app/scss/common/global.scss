@@ -1,0 +1,27 @@
+html, body {
+    height: 100%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.content {
+    flex: 1 0 auto;
+
+    &_light {
+        background-color: $BODY_COLOR_LIGHT;
+    }
+
+    &_dark {
+        background-color: $BODY_COLOR_DARK;
+    }
+}
