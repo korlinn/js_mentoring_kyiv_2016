@@ -8,13 +8,13 @@
     margin-right: 20px;
     margin-top: 7px;
 
-    @media #{$TABLET_DESKTOP} {
+    @include tablet_desktop {
         display: inline-block;
         width: 85%;
         float: right;
     }
 
-    @media #{$MOBILE} {
+    @include mobile {
         display: block;
         width: 100%;
         float: none;
@@ -28,11 +28,11 @@
         font-size: 16px;
         box-sizing: border-box;
 
-        @media #{$TABLET_DESKTOP} {
+        @include tablet_desktop {
             padding-left: 10px;
         }
 
-        @media #{$MOBILE} {
+        @include mobile {
             padding-left: 20px;
             border: none;
             border-bottom: 1px solid $HEADER_BG_COLOR;

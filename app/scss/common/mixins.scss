@@ -1,0 +1,47 @@
+
+/* MIXIN FOR MEDIA QUERY */
+
+@mixin small_mobile {
+    @media #{$SMALL_MOBILE} {
+        @content;
+    }
+}
+
+@mixin mobile {
+    @media #{$MOBILE} {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media #{$TABLET} {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media #{$DESKTOP} {
+        @content;
+    }
+}
+
+@mixin mobile_tablet {
+    @media #{$MOBILE_TABLET} {
+        @content;
+    }
+}
+
+@mixin tablet_desktop {
+    @media #{$TABLET_DESKTOP} {
+        @content;
+    }
+}
+
+@mixin mobile_desktop {
+    @media #{$MOBILE_DESKTOP} {
+        @content;
+    }
+}
+
+
+

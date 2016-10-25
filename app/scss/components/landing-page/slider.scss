@@ -5,11 +5,11 @@
     max-width: $SLIDER_WIDTH;
     margin: 0 auto;
 
-    @media #{$MOBILE} {
+    @include mobile {
         padding: 30px 10px;
     }
 
-    @media #{$TABLET_DESKTOP} {
+    @include tablet_desktop {
         padding: 30px 40px;
     }
 }
@@ -39,11 +39,11 @@
 
 .preview-slider {
     margin: 40px 0;
-    @media #{$SMALL_MOBILE} {
+    @include small_mobile {
         display: none;
     }
 
-    @media #{$MOBILE_DESKTOP} {
+    @include mobile_desktop {
         display: block;
     }
 

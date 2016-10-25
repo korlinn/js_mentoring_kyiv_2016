@@ -7,15 +7,15 @@
     line-height: $HEADER_HEIGHT;
     padding-left: 20px;
 
-    @media #{$DESKTOP} {
+    @include desktop {
         font-size: 36px;
     }
 
-    @media #{$TABLET} {
+    @include tablet {
         font-size: 28px;
     }
 
-    @media #{$MOBILE} {
+    @include mobile {
         font-size: 24px;
     }
 
@@ -29,11 +29,11 @@
         height: 40px;
         padding-right: 5px;
 
-        @media #{$MOBILE_TABLET} {
+        @include mobile_tablet {
             display: none;
         }
 
-        @media #{$DESKTOP} {
+        @include desktop {
             display: inline-block;
         }
     }

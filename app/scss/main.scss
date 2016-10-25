@@ -1,14 +1,15 @@
-@import 'common/variables.scss';
+@import 'common/variables';
+@import 'common/mixins';
 @import 'common/global';
 
-@import 'components/header/header.scss';
-@import 'components/header/logo.scss';
-@import 'components/header/menu.scss';
-@import 'components/header/search.scss';
+@import 'components/header/header';
+@import 'components/header/logo';
+@import 'components/header/menu';
+@import 'components/header/search';
 
-@import 'components/footer/footer.scss';
-@import 'components/footer/social.scss';
-@import 'components/footer/about.scss';
+@import 'components/footer/footer';
+@import 'components/footer/social';
+@import 'components/footer/about';
 
-@import 'components/landing-page/slider.scss';
-@import 'components/landing-page/info.scss';
+@import 'components/landing-page/slider';
+@import 'components/landing-page/info';
