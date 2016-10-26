@@ -15,7 +15,7 @@ router.get('/logout', user.logout);
 router.get('/', auth.authMiddleware, user.getAll);
 
 router.get('/new', user.getRegistrationForm);
-router.post('/register', user.postRegistrationForm);
+router.post('/register', user.postRegistrationForm, auth.localAuth);
 
 router.get('/:id', auth.authMiddleware, user.getById);
 

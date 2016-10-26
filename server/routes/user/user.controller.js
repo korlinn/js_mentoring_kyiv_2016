@@ -47,7 +47,7 @@ function getRegistrationForm(req, res) {
 }
 
 // Post new user
-function postRegistrationForm(req, res) {
+function postRegistrationForm(req, res, next) {
     return User.findOne({ email: req.body.email })
         .then(result => {
             if (result) {
@@ -57,13 +57,8 @@ function postRegistrationForm(req, res) {
                 return newUser.save();
             }
         })
-        .then(result => {
-            req.login(result._doc, err => {
-                if (err) {
-                    return res.json(err);
-                }
-                return res.status(CONST.STATUS.CREATED).redirect('/user/' + result._doc._id.toString());
-            });
+        .then(() => {
+            next();
         })
         .catch(err => res.status(CONST.STATUS.SERVERERROR).json(err));
 }
