@@ -31,12 +31,12 @@ UserSchema.methods.encryptPassword = function(password) {
 };
 
 UserSchema.virtual('password')
-    .set(password => {
+    .set(function(password) {
         this._plainPassword = password;
         this.salt = Math.random() + '';
         this.hashedPassword = this.encryptPassword(password);
     })
-    .get( () => this._plainPassword);
+    .get(function() { return this._plainPassword; });
 
 
 UserSchema.methods.checkPassword = function(password) {
