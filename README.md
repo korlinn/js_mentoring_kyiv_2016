@@ -23,33 +23,30 @@ An example of .env, see below
 Also, in project present file .env.example and you may rename it to .env
 
 
+## Start All
+
+Start whole project for production.
+> npm start
+
+
 ## Build Frontend
 
 For build frontend webpack has used.
-There are two npm tasks for its.
 
-1. Build for prodaction
-> npm front_build
+1. Build for prodaction.
+> npm run front_build
 
-2. Build for development with watch
-> npm front_watch
+2. Build for development with watch.
+> npm run front_watch
 
 
 ## Start server
 
-1. simple start
-> npm server_start
+1. Start server for prosuction.
+> npm run server_start
 
-2. start with watch
-> npm server_watch
-
-3.  start with watch in debug mode
-> npm server_watchdebug
-
-
-## Start All Project
-
-> npm start
+2. Start server for development with watch and in debug mode.
+> npm run server_watchdebug
 
 
 # Description of implementation

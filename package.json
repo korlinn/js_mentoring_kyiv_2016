@@ -8,7 +8,6 @@
     "front_build": "set NODE_ENV=production&&webpack --progress --colors",
     "front_watch": "set NODE_ENV=development&&webpack",
     "server_start": "node server/app.js",
-    "server_watch": "nodemon server/app.js",
     "server_watchdebug": "nodemon server/app.js --debug",
     "nodeinspector_start": "node-inspector"
   },
