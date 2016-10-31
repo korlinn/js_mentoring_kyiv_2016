@@ -44,7 +44,7 @@ app.get('/main', function(req, res) {
 });
 
 app.get('/angular', function(req, res) {
-    res.redirect('/angular/main.html');
+    res.redirect('/angular');
 });
 
 app.listen(app.get('port'), function () {
