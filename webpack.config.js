@@ -60,10 +60,7 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                loader: extractCSS.extract({
-                    fallbackLoader: 'style-loader',
-                    loader: 'css-loader'
-                })
+                loader: 'to-string-loader!css-loader'
             },
             {
                 test: /\.scss$/,
