@@ -18,7 +18,10 @@ Create in project root the file .env and configure it. There must be specified:
 An example of .env, see below
 
 > PORT=3000
-> MONGOURI=mongodb://<dbuser>:<password>@ds044979.mlab.com:44979/foodadviser
+
+> MONGOURI=mongodb://dbuser:password@ds044979.mlab.com:44979/foodadviser
+
+Paste your credentials instead of dbuser and password.
 
 Also, in project present file .env.example and you may rename it to .env
 
