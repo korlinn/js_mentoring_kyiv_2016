@@ -1,7 +1,10 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ProductsComponent } from './products.component';
+
 import { ProductFormComponent } from './product-form';
+import { ProductListComponent } from './product-list';
+import { ProductComponent } from './product';
+import { ProductsComponent } from './products.component';
 
 const productsRoutes: Routes = [
     {
@@ -15,6 +18,14 @@ const productsRoutes: Routes = [
             {
                 path: 'find',
                 component: ProductFormComponent
+            },
+            {
+                path: 'list',
+                component: ProductListComponent
+            },
+            {
+                path: 'details',
+                component: ProductComponent
             }
         ]
     }

@@ -1,0 +1,13 @@
+<div class="panel panel-default">
+	<div class="panel-heading">User</div>
+	<div class="panel-body">
+		<ul>
+			<li>Name: {{product.name}}</li>
+			<li>Calories per 100gr: {{product.calories}}</li>
+		</ul>
+		<button class="btn btn-warning btn-sm"
+			(click)="calculateCalories(product)">
+			Calculate Calories
+		</button>
+	</div>
+</div>

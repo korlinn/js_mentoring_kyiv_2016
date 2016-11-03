@@ -5,12 +5,14 @@ import { FormsModule } from '@angular/forms';
 // import { AsyncNgModuleLoader} from './async-ng-module-loader';
 
 import { ProductsModule } from './products/products.module';
+import { RecipesModule } from './recipes/recipes.module';
+import { UsersModule } from './users/users.module';
 
 import { AppComponent } from './app.component';
+import { AboutComponent } from './common/about';
+import { PageNotFoundComponent } from './common/page-not-found/page-not-found.component';
 
 import { routing } from './app.routing';
-
-import { PageNotFoundComponent } from './common/page-not-found/page-not-found.component';
 
 @NgModule({
     imports:      [
@@ -18,13 +20,19 @@ import { PageNotFoundComponent } from './common/page-not-found/page-not-found.co
         CommonModule,
         FormsModule,
         ProductsModule,
+        RecipesModule,
+        UsersModule,
         routing
     ],
     // providers: [{
     //     provide: NgModuleFactoryLoader,
     //     useClass: AsyncNgModuleLoader
     // }],
-    declarations: [ AppComponent, PageNotFoundComponent ],
+    declarations: [
+        AppComponent,
+        AboutComponent,
+        PageNotFoundComponent
+    ],
     bootstrap:    [ AppComponent ]
 })
 
