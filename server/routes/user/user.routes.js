@@ -12,7 +12,8 @@ router.post('/authenticate', auth.localAuth);
 
 router.get('/logout', user.logout);
 
-router.get('/', auth.authMiddleware, user.getAll);
+router.get('/', auth.authMiddleware, user.renderAll);
+router.get('/getAll', auth.authMiddleware, user.getAll);
 
 router.get('/new', user.getRegistrationForm);
 router.post('/register', user.postRegistrationForm, auth.localAuth);

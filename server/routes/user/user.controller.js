@@ -4,6 +4,7 @@ const User = require('./user.model');
 const CONST = require('../../common/const');
 
 module.exports = {
+    renderAll,
     getAll,
     getById,
     getRegistrationForm,
@@ -15,12 +16,24 @@ module.exports = {
     logout
 };
 
+// Get and render all users
+function renderAll(req, res) {
+    return User.find(req.params)
+        .then(result => {
+            if (result) {
+                res.status(CONST.STATUS.OK).render('users', { data: result });
+            } else {
+                res.status(CONST.STATUS.NOTFOUND).json({ message: 'Not found.'});
+            }
+        })
+        .catch(err => res.status(CONST.STATUS.SERVERERROR).json(err));
+}
 // Get all users
 function getAll(req, res) {
     return User.find(req.params)
         .then(result => {
             if (result) {
-                res.status(CONST.STATUS.OK).render('users', { data: result });
+                res.status(CONST.STATUS.OK).send(result);
             } else {
                 res.status(CONST.STATUS.NOTFOUND).json({ message: 'Not found.'});
             }

@@ -7,13 +7,17 @@ import { Product } from './../../models/product';
 
 @Injectable()
 export class ProductArrayService {
-
   private headers = new Headers({'Content-Type': 'application/json'});
   private productUrls = {
-    getAll: 'product/getAll'
+    getAll: ''
   };
 
-  constructor(private http: Http) {}
+  constructor(private http: Http) {
+    let url = new URL(document.URL);
+
+    this.productUrls.getAll = url.origin + '/product/getAll'
+
+  }
 
   getProducts(): Promise<Product[]>{
     return this.http

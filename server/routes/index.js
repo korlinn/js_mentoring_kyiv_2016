@@ -2,5 +2,5 @@
 
 module.exports = function(app) {
     app.use('/user', require('./user'));
-    app.use('/angular/product', require('./product'));
+    app.use('/product', require('./product'));
 };

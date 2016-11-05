@@ -23,45 +23,43 @@ export class UserFormComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.user = new User(null, '', '');
-
-    this.sub = this.route.params.subscribe(params => {
-      let id = +params["id"];
-      
-      // NaN - for new user, id - for edit
-      if (id) {
-        this.usersService.getUser(id)
-          .then(user => {
-            this.user = Object.assign({}, user);
-            this.oldUser = user;
-          });
-      }
-    });
+    // this.sub = this.route.params.subscribe(params => {
+    //   let id = +params["id"];
+    //
+    //   // NaN - for new user, id - for edit
+    //   if (id) {
+    //     this.usersService.getUser(id)
+    //       .then(user => {
+    //         this.user = Object.assign({}, user);
+    //         this.oldUser = user;
+    //       });
+    //   }
+    // });
   }
 
   ngOnDestroy(): void {
-    this.sub.unsubscribe();
+    // this.sub.unsubscribe();
   }
 
   saveUser() {
-    console.log("save")
-    let user = new User(
-      this.user.id,
-      this.user.firstName,
-      this.user.email
-    );
-
-    if (user.id) {
-      this.usersService.updateUser(user);
-      this.oldUser = this.user;
-      // optional parameter: http://localhost:4200/users;id=2
-      this.router.navigate(['/users', {id: user.id}]);
-    } 
-    else {
-      this.usersService.addUser(user);
-      this.oldUser = this.user;
-      this.router.navigate(['/users']);
-    }
+    // console.log("save")
+    // let user = new User(
+    //   this.user.id,
+    //   this.user.firstName,
+    //   this.user.email
+    // );
+    //
+    // if (user.id) {
+    //   this.usersService.updateUser(user);
+    //   this.oldUser = this.user;
+    //   // optional parameter: http://localhost:4200/users;id=2
+    //   this.router.navigate(['/users', {id: user.id}]);
+    // }
+    // else {
+    //   this.usersService.addUser(user);
+    //   this.oldUser = this.user;
+    //   this.router.navigate(['/users']);
+    // }
   }
 
   goBack() {
