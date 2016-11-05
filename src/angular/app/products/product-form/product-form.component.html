@@ -5,13 +5,13 @@
     </h4>
   </div>
   <div class="panel-body">
-    <form *ngIf="user" (ngSubmit)="saveProduct()" id="product-form">
+    <form (ngSubmit)="findProduct()" id="product-form">
       <div class="form-group">
-        <label for="name">First Name</label>
+        <label for="name">Product name</label>
         <input type="text"
                class="form-control"
                id="name" name="name"
-               placeholder="Name"
+               placeholder="Product name"
                [(ngModel)]="product.name">
       </div>
       <div class="form-group">
@@ -22,11 +22,39 @@
                placeholder="Calories"
                [(ngModel)]="product.calories">
       </div>
+
+      <div class="form-group">
+        <label for="protein">Protein</label>
+        <input type="text"
+               class="form-control"
+               id="protein" name="protein"
+               placeholder="Protein"
+               [(ngModel)]="product.protein">
+      </div>
+
+      <div class="form-group">
+        <label for="fats">Fats</label>
+        <input type="text"
+               class="form-control"
+               id="fats" name="fats"
+               placeholder="Fats"
+               [(ngModel)]="product.fats">
+      </div>
+
+      <div class="form-group">
+        <label for="carbohydrate">Carbohydrate</label>
+        <input type="text"
+               class="form-control"
+               id="carbohydrate" name="carbohydrate"
+               placeholder="Carbohydrate"
+               [(ngModel)]="product.carbohydrate">
+      </div>
     </form>
+
     <button
             type="submit"
             class="btn btn-primary"
-            form="product-form">Save
+            form="product-form">Find
     </button>
     <button class="btn btn-primary"
             (click)="goBack()">Back

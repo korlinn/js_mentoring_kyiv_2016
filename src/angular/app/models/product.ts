@@ -1,7 +1,24 @@
 export class Product {
 	constructor(
-		public id: number,
+		public _id: number,
 		public name: string,
-		public calories: number
+		public calories: number,
+		public isCounatble: boolean,
+		public weightOne: number,
+        public protein: number,
+        public fats: number,
+        public carbohydrate: number
 	) {}
 }
+
+/*
+
+"name": "",
+"calories": "",
+"isCounatble": "",
+"weightOne": "",
+"protein": "",
+"fats": "",
+"carbohydrate": ""
+
+*/

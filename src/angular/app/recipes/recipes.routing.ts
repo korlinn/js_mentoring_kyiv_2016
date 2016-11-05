@@ -8,7 +8,7 @@ import { RecipeFormComponent } from './recipe-form';
 
 const usersRoutes: Routes = [
   {
-    path: 'users',
+    path: 'recipes',
     component: RecipesComponent,
     children: [
       {

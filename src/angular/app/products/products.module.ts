@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { HttpModule } from '@angular/http';
 
+import { ProductArrayService } from './product-array-service/product-array.service';
 
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductFormComponent } from './product-form/product-form.component';
@@ -13,7 +15,8 @@ import { productsRouting } from './products.routing';
     imports: [
         CommonModule,
         FormsModule,
-        productsRouting
+        productsRouting,
+        HttpModule
     ],
 
     declarations: [
@@ -24,6 +27,7 @@ import { productsRouting } from './products.routing';
     ],
 
     providers: [
+        ProductArrayService
     ]
 })
 

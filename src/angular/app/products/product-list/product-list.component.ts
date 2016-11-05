@@ -1,8 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
-import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs/Subscription';
-
 import { Product } from './../../models/product';
 import { ProductArrayService } from './../product-array-service/product-array.service';
 
@@ -13,30 +10,23 @@ import { ProductArrayService } from './../product-array-service/product-array.se
 })
 export class ProductListComponent implements OnInit, OnDestroy {
   products: Array<Product>;
-  private selectedProductId: number;
-  private sub: Subscription;
 
   constructor(
-    // private productService: ProductArrayService,
-    // private route: ActivatedRoute
+    private productService: ProductArrayService
   ) { }
 
   ngOnInit() {
-    // this.usersService.getProducts()
-    //       .then(users => this.users = users);
-    //
-    // // listen id from UserFormComponent
-    // this.sub = this.route.params
-    //   .subscribe(params => {
-    //     let id = +params['id'];
-    //     if (id) {
-    //       this.selectedProductId = +params['id'];
-    //       console.log(`Last time you edit user with id ${this.selectedProductId}`);
-    //     }
-    //   });
+    this.getProducts();
+  }
+
+  getProducts(): void {
+    this.productService.getProducts()
+        .then(products => {
+          console.log(products);
+          this.products = products
+        });
   }
 
   ngOnDestroy() {
-    this.sub.unsubscribe();
   }
 }

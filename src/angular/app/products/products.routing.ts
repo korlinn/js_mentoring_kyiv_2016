@@ -13,7 +13,7 @@ const productsRoutes: Routes = [
         children: [
             {
                 path: '',
-                component: ProductFormComponent
+                component: ProductListComponent
             },
             {
                 path: 'find',
