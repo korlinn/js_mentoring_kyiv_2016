@@ -5,7 +5,7 @@
         </h4>
     </div>
     <div class="panel-body">
-        <form *ngIf="user" (ngSubmit)="saveUser()" id="user-form">
+        <form (ngSubmit)="saveUser()" id="user-form">
           <div class="form-group">
             <label for="firstName">First Name</label>
             <input type="text" 
@@ -21,6 +21,54 @@
                 id="email" name="email"
                 placeholder="Email"
                 [(ngModel)]="user.email">
+          </div>
+            <div class="form-group">
+            <label for="gender">Gender</label>
+            <input type="text"
+                class="form-control"
+                id="gender" name="gender"
+                placeholder="Gender"
+                [(ngModel)]="user.gender">
+          </div>
+            <div class="form-group">
+            <label for="email">Last Name</label>
+            <input type="text"
+                class="form-control"
+                id="email" name="email"
+                placeholder="Email"
+                [(ngModel)]="user.email">
+          </div>
+          <div class="form-group">
+            <label for="age">Age</label>
+            <input type="text"
+                class="form-control"
+                id="age" name="age"
+                placeholder="Age"
+                [(ngModel)]="user.age">
+          </div>
+          <div class="form-group">
+            <label for="age">Height</label>
+            <input type="text"
+                class="form-control"
+                id="height" name="height"
+                placeholder="Height"
+                [(ngModel)]="user.height">
+          </div>
+          <div class="form-group">
+            <label for="weight">Weight</label>
+            <input type="text"
+                class="form-control"
+                id="weight" name="weight"
+                placeholder="Weight"
+                [(ngModel)]="user.weight">
+          </div>
+          <div class="form-group">
+            <label for="cnorm">Norm of calories</label>
+            <input type="text"
+                class="form-control"
+                id="cnorm" name="cnorm"
+                placeholder="Norm of calories"
+                [(ngModel)]="user.cnorm">
           </div>
         </form>
         <button 
