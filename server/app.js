@@ -43,7 +43,7 @@ app.get('/main', function(req, res) {
     res.render('main');
 });
 
-app.get('/angular', function(req, res) {
+app.get('/angular*', function(req, res) {
     res.redirect('/angular');
 });
 
