@@ -40,8 +40,10 @@ function find(req, res) {
 }
 
 // Post new product
-function postNew(req, res, next) {
+function postNew(req, res) {
     let query = req.body;
+
+    console.log(query);
 
     return Product.findOne(query)
         .then(result => {
@@ -52,12 +54,18 @@ function postNew(req, res, next) {
                 return newProduct.save();
             }
         })
-        .then(() => {
-            next();
-        })
+        .then(result => res.status(CONST.STATUS.OK).send(result))
         .catch(err => res.status(CONST.STATUS.SERVERERROR).json(err));
 }
 
-function update(req, res, next) {}
+function update(req, res, next) {
+    return Product.update(
+        { _id: req.params.id },
+        { $set: req.body})
+        .then(result => res.status(CONST.STATUS.OK).send(result))
+        .catch(err => res.status(CONST.STATUS.SERVERERROR).json(err));
+}
 
-function deleteById(req, res, next) {}
+function deleteById(req, res, next) {
+
+}

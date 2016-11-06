@@ -1,2 +1,17 @@
-<h2>Find product with specified calories</h2>
-<router-outlet></router-outlet>
+<h2>Product Calorizator</h2>
+<div class="container-fluid">
+    <div class="row">
+        <ul class="nav navbar-nav">
+            <li routerLinkActive="active">
+                <a routerLink="/products/list">All</a>
+            </li>
+            <li routerLinkActive="active">
+                <a routerLink="/products/find">What to eat</a>
+            </li>
+            <li routerLinkActive="active">
+                <a routerLink="/products/add">Add</a>
+            </li>
+        </ul>
+    </div>
+    <router-outlet></router-outlet>
+</div>

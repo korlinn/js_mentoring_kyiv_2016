@@ -8,7 +8,7 @@ module.exports = router;
 
 router.get('/getAll', product.getAll);
 router.get('/find', product.find);
-router.get('/add', product.postNew);
+router.post('/add', product.postNew);
 router.put('/update/:id', product.update);
 router.delete('/del/:id', product.deleteById);
 

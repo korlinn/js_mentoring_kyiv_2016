@@ -9,5 +9,5 @@ export class User {
 		public height: Number,
 		public weight: Number,
 		public cnorm: Number
-	) {}
+	) {	}
 }

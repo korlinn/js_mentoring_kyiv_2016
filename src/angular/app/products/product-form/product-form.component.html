@@ -5,7 +5,7 @@
     </h4>
   </div>
   <div class="panel-body">
-    <form (ngSubmit)="findProduct()" id="product-form">
+    <form (ngSubmit)="saveProduct()" id="product-form">
       <div class="form-group">
         <label for="name">Product name</label>
         <input type="text"
@@ -13,6 +13,14 @@
                id="name" name="name"
                placeholder="Product name"
                [(ngModel)]="product.name">
+      </div>
+      <div class="form-group">
+        <label for="category">Product category</label>
+        <input type="text"
+               class="form-control"
+               id="category" name="category"
+               placeholder="Product category"
+               [(ngModel)]="product.category">
       </div>
       <div class="form-group">
         <label for="calories">Calories</label>
@@ -49,15 +57,32 @@
                placeholder="Carbohydrate"
                [(ngModel)]="product.carbohydrate">
       </div>
+
+      <div class="form-group">
+        <label for="isCounatble">Check if this product countable</label>
+        <input type="checkbox"
+               class="form-control"
+               id="isCounatble" name="isCounatble"
+               [(ngModel)]="product.isCounatble">
+      </div>
+
+      <div class="form-group">
+        <label for="weightOne">Weight one copy</label>
+        <input type="text"
+               class="form-control"
+               id="weightOne" name="weightOne"
+               placeholder="Weight"
+               [(ngModel)]="product.weightOne">
+      </div>
     </form>
 
     <button
             type="submit"
             class="btn btn-primary"
-            form="product-form">Find
+            form="product-form">Save
     </button>
     <button class="btn btn-primary"
-            (click)="goBack()">Back
+            (click)="goBack()">Cancel
     </button>
   </div>
 </div>

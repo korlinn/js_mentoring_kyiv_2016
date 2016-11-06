@@ -16,7 +16,8 @@ export class ProductComponent {
     private route: ActivatedRoute
   ) { }
 
-  calculateCalories(product: Product) {
-    console.log('calculateCalories method for ' + product);
+  editProduct(product: Product) {
+    let link = ['/products/edit', product._id];
+    this.router.navigate(link);
   }
 }

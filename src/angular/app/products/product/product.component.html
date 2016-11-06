@@ -3,14 +3,15 @@
 	<div class="panel-body">
 		<ul>
 			<li>Name: {{product.name}}</li>
+			<li>Category: {{product.category}}</li>
 			<li>Calories per 100gr: {{product.calories}}</li>
 			<li>Protens: {{product.protein}}</li>
 			<li>Fats: {{product.fats}}</li>
 			<li>Carbohydrate: {{product.carbohydrate}}</li>
 		</ul>
-		<button class="btn btn-warning btn-sm"
-			(click)="calculateCalories(product)">
-			Calculate Calories
+		<button class="btn btn-success btn-sm"
+			(click)="editProduct(product)">
+			Edit
 		</button>
 	</div>
 </div>

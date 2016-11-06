@@ -21,7 +21,8 @@ router.post('/register', user.postRegistrationForm, auth.localAuth);
 router.get('/:id', auth.authMiddleware, user.getById);
 
 router.get('/edit/:id', auth.authMiddleware, user.getEditForm);
-router.put('/update/:id', auth.authMiddleware, user.putEditForm);
+router.put('/update/:id', auth.authMiddleware, user.updateUser);
+router.put('/putedit/:id', auth.authMiddleware, user.putEditForm);
 router.delete('/del/:id', auth.authMiddleware, user.deleteById);
 
 

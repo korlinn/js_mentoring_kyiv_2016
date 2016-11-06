@@ -7,40 +7,45 @@ import { User } from './../../models/user';
 @Injectable()
 export class UserArrayService {
   private headers = new Headers({'Content-Type': 'application/json'});
-  private userUrls = {
-    getAll: ''
+  private userLocalUrls = {
+    getAll: '/user/getAll',
+    add: '/user/register',
+    update: '/user/update/'
   };
+  originUrl: String = '';
 
   constructor(private http: Http) {
     let url = new URL(document.URL);
-
-    this.userUrls.getAll = url.origin + '/user/getAll';
+    this.originUrl = url.origin;
   }
 
-  getUsers() {
+  getUsers(): Promise<User[]> {
     return this.http
-        .get(this.userUrls.getAll)
+        .get(this.originUrl + this.userLocalUrls.getAll)
         .toPromise()
-        .then(response => {
-          console.log(response);
-          return response.json() as User[];
-        })
+        .then(response => response.json() as User[])
         .catch(this.handleError);
   }
 
-  getUser(id: number) {
+  getUser(id: number): Promise<User> {
     return this.getUsers()
       .then(users => users.find(user => user._id === id));
   }
 
-  addUser(user: User) {
+  addUser(user: User): Promise<User> {
     return this.http
-        .post(this.userUrls.getAll + '/register', user)
+        .post(this.originUrl + this.userLocalUrls.add, JSON.stringify(user), {headers: this.headers})
+        .toPromise()
+        .then(() => user)
+        .catch(this.handleError);
   }
 
-  updateUser(user: User) {
+  updateUser(user: User): Promise<User> {
     return this.http
-        .put(this.userUrls.getAll + '/update/' + user._id, user);
+        .put(this.originUrl + this.userLocalUrls.update + user._id, JSON.stringify(user), {headers: this.headers})
+        .toPromise()
+        .then(() => user)
+        .catch(this.handleError);
   }
 
   private handleError(error: any): Promise<any> {

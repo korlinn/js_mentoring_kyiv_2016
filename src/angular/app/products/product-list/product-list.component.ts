@@ -10,6 +10,7 @@ import { ProductArrayService } from './../product-array-service/product-array.se
 })
 export class ProductListComponent implements OnInit, OnDestroy {
   products: Array<Product>;
+  categories: Array<String>;
 
   constructor(
     private productService: ProductArrayService
@@ -22,9 +23,17 @@ export class ProductListComponent implements OnInit, OnDestroy {
   getProducts(): void {
     this.productService.getProducts()
         .then(products => {
-          console.log(products);
-          this.products = products
+          this.products = products;
+          this.fillCategories();
         });
+  }
+
+
+  fillCategories() {
+    let categoryObj = {};
+
+    this.products.forEach(item => categoryObj[item.category] = 1);
+    this.categories = Object.keys(categoryObj);
   }
 
   ngOnDestroy() {

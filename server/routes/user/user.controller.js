@@ -11,6 +11,7 @@ module.exports = {
     postRegistrationForm,
     getEditForm,
     putEditForm,
+    updateUser,
     deleteById,
     getLoginForm,
     logout
@@ -108,6 +109,15 @@ function putEditForm(req, res) {
             }
         })
         .then(result => res.status(CONST.STATUS.OK).render('profile', result))
+        .catch(err => res.status(CONST.STATUS.SERVERERROR).json(err));
+}
+
+function updateUser(req, res) {
+    console.log("user update");
+    return User.update(
+        { _id: req.params.id },
+        { $set: req.body})
+        .then(result => res.status(CONST.STATUS.OK).send(result))
         .catch(err => res.status(CONST.STATUS.SERVERERROR).json(err));
 }
 

@@ -1,0 +1,45 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="pannel-title">
+      Product Form
+    </h4>
+  </div>
+  <div class="panel-body">
+    <form (ngSubmit)="findProduct()" id="product-form">
+      <div class="form-group">
+        <label for="name">Product name</label>
+        <input type="text"
+               class="form-control"
+               id="name" name="name"
+               placeholder="Product name"
+               [(ngModel)]="product.name">
+      </div>
+      <div class="form-group">
+        <label for="category">Product category</label>
+        <select class="form-control"
+                id="category" name="category">
+          <option *ngFor="let category of categories"
+                  value="{{category}}">{{category}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="calories">Wanted Calories</label>
+        <input type="text"
+               class="form-control"
+               id="calories" name="calories"
+               placeholder="Calories"
+               [(ngModel)]="product.calories">
+      </div>
+    </form>
+
+    <button
+            type="submit"
+            class="btn btn-primary"
+            form="product-form">Find
+    </button>
+    <button class="btn btn-primary"
+            (click)="goBack()">Back
+    </button>
+  </div>
+</div>
+

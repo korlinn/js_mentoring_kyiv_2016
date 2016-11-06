@@ -2,6 +2,7 @@ export class Product {
 	constructor(
 		public _id: number,
 		public name: string,
+		public category: string,
 		public calories: number,
 		public isCounatble: boolean,
 		public weightOne: number,
