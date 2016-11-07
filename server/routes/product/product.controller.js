@@ -5,6 +5,7 @@ const CONST = require('../../common/const');
 
 module.exports = {
     getAll,
+    getCategories,
     find,
     postNew,
     update,
@@ -24,11 +25,28 @@ function getAll(req, res) {
         .catch(err => res.status(CONST.STATUS.SERVERERROR).json(err));
 }
 
+// Get all categories
+function getCategories(req, res) {
+    return Product.find()
+        .then(result => {
+            if (result) {
+                let categoryObj = {};
+
+                result.forEach(item => categoryObj[item.category] = 1);
+                let categories = Object.keys(categoryObj);
+
+                res.status(CONST.STATUS.OK).send(categories);
+            } else {
+                res.status(CONST.STATUS.NOTFOUND).json({ message: 'Not found.'});
+            }
+        })
+        .catch(err => res.status(CONST.STATUS.SERVERERROR).json(err));
+}
+
 // Find product
 function find(req, res) {
-    let query = req.body;
-
-    return Product.findOne(query)
+    let query = req.query;
+    return Product.find(query)
         .then(result => {
             if (result) {
                 res.status(CONST.STATUS.OK).send(result);

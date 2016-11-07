@@ -1,23 +1,24 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     <h4 class="pannel-title">
-      Product Form
+      What product and how many calories you want to eat
     </h4>
   </div>
   <div class="panel-body">
-    <form (ngSubmit)="findProduct()" id="product-form">
+    <form (ngSubmit)="findProducts()" id="product-search-form">
       <div class="form-group">
         <label for="name">Product name</label>
         <input type="text"
                class="form-control"
                id="name" name="name"
                placeholder="Product name"
-               [(ngModel)]="product.name">
+               [(ngModel)]="query.name">
       </div>
       <div class="form-group">
         <label for="category">Product category</label>
         <select class="form-control"
-                id="category" name="category">
+                id="category" name="category"
+                [(ngModel)]="query.category">
           <option *ngFor="let category of categories"
                   value="{{category}}">{{category}}</option>
         </select>
@@ -28,14 +29,14 @@
                class="form-control"
                id="calories" name="calories"
                placeholder="Calories"
-               [(ngModel)]="product.calories">
+               [(ngModel)]="wantedCalories">
       </div>
     </form>
 
     <button
             type="submit"
             class="btn btn-primary"
-            form="product-form">Find
+            form="product-search-form">Find
     </button>
     <button class="btn btn-primary"
             (click)="goBack()">Back
@@ -43,3 +44,19 @@
   </div>
 </div>
 
+<div class="panel panel-default"
+  *ngIf="searchResult && searchResult.length">
+  <div class="panel-heading">
+    <h4 class="pannel-title">
+      For {{wantedCalories}} calories you can eat:
+    </h4>
+  </div>
+  <div class="panel-body">
+    <ul>
+      <li *ngFor="let item of searchResult">
+        <p>{{item.name}}</p>
+        <p>{{item.quantity}} {{item.measure}}</p>
+      </li>
+    </ul>
+  </div>
+</div>

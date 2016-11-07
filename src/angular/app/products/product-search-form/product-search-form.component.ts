@@ -1,4 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit }      from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+
+import { Product }             from './../../models/product';
+import { ProductArrayService } from './../product-array-service/product-array.service';
+
+type ResultProduct = {
+  name: string;
+  quantity: number;
+  measure: string;
+}
 
 @Component({
   selector: 'product-search-form',
@@ -6,10 +16,64 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product-search-form.component.css']
 })
 export class ProductSearchFormComponent implements OnInit {
+  categories: Array<String>;
+  query: Object = {
+    name: String,
+    category: String
+  };
+  wantedCalories: number;
+  searchResult: Array<ResultProduct>;
 
-  constructor() { }
+  constructor(private productService: ProductArrayService,
+              private route: ActivatedRoute,
+              private router: Router) {
+    this.query = {name: '', category: ''};
+    //this.product = new Product(null, '', '', null, null, null, null, null, null);
+  }
 
   ngOnInit() {
-    
+    this.fillCategories();
+  }
+
+  fillCategories() {
+    this.productService.getCategories()
+      .then(result => this.categories = result);
+  }
+
+  findProducts() {
+    let query = {};
+
+    for (let key in this.query) {
+      if (this.query.hasOwnProperty(key) && this.query[key]) {
+        query[key] = this.query[key];
+      }
+    }
+
+    this.productService.findProductsByQuery(query)
+        .then(result => this.calculateQuantity(result));
+  }
+
+  calculateQuantity(products: Array<Product>) {
+    this.searchResult = [];
+
+    products.forEach(item => {
+      let quantity = item.isCounatble
+          ? Math.round((this.wantedCalories * 100) / (item.weightOne * item.calories))
+          : (this.wantedCalories / item.calories) * 100;
+
+      quantity = quantity > 5 ? Math.round(quantity) : Math.round(quantity * 10) / 10;
+
+      let result = {
+        name: item.name,
+        quantity: quantity,
+        measure: item.isCounatble ? 'items' : 'grams'
+      };
+
+      this.searchResult.push(result)
+    });
+  }
+
+  goBack() {
+    this.router.navigate(['./../'], { relativeTo: this.route});
   }
 }
