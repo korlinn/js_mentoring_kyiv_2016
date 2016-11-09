@@ -23,7 +23,9 @@ export class UserArrayService {
     return this.http
         .get(this.originUrl + this.userLocalUrls.getAll)
         .toPromise()
-        .then(response => response.json() as User[])
+        .then(response => {
+          return response.json() as User[]
+        })
         .catch(this.handleError);
   }
 

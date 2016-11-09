@@ -6,7 +6,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const User = require('../../routes/user/user.model');
 
 const localAuth = passport.authenticate('local', {
-    successRedirect : '/user',
+    successRedirect : '/user/authenticatedOk',
     failureRedirect : '/user/login'
 });
 

@@ -1,7 +1,5 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-
-import { Subscription } from 'rxjs/Subscription';
 
 import { User } from './../../models/user';
 import { UserArrayService } from './../user-array-service/user-array.service';
@@ -11,10 +9,9 @@ import { UserArrayService } from './../user-array-service/user-array.service';
   templateUrl: 'user-form.component.html',
   styleUrls: ['user-form.component.css'],
 })
-export class UserFormComponent implements OnInit, OnDestroy {
+export class UserFormComponent implements OnInit {
   user: User;
   oldUser: User;
-  private sub: Subscription;
 
   constructor(
     private usersService: UserArrayService,
@@ -25,21 +22,10 @@ export class UserFormComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.user = new User(null, '', '', '', '', null, null, null, null);
 
-    this.sub = this.route.params.subscribe(params => {
-    let id = params["id"];
-
-    if (id) {
-      this.usersService.getUser(id)
-        .then(user => {
-          this.user = Object.assign({}, user);
-          this.oldUser = user;
-        });
-      }
+    this.route.data.forEach((data: { user: User }) => {
+      this.user = Object.assign({}, data.user);
+      this.oldUser = data.user;
     });
-  }
-
-  ngOnDestroy(): void {
-    this.sub.unsubscribe();
   }
 
   saveUser() {

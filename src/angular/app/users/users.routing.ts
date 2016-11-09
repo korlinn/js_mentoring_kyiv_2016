@@ -1,9 +1,11 @@
 import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { UsersComponent } from './users.component';
+import { UsersComponent }    from './users.component';
 import { UserListComponent } from './user-list';
 import { UserFormComponent } from './user-form';
+
+import { UserResolveGuard } from './../guards/user-resolve.guard';
 
 const usersRoutes: Routes = [
   {
@@ -21,6 +23,9 @@ const usersRoutes: Routes = [
       {
         path: 'edit/:id',
         component: UserFormComponent,
+        resolve: {
+          user: UserResolveGuard
+        }
       }
     ]
   }

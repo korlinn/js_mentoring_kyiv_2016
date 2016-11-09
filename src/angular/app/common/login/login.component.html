@@ -1,0 +1,27 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h2 class="pannel-title">
+            Login
+        </h2>
+    </div>
+    <div class="panel-body">
+        <form *ngIf="!userLoggedIn"
+              class="navbar-form navbar-left">
+            <div>
+                <input type="text" name="email" placeholder="email" class="form-control"
+                       [(ngModel)]="loginData.email" required/>
+            </div>
+            <div>
+                <input type="password" name="password" placeholder="password" class="form-control"
+                       [(ngModel)]="loginData.password" required/>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-success"
+                        (click)="login()">Login</button>
+                <a class="btn btn-primary" href="/user/new" role="button">Create Account</a>
+            </div>
+        </form>
+        <button class="btn btn-primary" (click)="logout()" *ngIf="userLoggedIn">Logout</button>
+    </div>
+</div>
+

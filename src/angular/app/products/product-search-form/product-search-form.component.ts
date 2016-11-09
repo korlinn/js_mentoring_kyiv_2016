@@ -16,6 +16,7 @@ type ResultProduct = {
   styleUrls: ['./product-search-form.component.css']
 })
 export class ProductSearchFormComponent implements OnInit {
+  products: Array<Product>;
   categories: Array<String>;
   query: Object = {
     name: String,
@@ -28,7 +29,6 @@ export class ProductSearchFormComponent implements OnInit {
               private route: ActivatedRoute,
               private router: Router) {
     this.query = {name: '', category: ''};
-    //this.product = new Product(null, '', '', null, null, null, null, null, null);
   }
 
   ngOnInit() {
@@ -48,14 +48,15 @@ export class ProductSearchFormComponent implements OnInit {
         query[key] = this.query[key];
       }
     }
+    this.searchResult = [];
 
     this.productService.findProductsByQuery(query)
-        .then(result => this.calculateQuantity(result));
+        .then(result => {
+          this.calculateQuantity(result)
+        });
   }
 
   calculateQuantity(products: Array<Product>) {
-    this.searchResult = [];
-
     products.forEach(item => {
       let quantity = item.isCounatble
           ? Math.round((this.wantedCalories * 100) / (item.weightOne * item.calories))

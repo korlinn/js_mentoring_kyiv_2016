@@ -9,11 +9,12 @@ module.exports = router;
 
 router.get('/login', user.getLoginForm);
 router.post('/authenticate', auth.localAuth);
+router.get('/authenticatedOk', user.successLogin);
 
 router.get('/logout', user.logout);
 
 router.get('/', auth.authMiddleware, user.renderAll);
-router.get('/getAll', auth.authMiddleware, user.getAll);
+router.get('/getAll', user.getAll);
 
 router.get('/new', user.getRegistrationForm);
 router.post('/register', user.postRegistrationForm, auth.localAuth);

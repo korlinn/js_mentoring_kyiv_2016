@@ -10,20 +10,24 @@ import { ProductArrayService } from './../product-array-service/product-array.se
 })
 export class ProductListComponent implements OnInit, OnDestroy {
   products: Array<Product>;
+  isAdmin: boolean;
 
   constructor(
     private productService: ProductArrayService
   ) { }
 
   ngOnInit() {
-    this.getProducts();
+    if (!this.products) {
+      this.getProducts();
+    }
+    this.isAdmin = false;
   }
 
   getProducts(): void {
     this.productService.getProducts()
-        .then(products => {
-          this.products = products;
-        });
+      .then(products => {
+        this.products = products;
+      });
   }
 
   ngOnDestroy() {

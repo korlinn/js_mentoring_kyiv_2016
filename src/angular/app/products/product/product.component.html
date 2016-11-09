@@ -9,7 +9,8 @@
 			<li>Fats: {{product.fats}}</li>
 			<li>Carbohydrate: {{product.carbohydrate}}</li>
 		</ul>
-		<button class="btn btn-success btn-sm"
+		<button *ngIf="canEdit"
+				class="btn btn-success btn-sm"
 			(click)="editProduct(product)">
 			Edit
 		</button>

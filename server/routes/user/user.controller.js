@@ -14,7 +14,8 @@ module.exports = {
     updateUser,
     deleteById,
     getLoginForm,
-    logout
+    logout,
+    successLogin
 };
 
 // Get and render all users
@@ -143,5 +144,10 @@ function getLoginForm(req, res) {
 function logout(req, res) {
     req.logout();
     res.redirect('/');
+}
+
+function successLogin(req, res) {
+    console.log("user logged in");
+    res.status(CONST.STATUS.OK).json({ msg: "LoggedIn" });
 }
 

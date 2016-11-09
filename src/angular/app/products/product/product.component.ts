@@ -10,11 +10,15 @@ import { Product } from './../../models/product';
 })
 export class ProductComponent {
   @Input() product: Product;
+  canEdit: boolean;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute
-  ) { }
+  ) {
+    // TODO: canEdit - temporey mock disable of Edit button
+    this.canEdit = false;
+  }
 
   editProduct(product: Product) {
     let link = ['/products/edit', product._id];

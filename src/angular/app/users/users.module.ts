@@ -10,6 +10,8 @@ import { UserComponent } from './user/user.component';
 import { UsersComponent } from './users.component';
 
 import { UserArrayService } from './user-array-service/user-array.service';
+import { UserResolveGuard } from './../guards/user-resolve.guard';
+
 
 @NgModule({
   imports: [
@@ -25,6 +27,7 @@ import { UserArrayService } from './user-array-service/user-array.service';
   ],
   providers: [
     UserArrayService,
+    UserResolveGuard
   ]
 })
 export class UsersModule {}

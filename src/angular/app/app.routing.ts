@@ -1,8 +1,12 @@
-import { ModuleWithProviders } from '@angular/core';
+import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AboutComponent } from './common/about';
+import { AboutComponent }        from './common/about';
 import { PageNotFoundComponent } from './common/page-not-found';
+import { LoginComponent }        from './common/login';
+
+//import { load }      from './async-ng-module-loader';
+//import { AuthGuard } from './guards/auth.guard';
 
 const appRoutes: Routes = [
     {
@@ -15,8 +19,24 @@ const appRoutes: Routes = [
         component: AboutComponent
     },
     {
-// The router will match this route if the URL requested
-// doesn't match any paths for routes defined in our configuration
+        path: 'login',
+        component: LoginComponent
+    },
+    // {
+    //     path: 'admin',
+    //     canLoad: [AuthGuard],
+    //     loadChildren: load( () =>
+    //         new Promise(resolve => {
+    //             (require as any).ensure(
+    //                 [],
+    //                 require => {
+    //                     resolve(require('./admin/admin.module').AdminModule);
+    //                 }
+    //             );
+    //         })
+    //     )
+    // },
+    {
         path: '**',
         component: PageNotFoundComponent
     }

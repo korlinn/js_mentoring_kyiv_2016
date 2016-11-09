@@ -18,9 +18,6 @@ const productsRoutes: Routes = [
             {
                 path: 'find',
                 component: ProductSearchFormComponent
-            },            {
-                path: 'add',
-                component: ProductFormComponent
             },
             {
                 path: 'edit/:id',
