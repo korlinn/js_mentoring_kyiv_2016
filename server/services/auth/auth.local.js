@@ -3,6 +3,7 @@
 const CONST = require('../../common/const');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+const jwt = require('jwt-simple');
 const User = require('../../routes/user/user.model');
 
 const localAuth = passport.authenticate('local', {
@@ -26,7 +27,9 @@ function (email, password, done) {
                 let user = new User(result._doc);
 
                 if (user.checkPassword(password)) {
-                    done(null, user._doc.email);
+                    let payload = { email: user._doc.email };
+                    let token = jwt.encode(payload, CONST.JWT_SECRET);
+                    done(null, token);
                 } else {
                     done(null, false, {message: 'Incorrect password.'});
                 }
@@ -38,12 +41,14 @@ function (email, password, done) {
 }));
 
 
-passport.serializeUser((email, done) => {
-    done(null, email);
+passport.serializeUser((token, done) => {
+    done(null, token);
 });
 
-passport.deserializeUser((email, done) => {
-    User.findOne({ email: email })
+passport.deserializeUser((token, done) => {
+    var decoded = jwt.decode(token, CONST.JWT_SECRET);
+
+    User.findOne({ email: decoded.email })
         .then(result => {
             if (result) {
                 let user = new User(result._doc);

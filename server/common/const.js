@@ -10,4 +10,7 @@ const STATUS = {
     SERVERERROR: 500
 };
 
+const JWT_SECRET = 'foodadviser';
+
 module.exports.STATUS = STATUS;
+module.exports.JWT_SECRET = JWT_SECRET;
