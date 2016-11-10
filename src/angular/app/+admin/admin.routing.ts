@@ -5,8 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent }          from './admin.component';
 import { ManageTasksComponent }    from './manage-tasks/manage-tasks.component';
 import { ManageUsersComponent }    from './manage-users/manage-users.component';
-
-import { ProductFormComponent } from '../products/product-form';
+import { AddProductComponent }     from './add-product/add-product.component';
 
 import { AuthGuard } from './../guards/auth.guard';
 
@@ -18,10 +17,10 @@ const adminRoutes: Routes = [{
       path: '',
       //canActivateChild: [AuthGuard],
       children: [
-        // {
-        //   path: 'addProduct',
-        //   component: ProductFormComponent
-        // },
+        {
+          path: 'addProduct',
+          component: AddProductComponent
+        },
         {
           path: 'tasks',
           component: ManageTasksComponent

@@ -5,7 +5,8 @@ import { FormsModule }   from '@angular/forms';
 
 import { ProductsModule } from './products/products.module';
 import { UsersModule }    from './users/users.module';
-//import { AdminModule }    from './admin/admin.module';
+// import { ProductFormModule } from './products/product-form/product-form.module';
+
 
 import { AppComponent }          from './app.component';
 import { AboutComponent }        from './common/about';
@@ -25,7 +26,7 @@ import { AppRoutingModule } from './app.routing';
         FormsModule,
         ProductsModule,
         UsersModule,
-        //AdminModule,
+        // ProductFormModule,
         AppRoutingModule
     ],
     declarations: [
