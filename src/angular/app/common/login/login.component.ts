@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router }            from '@angular/router';
 
-import { AuthService } from './../../services/auth.service';
+import { AuthService }       from './../../services/auth.service';
 
 @Component({
   selector: 'login',
@@ -18,21 +18,20 @@ export class LoginComponent implements OnInit {
   constructor(
     public authService: AuthService,
     public router: Router
-  ) { }
+  ) {}
 
   ngOnInit() {
+    this.userLoggedIn = this.authService.checkLogin();
   }
 
   login() {
     this.authService.login(this.loginData)
-        .then((response) => {
-          this.userLoggedIn = response;
-        })
+        .then(() => this.userLoggedIn = this.authService.checkLogin());
   }
 
   logout() {
     this.authService.logout()
-        .then(() => this.userLoggedIn = false);
+        .then(() => this.userLoggedIn = this.authService.checkLogin());
   }
 
 }

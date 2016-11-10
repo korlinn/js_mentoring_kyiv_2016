@@ -11,11 +11,11 @@ import { AuthGuard } from './../guards/auth.guard';
 
 const adminRoutes: Routes = [{
   path: '',
-  //canActivate: [AuthGuard],
+  canActivate: [AuthGuard],
   children: [
     {
       path: '',
-      //canActivateChild: [AuthGuard],
+      canActivateChild: [AuthGuard],
       children: [
         {
           path: 'addProduct',
