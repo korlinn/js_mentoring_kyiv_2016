@@ -1,18 +1,19 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA }       from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { CommonModule }   from '@angular/common';
 
-import { AdminComponent }          from './admin.component';
-import { AddProductComponent }     from './add-product/add-product.component';
+import { AdminComponent }      from './admin.component';
+import { AddProductComponent } from './add-product/add-product.component';
 
-// import { ProductFormModule } from '../products/product-form/product-form.module';
+import { ProductArrayService } from './../products'
 
 import { AdminRoutingModule } from './admin.routing';
 
 @NgModule({
   imports: [
     CommonModule,
-    AdminRoutingModule,
-    // ProductFormModule
+    FormsModule,
+    AdminRoutingModule
   ],
   exports: [
   ],
@@ -21,6 +22,7 @@ import { AdminRoutingModule } from './admin.routing';
     AddProductComponent
   ],
   providers: [
+    ProductArrayService
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

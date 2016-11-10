@@ -34,9 +34,9 @@ module.exports = {
     },
     output: {
         path: PATH.BUILD,
-        publicPath: NODE_ENV === ENV_MODE.DEV ? 'http://localhost:3000/' : '/',
-        filename: '/[name].js'
-        //chunkFilename: '[id].[hash].chunk.js'
+        publicPath: 'http://localhost:3000/',
+        filename: '/[name].js',
+        chunkFilename: '[id].[hash].chunk.js'
     },
 
     resolve: {

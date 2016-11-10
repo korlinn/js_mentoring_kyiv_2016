@@ -1,7 +1,7 @@
 import { Component, OnInit }      from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Product }             from './../product.model';
+import { ProductModel }             from './../product.model';
 import { ProductArrayService } from './../product-array-service/product-array.service';
 
 type ResultProduct = {
@@ -16,7 +16,7 @@ type ResultProduct = {
   styleUrls: ['./product-search-form.component.css']
 })
 export class ProductSearchFormComponent implements OnInit {
-  products: Array<Product>;
+  products: Array<ProductModel>;
   categories: Array<String>;
   query: Object = {
     name: String,
@@ -56,7 +56,7 @@ export class ProductSearchFormComponent implements OnInit {
         });
   }
 
-  calculateQuantity(products: Array<Product>) {
+  calculateQuantity(products: Array<ProductModel>) {
     products.forEach(item => {
       let quantity = item.isCounatble
           ? Math.round((this.wantedCalories * 100) / (item.weightOne * item.calories))

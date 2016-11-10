@@ -2,8 +2,7 @@ import { Injectable }    from '@angular/core';
 import { Http, Headers, RequestOptions, URLSearchParams } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
-import { Product } from '../product.model';
-
+import { ProductModel } from '../product.model';
 
 @Injectable()
 export class ProductArrayService {
@@ -22,11 +21,11 @@ export class ProductArrayService {
     this.originUrl = url.origin;
   }
 
-  getProducts(): Promise<Product[]>{
+  getProducts(): Promise<ProductModel[]>{
     return this.http
         .get(this.originUrl + this.productLocalUrls.getAll)
         .toPromise()
-        .then(response => response.json() as Product[])
+        .then(response => response.json() as ProductModel[])
         .catch(this.handleError);
   }
 
@@ -38,12 +37,12 @@ export class ProductArrayService {
         .catch(this.handleError);
   }
 
-  getProduct(id: number): Promise<Product>{
+  getProduct(id: number): Promise<ProductModel>{
     return this.getProducts()
         .then(response => response.find(product => product._id === id));
   }
 
-  addProduct(product: Product): Promise<Product> {
+  addProduct(product: ProductModel): Promise<ProductModel> {
     return this.http
       .post(this.originUrl + this.productLocalUrls.add, JSON.stringify(product), {headers: this.headers})
       .toPromise()
@@ -51,7 +50,7 @@ export class ProductArrayService {
       .catch(this.handleError);
   }
 
-  updateProduct(product: Product): Promise<Product> {
+  updateProduct(product: ProductModel): Promise<ProductModel> {
     return this.http
       .put(this.originUrl + this.productLocalUrls.update + product._id, JSON.stringify(product), {headers: this.headers})
       .toPromise()
@@ -59,7 +58,7 @@ export class ProductArrayService {
       .catch(this.handleError);
   }
 
-  findProductsByQuery(query): Promise<Product[]> {
+  findProductsByQuery(query): Promise<ProductModel[]> {
     let params: URLSearchParams = new URLSearchParams();
     params.set('name', query.name);
     params.set('category', query.category);
@@ -73,7 +72,7 @@ export class ProductArrayService {
       .toPromise()
       .then(response => {
         console.log(response);;
-        return response.json() as Product[];
+        return response.json() as ProductModel[];
       })
       .catch(this.handleError);
   }

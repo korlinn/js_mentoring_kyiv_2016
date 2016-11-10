@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { Product } from '../product.model';
+import { ProductModel } from '../product.model';
 
 @Component({
   selector: 'product',
@@ -9,18 +9,18 @@ import { Product } from '../product.model';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent {
-  @Input() product: Product;
+  @Input() product: ProductModel;
   canEdit: boolean;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute
   ) {
-    // TODO: canEdit - temporey mock disable of Edit button
+    // TODO: canEdit - temporary mock disable of Edit button
     this.canEdit = false;
   }
 
-  editProduct(product: Product) {
+  editProduct(product: ProductModel) {
     let link = ['/products/edit', product._id];
     this.router.navigate(link);
   }

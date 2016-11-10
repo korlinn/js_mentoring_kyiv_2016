@@ -1,0 +1,7 @@
+@font-face {
+    font-family: 'Dosis';
+    src: url(/fonts/Dosis-Medium.ttf); }
+
+.navbar-header {
+    font-family: "Dosis", sans-serif !important;
+}

@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
-import { Product } from './../product.model';
+import { ProductModel } from './../product.model';
 import { ProductArrayService } from './../product-array-service/product-array.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { ProductArrayService } from './../product-array-service/product-array.se
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit, OnDestroy {
-  products: Array<Product>;
+  products: Array<ProductModel>;
   isAdmin: boolean;
 
   constructor(

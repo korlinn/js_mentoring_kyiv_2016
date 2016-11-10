@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { Subscription } from 'rxjs/Subscription';
 
-import { Product } from '../product.model';
+import { ProductModel } from '../product.model';
 import { ProductArrayService } from './../product-array-service/product-array.service';
 
 @Component({
@@ -12,8 +12,8 @@ import { ProductArrayService } from './../product-array-service/product-array.se
   styleUrls: ['./product-form.component.css']
 })
 export class ProductFormComponent implements OnInit, OnDestroy {
-  product: Product;
-  oldProduct: Product;
+  product: ProductModel;
+  oldProduct: ProductModel;
   private sub: Subscription;
   
   constructor(private productService: ProductArrayService,
@@ -22,7 +22,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.product = new Product(null, '', '', null, null, null, null, null, null);
+    this.product = new ProductModel(null, '', '', null, null, null, null, null, null);
 
     this.sub = this.route.params.subscribe(params => {
       let id = params["id"];
@@ -42,7 +42,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
   }
 
   saveProduct() {
-    let product = new Product(
+    let product = new ProductModel(
         this.product._id,
         this.product.name,
         this.product.category,

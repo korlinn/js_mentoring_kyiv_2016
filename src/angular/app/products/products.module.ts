@@ -6,7 +6,6 @@ import { HttpModule } from '@angular/http';
 import { ProductArrayService } from './product-array-service/product-array.service';
 
 import { ProductListComponent } from './product-list/product-list.component';
-import { ProductFormComponent } from './product-form/product-form.component';
 import { ProductSearchFormComponent } from './product-search-form/product-search-form.component';
 import { ProductComponent } from './product/product.component';
 import { ProductsComponent } from './products.component';
@@ -23,9 +22,11 @@ import { ProductRoutingModule } from './products.routing';
     ],
     exports: [
         //ProductFormModule
+        // ProductArrayService,
+        // ProductModel
     ],
     declarations: [
-        ProductFormComponent,
+        //ProductFormComponent,
         ProductSearchFormComponent,
         ProductListComponent,
         ProductComponent,
