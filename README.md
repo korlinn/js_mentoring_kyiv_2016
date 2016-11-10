@@ -54,6 +54,59 @@ For build frontend webpack has used.
 
 # Description of implementation
 
+## Description of Angular2 part of application
+
+### Where you can find it?
+
+http://localhost:3000/angular
+
+or You can get it from Landing page
+
+http://localhost:3000/ -> Main menu -> What to eat
+
+There are two feature areas with it's own routers:
+- Products
+- Users
+
+Product feature area has next functions:
+- Show all products
+- Find products with specific parameters
+User can fill not all fields. Empty fields won't use for search.
+
+Lazy-loading implemented on route http://localhost:3000/angular/admin
+Can be reached by - http://localhost:3000/angular/ -> Admin
+Admin chunk-file loaded only once at first success attempt.
+
+In application implemented next types of guards:
+1) canActivate guard - used on route http://localhost:3000/angular/admin
+This guard allows activate admin route only for logged in users.
+
+2) canLoad guard - used on route http://localhost:3000/angular/admin
+This guard allows to load admin module chunk-file only for logged in users.
+
+3) resolve guard - used on route http://localhost:3000/angular/users/edit/:id
+Can be reached by - http://localhost:3000/angular/ -> Users -> press button Edit on User
+This guard limits access to edit user profile.
+User can edit only his own profile. All other attempts will be rejected.
+
+## Description of Frontend
+
+Landing page can be reached by address - http://localhost:3000/
+
+### There implemented:
+- Responsive menu with search bar
+- Responsive slider
+- Responsive info-block with articles
+- Responsive footer with socials
+
+### Used technology :
+- Responsive slider with preview
+- Different images for desktop and mobile
+- 2x images for Retina display
+- Flexbox for info-block and other sections
+- BEM methodology for styles
+
+
 ## Description of Server
 
 For demo EJS templater is used
@@ -81,19 +134,3 @@ password: 12345
 - logout user - http://localhost:3000/user/logout
 
 
-## Description of Frontend
-
-Landing page can be reached by address - http://localhost:3000/
-
-### There implemented:
-- Responsive menu with search bar
-- Responsive slider
-- Responsive info-block with articles
-- Responsive footer with socials
-
-### Used technology :
-- Responsive slider with preview
-- Different images for desktop and mobile
-- 2x images for Retina display
-- Flexbox for info-block and other sections
-- BEM methodology for styles

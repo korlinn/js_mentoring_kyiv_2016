@@ -3,7 +3,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
-import { User } from '../user.model';
+import { UserModel } from '../user.model';
 import { UserArrayService } from './../user-array-service/user-array.service';
 
 @Component({
@@ -12,7 +12,7 @@ import { UserArrayService } from './../user-array-service/user-array.service';
   styleUrls: ['user-list.component.css']
 })
 export class UserListComponent implements OnInit, OnDestroy {
-  users: Array<User>;
+  users: Array<UserModel>;
   private selectedUserId: number;
   private sub: Subscription;
 

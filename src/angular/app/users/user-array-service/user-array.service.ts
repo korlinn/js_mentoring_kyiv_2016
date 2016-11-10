@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
-import { User } from '../user.model';
+import { UserModel } from '../user.model';
 
 @Injectable()
 export class UserArrayService {
@@ -19,22 +19,22 @@ export class UserArrayService {
     this.originUrl = url.origin;
   }
 
-  getUsers(): Promise<User[]> {
+  getUsers(): Promise<UserModel[]> {
     return this.http
         .get(this.originUrl + this.userLocalUrls.getAll)
         .toPromise()
         .then(response => {
-          return response.json() as User[]
+          return response.json() as UserModel[]
         })
         .catch(this.handleError);
   }
 
-  getUser(id: number): Promise<User> {
+  getUser(id: number): Promise<UserModel> {
     return this.getUsers()
       .then(users => users.find(user => user._id === id));
   }
 
-  addUser(user: User): Promise<User> {
+  addUser(user: UserModel): Promise<UserModel> {
     return this.http
         .post(this.originUrl + this.userLocalUrls.add, JSON.stringify(user), {headers: this.headers})
         .toPromise()
@@ -42,7 +42,7 @@ export class UserArrayService {
         .catch(this.handleError);
   }
 
-  updateUser(user: User): Promise<User> {
+  updateUser(user: UserModel): Promise<UserModel> {
     return this.http
         .put(this.originUrl + this.userLocalUrls.update + user._id, JSON.stringify(user), {headers: this.headers})
         .toPromise()

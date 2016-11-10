@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { User } from '../user.model';
+import { UserModel } from '../user.model';
 
 @Component({
   selector: 'user',
@@ -9,14 +9,14 @@ import { User } from '../user.model';
   styleUrls: ['user.component.css']
 })
 export class UserComponent {
-  @Input() user: User;
+  @Input() user: UserModel;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute
   ) { }
 
-  editUser(user: User) {
+  editUser(user: UserModel) {
   	let link = ['users/edit', user._id];
     this.router.navigate(link);
   }
