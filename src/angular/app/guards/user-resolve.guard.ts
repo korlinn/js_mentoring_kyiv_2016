@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router, Resolve, ActivatedRouteSnapshot } from '@angular/router';
 
-import { User } from './../models/user';
+import { User } from './../users/user.model';
 import { UserArrayService } from './../users/user-array-service/user-array.service';
 
 @Injectable()

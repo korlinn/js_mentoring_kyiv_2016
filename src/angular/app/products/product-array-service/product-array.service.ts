@@ -2,18 +2,18 @@ import { Injectable }    from '@angular/core';
 import { Http, Headers, RequestOptions, URLSearchParams } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
-import { Product }       from './../../models/product';
+import { Product } from '../product.model';
 
 
 @Injectable()
 export class ProductArrayService {
   private headers = new Headers({'Content-Type': 'application/json'});
   private productLocalUrls = {
-    getAll: '/product/getAll',
+    getAll    : '/product/getAll',
     categories: '/product/categories',
-    add:    '/product/add',
-    update: '/product/update/',
-    find: '/product/find'
+    add       : '/product/add',
+    update    : '/product/update/',
+    find      : '/product/find'
   };
   originUrl: String = '';
 

@@ -3,7 +3,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
-import { User } from './../../models/user';
+import { User } from '../user.model';
 import { UserArrayService } from './../user-array-service/user-array.service';
 
 @Component({

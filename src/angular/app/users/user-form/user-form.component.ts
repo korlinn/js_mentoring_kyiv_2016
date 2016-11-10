@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { User } from './../../models/user';
+import { User } from '../user.model';
 import { UserArrayService } from './../user-array-service/user-array.service';
 
 @Component({

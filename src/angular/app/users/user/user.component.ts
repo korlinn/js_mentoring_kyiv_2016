@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { User } from './../../models/user';
+import { User } from '../user.model';
 
 @Component({
   selector: 'user',

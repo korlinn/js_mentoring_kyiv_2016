@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
-import { Product } from './../../models/product';
+import { Product } from './../product.model';
 import { ProductArrayService } from './../product-array-service/product-array.service';
 
 @Component({

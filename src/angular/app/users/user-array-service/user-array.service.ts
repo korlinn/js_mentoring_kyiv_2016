@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
-import { User } from './../../models/user';
+import { User } from '../user.model';
 
 @Injectable()
 export class UserArrayService {

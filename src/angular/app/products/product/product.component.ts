@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { Product } from './../../models/product';
+import { Product } from '../product.model';
 
 @Component({
   selector: 'product',
