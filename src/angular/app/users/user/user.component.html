@@ -6,7 +6,7 @@
 			<li>Email: {{user.email}}</li>
 		</ul>
 		<button class="btn btn-primary btn-sm"
-			(click)="editUser(user)">
+				routerLink="/users/edit/{{user._id}}" routerLinkActive="active">
 			Edit
 		</button>
 	</div>

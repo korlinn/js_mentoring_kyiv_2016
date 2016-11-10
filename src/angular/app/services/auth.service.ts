@@ -52,6 +52,10 @@ export class AuthService {
     return Cookie.get(AUTH_COOKIE.NAME) ? true : false;
   }
 
+  getUserToken(): string | boolean{
+    return Cookie.get(AUTH_COOKIE.NAME) || false;
+  }
+
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error);
     return Promise.reject(error.message || error);

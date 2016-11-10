@@ -16,10 +16,6 @@ const usersRoutes: Routes = [
         component: UserListComponent
       },
       {
-        path: 'add',
-        component: UserFormComponent
-      },
-      {
         path: 'edit/:id',
         component: UserFormComponent,
         resolve: {
