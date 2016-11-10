@@ -1,10 +1,10 @@
-import { ModuleWithProviders } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ProductFormComponent } from './product-form';
+import { ProductFormComponent }       from './product-form';
 import { ProductSearchFormComponent } from './product-search-form';
-import { ProductListComponent } from './product-list';
-import { ProductsComponent } from './products.component';
+import { ProductListComponent }       from './product-list';
+import { ProductsComponent }          from './products.component';
 
 const productsRoutes: Routes = [
     {
@@ -31,4 +31,8 @@ const productsRoutes: Routes = [
     }
 ];
 
-export const productsRouting: ModuleWithProviders = RouterModule.forChild(productsRoutes);
+@NgModule({
+    imports: [RouterModule.forChild(productsRoutes)],
+    exports: [RouterModule],
+})
+export class ProductRoutingModule { }

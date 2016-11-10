@@ -10,13 +10,13 @@ import { ProductFormComponent } from './product-form/product-form.component';
 import { ProductSearchFormComponent } from './product-search-form/product-search-form.component';
 import { ProductComponent } from './product/product.component';
 import { ProductsComponent } from './products.component';
-import { productsRouting } from './products.routing';
+import { ProductRoutingModule } from './products.routing';
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
-        productsRouting,
+        ProductRoutingModule,
         HttpModule
     ],
 

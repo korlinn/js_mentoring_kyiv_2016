@@ -5,7 +5,7 @@ import { FormsModule }   from '@angular/forms';
 
 import { ProductsModule } from './products/products.module';
 import { UsersModule }    from './users/users.module';
-import { AdminModule }    from './admin/admin.module';
+//import { AdminModule }    from './admin/admin.module';
 
 import { AppComponent }          from './app.component';
 import { AboutComponent }        from './common/about';
@@ -16,7 +16,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { AuthService } from './services/auth.service';
 
 
-import { routing } from './app.routing';
+import { AppRoutingModule } from './app.routing';
 
 @NgModule({
     imports:      [
@@ -25,8 +25,8 @@ import { routing } from './app.routing';
         FormsModule,
         ProductsModule,
         UsersModule,
-        AdminModule,
-        routing
+        //AdminModule,
+        AppRoutingModule
     ],
     declarations: [
         AppComponent,

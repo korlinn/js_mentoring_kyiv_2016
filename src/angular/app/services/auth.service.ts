@@ -1,8 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
-import { Cookie } from 'angular2-cookie/core';
+import { Cookie } from 'ng2-cookies/ng2-cookies';
 import 'rxjs/add/operator/toPromise';
 
+const AUTH_COOKIE = {
+  NAME: 'loggedUser',
+  EXPIRE_FROM_NOW: 10
+};
 
 @Injectable()
 export class AuthService {
@@ -12,8 +16,6 @@ export class AuthService {
     logout: '/user/logout'
   };
   originUrl: String = '';
-
-  isLoggedIn: boolean = false;
 
   // store the URL so we can redirect after logging in
   redirectUrl: string;
@@ -27,23 +29,27 @@ export class AuthService {
     return this.http
       .post(this.originUrl + this.LocalUrls.login, JSON.stringify(loginData), {headers: this.headers})
       .toPromise()
-      .then(response => {
-        console.log(200);
+      .then((response: any) => {
+        let expirationDate = new Date();
+        expirationDate.setMinutes(expirationDate.getMinutes() + AUTH_COOKIE.EXPIRE_FROM_NOW);
+        Cookie.set(AUTH_COOKIE.NAME, JSON.parse(response._body).user, 10);
         return response.status === 200 ? true : false
       })
       .catch(this.handleError);
   }
 
-  logout(): Promise<boolean> {
+  logout(): Promise<void> {
     return this.http
         .get(this.originUrl + this.LocalUrls.logout)
         .toPromise()
-        .then((response) => this.isLoggedIn = response.status === 200? false : true)
+        .then(() => {
+          Cookie.delete(AUTH_COOKIE.NAME);
+        })
         .catch(this.handleError);
   }
 
   checkLogin() {
-    return this.isLoggedIn;
+    return Cookie.get(AUTH_COOKIE.NAME) ? true : false;
   }
 
   private handleError(error: any): Promise<any> {

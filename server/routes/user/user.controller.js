@@ -147,7 +147,6 @@ function logout(req, res) {
 }
 
 function successLogin(req, res) {
-    console.log("user logged in");
-    res.status(CONST.STATUS.OK).json({ msg: "LoggedIn" });
+    res.status(CONST.STATUS.OK).send({ user: req.user.email });
 }
 

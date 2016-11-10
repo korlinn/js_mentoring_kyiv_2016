@@ -34,8 +34,9 @@ module.exports = {
     },
     output: {
         path: PATH.BUILD,
-        publicPath: '/',
+        publicPath: NODE_ENV === ENV_MODE.DEV ? 'http://localhost:3000/' : '/',
         filename: '/[name].js'
+        //chunkFilename: '[id].[hash].chunk.js'
     },
 
     resolve: {
@@ -47,7 +48,7 @@ module.exports = {
             {
                 test: /\.ts$/,
                 exclude: /node_modules/,
-                loaders: ['awesome-typescript-loader', 'angular2-template-loader', '@angularclass/hmr-loader']
+                loaders: ['awesome-typescript-loader', 'angular2-template-loader', 'angular2-router-loader', '@angularclass/hmr-loader']
             },
             {
                 test: /\.js$/,

@@ -21,7 +21,6 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.userLoggedIn = this.authService.checkLogin();
   }
 
   login() {
@@ -29,10 +28,6 @@ export class LoginComponent implements OnInit {
         .then((response) => {
           this.userLoggedIn = response;
         })
-  }
-
-  isLoggedIn() {
-    return this.userLoggedIn;
   }
 
   logout() {
