@@ -10,18 +10,9 @@ import { ProductModel } from '../product.model';
 })
 export class ProductComponent {
   @Input() product: ProductModel;
-  canEdit: boolean;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute
-  ) {
-    // TODO: canEdit - temporary mock disable of Edit button
-    this.canEdit = false;
-  }
-
-  editProduct(product: ProductModel) {
-    let link = ['/products/edit', product._id];
-    this.router.navigate(link);
-  }
+  ) {}
 }

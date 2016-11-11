@@ -70,16 +70,22 @@ There are two feature areas with it's own routers:
 
 Product feature area has next functions:
 - Show all products
-- Find products with specific parameters
-User can fill not all fields. Empty fields won't use for search.
+- Find products with specific parameters.
+
+There are two cases of using Find products:
+1) If user leave empty field "Calories" then it works as finding and showing info about product or group of products (field name is empty and only field category filled up).
+2) If user filled up field "Calories" then application will calculated the quantity of each product can be eaten to achieve the desired amount of calories.
 
 Lazy-loading implemented on route http://localhost:3000/angular/admin
 Can be reached by - http://localhost:3000/angular/ -> Admin
 Admin chunk-file loaded only once at first success attempt.
 
 In application implemented next types of guards:
-1) canActivate guard - used on route http://localhost:3000/angular/admin
-This guard allows activate admin route only for logged in users.
+
+1) canActivate guard implemented twice:
+- on route http://localhost:3000/angular/admin
+- on route http://localhost:3000/angular/products/edit/:id
+This guard allows activate these routes only for logged in users.
 
 2) canLoad guard - used on route http://localhost:3000/angular/admin
 This guard allows to load admin module chunk-file only for logged in users.

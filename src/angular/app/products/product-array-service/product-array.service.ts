@@ -71,7 +71,6 @@ export class ProductArrayService {
       .get(this.originUrl + this.productLocalUrls.find, options)
       .toPromise()
       .then(response => {
-        console.log(response);;
         return response.json() as ProductModel[];
       })
       .catch(this.handleError);

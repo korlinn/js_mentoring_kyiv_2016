@@ -9,9 +9,8 @@
 			<li>Fats: {{product.fats}}</li>
 			<li>Carbohydrate: {{product.carbohydrate}}</li>
 		</ul>
-		<button *ngIf="canEdit"
-				class="btn btn-success btn-sm"
-			(click)="editProduct(product)">
+		<button class="btn btn-primary btn-sm"
+				routerLink="/products/edit/{{product._id}}" routerLinkActive="active">
 			Edit
 		</button>
 	</div>

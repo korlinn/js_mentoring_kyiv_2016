@@ -1,4 +1,4 @@
-import { Component, OnInit }      from '@angular/core';
+import { Component, Output, OnInit, NgZone } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { ProductModel }             from './../product.model';
@@ -16,16 +16,17 @@ type ResultProduct = {
   styleUrls: ['./product-search-form.component.css']
 })
 export class ProductSearchFormComponent implements OnInit {
-  products: Array<ProductModel>;
   categories: Array<String>;
   query: Object = {
     name: String,
     category: String
   };
-  wantedCalories: number;
-  searchResult: Array<ResultProduct>;
+  @Output() products: Array<ProductModel>;
+  @Output() wantedCalories: number;
+  @Output() searchResult: Array<ResultProduct>;
 
-  constructor(private productService: ProductArrayService,
+  constructor(private zone: NgZone,
+              private productService: ProductArrayService,
               private route: ActivatedRoute,
               private router: Router) {
     this.query = {name: '', category: ''};
@@ -51,13 +52,20 @@ export class ProductSearchFormComponent implements OnInit {
     this.searchResult = [];
 
     this.productService.findProductsByQuery(query)
-        .then(result => {
-          this.calculateQuantity(result)
+      .then(result => {
+        this.zone.run(() => {
+          if (this.wantedCalories) {
+            this.products = [];
+            this.calculateQuantity(result);
+          } else {
+            this.products = result;
+          }
         });
+      });
   }
 
-  calculateQuantity(products: Array<ProductModel>) {
-    products.forEach(item => {
+  calculateQuantity(foundProducts: Array<ProductModel>) {
+    foundProducts.forEach(item => {
       let quantity = item.isCounatble
           ? Math.round((this.wantedCalories * 100) / (item.weightOne * item.calories))
           : (this.wantedCalories / item.calories) * 100;

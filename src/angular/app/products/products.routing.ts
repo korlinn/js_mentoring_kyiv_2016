@@ -2,8 +2,11 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { ProductSearchFormComponent } from './product-search-form';
-import { ProductListComponent }       from './product-list';
-import { ProductsComponent }          from './products.component';
+import { ProductFormComponent } from './product-form';
+import { ProductListComponent } from './product-list';
+import { ProductsComponent } from './products.component';
+
+import { AuthGuard } from './../guards/auth.guard';
 
 const productsRoutes: Routes = [
     {
@@ -21,6 +24,11 @@ const productsRoutes: Routes = [
             {
                 path: 'list',
                 component: ProductListComponent
+            },
+            {
+                path: 'edit/:id',
+                canActivate: [AuthGuard],
+                component: ProductFormComponent
             }
         ]
     }

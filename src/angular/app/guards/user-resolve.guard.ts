@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Router, Resolve, ActivatedRouteSnapshot } from '@angular/router';
 
-import { UserModel }             from './../users/user.model';
+import { UserModel } from './../users/user.model';
 import { UserArrayService } from './../users/user-array-service/user-array.service';
-import { AuthService }      from './../services/auth.service';
+import { AuthService } from './../services/auth.service';
 
 @Injectable()
 export class UserResolveGuard implements Resolve<UserModel> {
@@ -16,7 +16,6 @@ export class UserResolveGuard implements Resolve<UserModel> {
   
   resolve(route: ActivatedRouteSnapshot): Promise<boolean> {
     let id = route.params['id'];
-    console.log('UserResolveGuard: ' + id);
 
     return this.userArrayService.getUser(id)
         .then(user => {

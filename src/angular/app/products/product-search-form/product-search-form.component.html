@@ -44,19 +44,13 @@
   </div>
 </div>
 
-<div class="panel panel-default"
-  *ngIf="searchResult && searchResult.length">
-  <div class="panel-heading">
-    <h4 class="pannel-title">
-      For {{wantedCalories}} calories you can eat:
-    </h4>
-  </div>
-  <div class="panel-body">
-    <ul>
-      <li *ngFor="let item of searchResult">
-        <p>{{item.name}}</p>
-        <p>{{item.quantity}} {{item.measure}}</p>
-      </li>
-    </ul>
-  </div>
-</div>
+<product-list
+        [shouldGetData]="false"
+        [products]="products">
+</product-list>
+
+<product-calorie-result
+        [wantedCalories]="wantedCalories"
+        [searchResult]="searchResult">
+</product-calorie-result>
+

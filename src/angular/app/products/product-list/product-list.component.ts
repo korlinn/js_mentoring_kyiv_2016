@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 
 import { ProductModel } from './../product.model';
 import { ProductArrayService } from './../product-array-service/product-array.service';
@@ -9,18 +9,20 @@ import { ProductArrayService } from './../product-array-service/product-array.se
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit, OnDestroy {
-  products: Array<ProductModel>;
-  isAdmin: boolean;
+  @Input() products: Array<ProductModel>;
+
+  // shouldGetData = true, then component should use service to get all products
+  // shouldGetData = false, then component should wait data from search
+  @Input() shouldGetData: boolean = true;
 
   constructor(
     private productService: ProductArrayService
   ) { }
 
   ngOnInit() {
-    if (!this.products) {
+    if (!this.products && this.shouldGetData) {
       this.getProducts();
     }
-    this.isAdmin = false;
   }
 
   getProducts(): void {
