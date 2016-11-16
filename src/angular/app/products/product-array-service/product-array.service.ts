@@ -23,7 +23,7 @@ export class ProductArrayService {
 
   getProducts(): Promise<ProductModel[]>{
     return this.http
-        .get('${this.originUrl}${this.productLocalUrls.getAll}')
+        .get(`${this.originUrl}${this.productLocalUrls.getAll}`)
         .toPromise()
         .then(response => response.json() as ProductModel[])
         .catch(this.handleError);
@@ -31,7 +31,7 @@ export class ProductArrayService {
 
   getCategories(): Promise<String[]> {
     return this.http
-        .get('${this.originUrl}${this.productLocalUrls.categories}')
+        .get(`${this.originUrl}${this.productLocalUrls.categories}`)
         .toPromise()
         .then(response => response.json() as String[])
         .catch(this.handleError);
@@ -44,7 +44,7 @@ export class ProductArrayService {
 
   addProduct(product: ProductModel): Promise<ProductModel> {
     return this.http
-      .post('${this.originUrl}${this.productLocalUrls.add}', JSON.stringify(product), {headers: this.headers})
+      .post(`${this.originUrl}${this.productLocalUrls.add}`, JSON.stringify(product), {headers: this.headers})
       .toPromise()
       .then(() => product)
       .catch(this.handleError);
@@ -52,7 +52,7 @@ export class ProductArrayService {
 
   updateProduct(product: ProductModel): Promise<ProductModel> {
     return this.http
-      .put('${this.originUrl}${this.productLocalUrls.update}${product._id}', JSON.stringify(product), {headers: this.headers})
+      .put(`${this.originUrl}${this.productLocalUrls.update}${product._id}`, JSON.stringify(product), {headers: this.headers})
       .toPromise()
       .then(() => product)
       .catch(this.handleError);
@@ -68,7 +68,7 @@ export class ProductArrayService {
     });
 
     return this.http
-      .get('${this.originUrl}${this.productLocalUrls.find}', options)
+      .get(`${this.originUrl}${this.productLocalUrls.find}`, options)
       .toPromise()
       .then(response => {
         return response.json() as ProductModel[];
