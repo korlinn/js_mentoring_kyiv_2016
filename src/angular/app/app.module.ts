@@ -3,10 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule }  from '@angular/common';
 import { FormsModule }   from '@angular/forms';
 
+import { ProductArrayService } from './products/product-array-service/product-array.service';
+
 import { ProductsModule } from './products/products.module';
 import { UsersModule }    from './users/users.module';
-// import { ProductFormModule } from './products/product-form/product-form.module';
-
 
 import { AppComponent }          from './app.component';
 import { AboutComponent }        from './common/about';
@@ -37,7 +37,8 @@ import { AppRoutingModule } from './app.routing';
     ],
     providers: [
         AuthGuard,
-        AuthService
+        AuthService,
+        ProductArrayService
 
     ],
     bootstrap:    [ AppComponent ]

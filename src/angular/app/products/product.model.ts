@@ -11,15 +11,3 @@ export class ProductModel {
         public carbohydrate: number
 	) {}
 }
-
-/*
-
-"name": "",
-"calories": "",
-"isCounatble": "",
-"weightOne": "",
-"protein": "",
-"fats": "",
-"carbohydrate": ""
-
-*/

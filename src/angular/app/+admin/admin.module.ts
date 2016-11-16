@@ -5,8 +5,6 @@ import { CommonModule }   from '@angular/common';
 import { AdminComponent }      from './admin.component';
 import { AddProductComponent } from './add-product/add-product.component';
 
-import { ProductArrayService } from './../products'
-
 import { AdminRoutingModule } from './admin.routing';
 
 @NgModule({
@@ -20,9 +18,6 @@ import { AdminRoutingModule } from './admin.routing';
   declarations: [
     AdminComponent,
     AddProductComponent
-  ],
-  providers: [
-    ProductArrayService
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

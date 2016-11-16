@@ -27,7 +27,7 @@ export class AuthService {
 
   login(loginData): Promise<boolean> {
     return this.http
-      .post(this.originUrl + this.LocalUrls.login, JSON.stringify(loginData), {headers: this.headers})
+      .post('${this.originUrl}${this.LocalUrls.login}', JSON.stringify(loginData), {headers: this.headers})
       .toPromise()
       .then((response: any) => {
         let expirationDate = new Date();
@@ -40,7 +40,7 @@ export class AuthService {
 
   logout(): Promise<void> {
     return this.http
-        .get(this.originUrl + this.LocalUrls.logout)
+        .get('${this.originUrl}${this.LocalUrls.logout}')
         .toPromise()
         .then(() => {
           Cookie.delete(AUTH_COOKIE.NAME);

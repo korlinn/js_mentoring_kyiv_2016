@@ -21,7 +21,7 @@ export class UserArrayService {
 
   getUsers(): Promise<UserModel[]> {
     return this.http
-        .get(this.originUrl + this.userLocalUrls.getAll)
+        .get('${this.originUrl}${this.userLocalUrls.getAll)')
         .toPromise()
         .then(response => {
           return response.json() as UserModel[]
@@ -36,7 +36,7 @@ export class UserArrayService {
 
   addUser(user: UserModel): Promise<UserModel> {
     return this.http
-        .post(this.originUrl + this.userLocalUrls.add, JSON.stringify(user), {headers: this.headers})
+        .post('${this.originUrl}${this.userLocalUrls.add}', JSON.stringify(user), {headers: this.headers})
         .toPromise()
         .then(() => user)
         .catch(this.handleError);
@@ -44,7 +44,7 @@ export class UserArrayService {
 
   updateUser(user: UserModel): Promise<UserModel> {
     return this.http
-        .put(this.originUrl + this.userLocalUrls.update + user._id, JSON.stringify(user), {headers: this.headers})
+        .put('${this.originUrl}${this.userLocalUrls.update}${user._id}', JSON.stringify(user), {headers: this.headers})
         .toPromise()
         .then(() => user)
         .catch(this.handleError);

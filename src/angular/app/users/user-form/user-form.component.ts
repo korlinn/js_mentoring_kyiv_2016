@@ -24,11 +24,6 @@ export class UserFormComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.user = new UserModel(null, '', '', '', '', null, null, null, null);
 
-    // this.route.data.forEach((data: { user: UserModel }) => {
-    //   this.user = Object.assign({}, data.user);
-    //   this.oldUser = data.user;
-    // });
-
     this.sub = this.route.params.subscribe(params => {
       let id = params["id"];
 

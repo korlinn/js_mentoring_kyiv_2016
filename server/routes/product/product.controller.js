@@ -60,9 +60,7 @@ function find(req, res) {
 // Post new product
 function postNew(req, res) {
     let query = req.body;
-
-    console.log(query);
-
+s
     return Product.findOne(query)
         .then(result => {
             if (result) {
