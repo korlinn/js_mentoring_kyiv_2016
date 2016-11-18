@@ -22,7 +22,7 @@ export class UserFormComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.user = new UserModel(null, '', '', '', '', null, null, null, null);
+    this.user = new UserModel(null, '', '', '', '', '', null, null, null, null);
 
     this.sub = this.route.params.subscribe(params => {
       let id = params["id"];
@@ -46,7 +46,8 @@ export class UserFormComponent implements OnInit, OnDestroy {
     let user = new UserModel(
       this.user._id,
       this.user.email,
-      this.user.hashedPassword,
+      this.user.password,
+      this.user.passwordconf,
       this.user.username,
       this.user.gender,
       this.user.age,
@@ -56,15 +57,18 @@ export class UserFormComponent implements OnInit, OnDestroy {
     );
 
     if (user._id) {
-      this.usersService.updateUser(user);
-      this.oldUser = this.user;
-      // optional parameter: http://localhost:4200/users;id=2
-      this.router.navigate(['/users', {id: user._id}]);
+      this.usersService.updateUser(user)
+        .then(() => {
+          this.oldUser = this.user;
+          this.router.navigate(['/users', {id: user._id}]);
+        });
     }
     else {
-      this.usersService.addUser(user);
-      this.oldUser = this.user;
-      this.router.navigate(['/users']);
+      this.usersService.addUser(user)
+        .then(() => {
+          this.oldUser = this.user;
+          this.router.navigate(['/users']);
+        })
     }
   }
 

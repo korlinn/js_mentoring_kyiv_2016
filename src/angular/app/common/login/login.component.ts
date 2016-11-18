@@ -34,4 +34,7 @@ export class LoginComponent implements OnInit {
         .then(() => this.userLoggedIn = this.authService.checkLogin());
   }
 
+  createAccount() {
+    this.router.navigate(['./users/add']);
+  }
 }

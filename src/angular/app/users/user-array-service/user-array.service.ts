@@ -3,6 +3,7 @@ import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 import { UserModel } from '../user.model';
+import { AuthService } from './../../services/auth.service';
 
 @Injectable()
 export class UserArrayService {
@@ -14,7 +15,10 @@ export class UserArrayService {
   };
   originUrl: String = '';
 
-  constructor(private http: Http) {
+  constructor(
+      private http: Http,
+      private authService: AuthService
+  ) {
     let url = new URL(document.URL);
     this.originUrl = url.origin;
   }
@@ -34,12 +38,10 @@ export class UserArrayService {
       .then(users => users.find(user => user._id === id));
   }
 
-  addUser(user: UserModel): Promise<UserModel> {
-    return this.http
-        .post(`${this.originUrl}${this.userLocalUrls.add}`, JSON.stringify(user), {headers: this.headers})
-        .toPromise()
-        .then(() => user)
-        .catch(this.handleError);
+  addUser(user: UserModel): Promise<boolean> {
+    return this.authService.registerUser(user)
+      .then((result) => result)
+      .catch(this.handleError);
   }
 
   updateUser(user: UserModel): Promise<UserModel> {

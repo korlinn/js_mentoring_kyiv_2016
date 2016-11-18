@@ -72,7 +72,8 @@ function postRegistrationForm(req, res, next) {
                 return newUser.save();
             }
         })
-        .then(() => {
+        .then((user) => {
+            console.log(user);
             next();
         })
         .catch(err => res.status(CONST.STATUS.SERVERERROR).json(err));

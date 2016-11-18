@@ -16,9 +16,8 @@
                        [(ngModel)]="loginData.password" required/>
             </div>
             <div>
-                <button type="submit" class="btn btn-success"
-                        (click)="login()">Login</button>
-                <a class="btn btn-primary" href="/user/new" role="button">Create Account</a>
+                <button class="btn btn-success" (click)="login()">Login</button>
+                <button class="btn btn-primary" routerLink="/users/add" routerLinkActive="active">Create Account</button>
             </div>
         </form>
         <button class="btn btn-primary" (click)="logout()" *ngIf="userLoggedIn">Logout</button>

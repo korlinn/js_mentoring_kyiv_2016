@@ -2,7 +2,8 @@ export class UserModel {
 	constructor(
 		public _id: number,
 		public email: String,
-		public hashedPassword: String,
+		public password: String,
+		public passwordconf: String,
 		public username: String,
 		public gender: String,
 		public age: Number,
