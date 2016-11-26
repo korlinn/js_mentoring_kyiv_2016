@@ -29,6 +29,7 @@ module.exports = {
     entry: {
         app: PATH.SRC + '/app.js',
         angular_app: PATH.SRC + '/angular/app.ts',
+        react_app: PATH.SRC + '/react/app.jsx',
         polyfill: PATH.SRC + '/angular/polyfill.ts',
         vendor: PATH.SRC + '/angular/vendor.ts'
     },
@@ -40,7 +41,7 @@ module.exports = {
     },
 
     resolve: {
-        extensions: ['.ts', '.js', '.css', '.scss', '.html'],
+        extensions: ['.ts', '.js', '.jsx', '.css', '.scss', '.html'],
         modules: ['node_modules']
     },
     module: {
@@ -49,6 +50,11 @@ module.exports = {
                 test: /\.ts$/,
                 exclude: /node_modules/,
                 loaders: ['awesome-typescript-loader', 'angular2-template-loader', 'angular2-router-loader', '@angularclass/hmr-loader']
+            },
+            {
+                test: /\.jsx$/,
+                exclude: /node_modules/,
+                loader: 'babel-loader?presets[]=react'
             },
             {
                 test: /\.js$/,
