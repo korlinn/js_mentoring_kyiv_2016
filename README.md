@@ -25,6 +25,10 @@ Paste your credentials instead of dbuser and password.
 
 Also, in project present file .env.example and you may rename it to .env
 
+Test User:
+email: lisentia.ua@gmail.com
+password: 12345
+
 
 ## Start All
 
@@ -53,6 +57,24 @@ For build frontend webpack has used.
 
 
 # Description of implementation
+
+## Description of React + Redux part of application
+
+http://localhost:3000/react
+
+### Login functional is implemented:
+- login form with material-ui
+- react-router
+- email and password validation
+- forgot-password (mock page)
+- authentication flow with backend (using auth service from homework 3)
+
+### Used technology:
+- react
+- react-router
+- redux
+- ajax request
+- material-ui
 
 ## Description of Angular2 part of application
 
