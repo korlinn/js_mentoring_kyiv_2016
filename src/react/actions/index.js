@@ -1,15 +1,22 @@
 export const SUBMIT_LOGIN = 'SUBMIT_LOGIN';
-export const RECEIVE_DATA = 'RECEIVE_DATA';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 export const RECEIVE_ERROR = 'RECEIVE_ERROR';
 
 export const submitLoginForm = () => ({
     type: SUBMIT_LOGIN
 });
 
-export const receiveData = (payload) => {
+export const loginSuccess = (payload) => {
     return {
-        type: RECEIVE_DATA,
+        type: LOGIN_SUCCESS,
         payload
+    }
+};
+
+export const loginFailure = (payload) => {
+    return {
+        type: LOGIN_FAILURE
     }
 };
 

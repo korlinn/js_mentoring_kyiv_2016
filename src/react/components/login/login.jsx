@@ -9,7 +9,8 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { loginUser } from './../../services';
 import { getApplicationStatus, getErrorData, getUserName } from '../../reducers';
 import { emailFieldValidation, passwordFieldValidation } from './loginValidate';
-import { Spinner } from './../spinner/spinner';
+
+import Spinner from './../spinner/spinner';
 
 const styles = {
     form: {
@@ -52,7 +53,6 @@ class LoginComponent extends Component {
         this.sendAction = this.sendAction.bind(this);
         this.handleLogin = this.handleLogin.bind(this);
         this.handlePassword = this.handlePassword.bind(this);
-        // this.closeModal = this.closeModal.bind(this);
     }
 
     componentDidMount() {
@@ -66,7 +66,8 @@ class LoginComponent extends Component {
     render() {
         return (
             <MuiThemeProvider>
-                {/*<Spinner applicationStatus = {this.props.applicationStatus}/>*/}
+                <div>
+                <Spinner applicationStatus = {this.props.applicationStatus} />
 
                 <div style={styles.form}>
                     <div style={styles.title}>Login form</div>
@@ -94,6 +95,7 @@ class LoginComponent extends Component {
                                       onClick={this.sendAction} />
                     </div>
                     <Link to={'/react/forgot-password'} style={styles.forgotPasswordLink}>Forgot password?</Link>
+                </div>
                 </div>
             </MuiThemeProvider>
         );

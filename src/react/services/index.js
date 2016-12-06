@@ -1,6 +1,6 @@
-import { browserHistory } from 'react-router';
 import axios from 'axios';
-import {submitLoginForm, receiveData, receiveDataError} from './../actions';
+import { browserHistory } from 'react-router';
+import {submitLoginForm, loginSuccess, loginFailure, receiveDataError} from './../actions';
 
 export const loginUser = (requestData) => {
     return dispatch => {
@@ -10,7 +10,11 @@ export const loginUser = (requestData) => {
             password: requestData.password
         })
         .then(response => {
-            dispatch(receiveData(response));
+            if (response.data.user) {
+                dispatch(loginSuccess(response.data));
+            } else {
+                dispatch(loginFailure());
+            }
             browserHistory.push('/react');
         })
         .catch(error => {
@@ -18,3 +22,16 @@ export const loginUser = (requestData) => {
         });
     }
 };
+
+export function checkAuth(store, nextState, replace, cb) {
+    console.log(store.getState());
+    if (!store.getState().user) {
+        console.log(nextState.location.pathname);
+        replace({
+            pathname: '/react/login',
+            state: { nextPathname: nextState.location.pathname }
+        })
+
+    }
+    cb();
+}

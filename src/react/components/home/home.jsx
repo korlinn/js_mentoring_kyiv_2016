@@ -1,21 +1,19 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { getUserName, getErrorMsg } from '../../reducers';
+import ErrorMsg from './../errorMessage/errorMessage';
 
 const styles = {
     content: {
         margin: '20px 20px 10px 20px'
     },
-    title: {
-        font: '22px Dosis, sans-serif',
-        textTransform: 'uppercase',
-        color: '#6aa501'
-    },
     text: {
         font: '20px Dosis, sans-serif',
-        color: '#2b2e2f'
+        color: '#4b4e4f'
     }
 };
 
-export default class HomeComponent extends Component {
+class HomeComponent extends Component {
     constructor(props) {
         super(props);
     }
@@ -23,7 +21,8 @@ export default class HomeComponent extends Component {
     render() {
         return (
             <div style={styles.content}>
-                <p style={styles.text}>Hello <b>{this.props.user.name}</b></p>
+                <ErrorMsg errorMsg = {this.props.errorMsg} />
+                <p style={styles.text}>Hello <b>{this.props.user}</b></p>
             </div>
         );
     }
@@ -31,7 +30,8 @@ export default class HomeComponent extends Component {
 
 const mapStateToProps = function(state) {
     return {
-        user: getUserName(state)
+        user: getUserName(state),
+        errorMsg: getErrorMsg(state)
     };
 };
 

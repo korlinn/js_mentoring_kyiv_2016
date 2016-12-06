@@ -11,7 +11,7 @@ const styles = {
     },
     text: {
         font: '20px Dosis, sans-serif',
-        color: '#2b2e2f'
+        color: '#4b4e4f'
     }
 };
 
