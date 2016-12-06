@@ -47,17 +47,17 @@ export default function loginReducer(state = initialState, action) {
 }
 
 export function getUserName(state) {
-    return state.user
+    return state.loginReducer.user
 }
 
 export function getApplicationStatus(state) {
-    return state.pendingRequest;
+    return state.loginReducer.pendingRequest;
 }
 
 export function getErrorData(state) {
-    return state.errorData;
+    return state.loginReducer.errorData;
 }
 
 export function getErrorMsg(state) {
-    return state.errorMsg;
+    return state.loginReducer.errorMsg;
 }

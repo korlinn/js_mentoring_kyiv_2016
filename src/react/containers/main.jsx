@@ -1,9 +1,6 @@
 import React, {Component} from 'react'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Menu from '../components/menu/menu'
-import * as actions from '../actions'
 
 const styles = {
     title: {
@@ -16,7 +13,7 @@ const styles = {
     }
 };
 
-export class Main extends Component {
+export default class Main extends Component {
     render() {
         return (
             <div>
@@ -33,12 +30,3 @@ export class Main extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    return { data: state }
-}
-
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators(actions, dispatch)
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Main)
