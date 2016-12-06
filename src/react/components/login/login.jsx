@@ -95,38 +95,35 @@ export default class LoginComponent extends Component {
         let fieldValue = this.emailInput.value;
         let regExp = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
-        let isValid = true;
-
         if(fieldValue.trim() === '') {
             this.setState({emailError: 'Email is required'});
-            isValid = false;
+            return false;
         }
         if(!regExp.test(fieldValue)) {
             this.setState({emailError: 'Incorrect email format'});
-            isValid = false;
+            return false;
         }
         this.setState({emailError: ''});
 
-        return isValid;
+        return true;
     }
 
     validatePassword() {
         let fieldValue = this.passwordInput.value;
-        let isValid = true;
 
         if(fieldValue.trim() === '') {
             this.setState({passwordError: 'Password is required'});
-            isValid = false;
+            return false;
         }
 
         if(fieldValue.length < 5) {
             this.setState({passwordError: 'Password should be 5 characters or more'});
-            isValid = false;
+            return false;
         }
 
         this.setState({passwordError: ''});
 
-        return isValid;
+        return true;
 
     }
 
