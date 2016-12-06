@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import { connect } from 'react-redux';
 
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
-import { loginUser } from './../../services';
-import { getApplicationStatus, getErrorData, getUserName } from '../../reducers';
-import { emailFieldValidation, passwordFieldValidation } from './loginValidate';
 
 import Spinner from './../spinner/spinner';
 
@@ -19,7 +14,7 @@ const styles = {
         margin: '30px auto',
     },
     title: {
-        font: '25px Dosis, sans-serif',
+        font: '25px sans-serif',
         textTransform: 'uppercase',
         color: '#6aa501'
     },
@@ -31,36 +26,32 @@ const styles = {
     },
     submitButtonLabel: {
         labelColor: '#fff',
-        font: '25px Dosis, sans-serif',
+        font: '25px sans-serif',
     },
     forgotPasswordLink: {
-        font: '18px Dosis, sans-serif',
+        font: '18px sans-serif',
         color: '#6aa501',
         margin: '20px 0'
     }
 };
 
-class LoginComponent extends Component {
+export default class LoginComponent extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
             emailError: '',
-            passwordError: '',
-            displayErrorModal: false
+            passwordError: ''
         };
 
         this.sendAction = this.sendAction.bind(this);
-        this.handleLogin = this.handleLogin.bind(this);
+        this.handleEmail = this.handleEmail.bind(this);
         this.handlePassword = this.handlePassword.bind(this);
     }
 
     componentDidMount() {
         this.emailInput = document.getElementById('email');
         this.passwordInput = document.getElementById('password');
-
-        this.validationPassword = passwordFieldValidation.bind(this, this.passwordInput);
-        this.validationEmail = emailFieldValidation.bind(this, this.emailInput);
     }
 
     render() {
@@ -76,8 +67,8 @@ class LoginComponent extends Component {
                             type="text"
                             hintText="Login"
                             id="email"
-                            onKeyUp={this.handleLogin}
-                            onChange={this.handleLogin}
+                            onKeyUp={this.handleEmail}
+                            onChange={this.handleEmail}
                             errorText={this.state.emailError} />
                     </div>
                     <div style={styles.formLine}>
@@ -100,17 +91,55 @@ class LoginComponent extends Component {
             </MuiThemeProvider>
         );
     }
+    validateEmail() {
+        let fieldValue = this.emailInput.value;
+        let regExp = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
-    handleLogin() {
-        return this.validationEmail();
+        let isValid = true;
+
+        if(fieldValue.trim() === '') {
+            this.setState({emailError: 'Email is required'});
+            isValid = false;
+        }
+        if(!regExp.test(fieldValue)) {
+            this.setState({emailError: 'Incorrect email format'});
+            isValid = false;
+        }
+        this.setState({emailError: ''});
+
+        return isValid;
+    }
+
+    validatePassword() {
+        let fieldValue = this.passwordInput.value;
+        let isValid = true;
+
+        if(fieldValue.trim() === '') {
+            this.setState({passwordError: 'Password is required'});
+            isValid = false;
+        }
+
+        if(fieldValue.length < 5) {
+            this.setState({passwordError: 'Password should be 5 characters or more'});
+            isValid = false;
+        }
+
+        this.setState({passwordError: ''});
+
+        return isValid;
+
+    }
+
+    handleEmail() {
+        return this.validateEmail();
     }
 
     handlePassword() {
-        return this.validationPassword();
+        return this.validatePassword();
     }
 
     sendAction() {
-        if(!emailFieldValidation.call(this, this.emailInput) || !passwordFieldValidation.call(this, this.passwordInput)) {
+        if(!this.validateEmail() || !this.validatePassword()) {
             return false;
         }
 
@@ -119,23 +148,6 @@ class LoginComponent extends Component {
             password: this.passwordInput.value
         };
 
-        this.props.getData(requestData);
+        this.props.onSendAction(requestData);
     }
 }
-
-
-const mapStateToProps = function(state) {
-    return {
-        applicationStatus: getApplicationStatus(state),
-        errorData: getErrorData(state),
-        user: getUserName(state)
-    };
-};
-
-const mapDispatchToProps = (dispatch) => ({
-    getData(data) {
-        dispatch(loginUser(data));
-    }
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(LoginComponent);

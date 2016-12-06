@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getUserName, getErrorMsg } from '../../reducers';
+import { getUserName, getErrorMsg } from '../../reducers/loginReducer';
 import ErrorMsg from './../errorMessage/errorMessage';
 
 const styles = {
@@ -8,7 +8,7 @@ const styles = {
         margin: '20px 20px 10px 20px'
     },
     text: {
-        font: '20px Dosis, sans-serif',
+        font: '20px sans-serif',
         color: '#4b4e4f'
     }
 };

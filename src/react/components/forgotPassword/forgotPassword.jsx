@@ -1,19 +1,17 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Link } from 'react-router';
-// import { getUserName } from '../../reducers';
 
 const styles = {
     form: {
         width: '300px',
         height: '200px',
-        margin: '30px auto',
+        margin: '30px auto'
     },
     title: {
-        font: '25px Dosis, sans-serif',
+        font: '25px sans-serif',
         textTransform: 'uppercase',
         color: '#6aa501'
     },
@@ -21,14 +19,14 @@ const styles = {
         margin: '20px 0'
     },
     submitButton: {
-        backgroundColor: '#6aa501',
+        backgroundColor: '#6aa501'
     },
     submitButtonLabel: {
         labelColor: '#fff',
-        font: '25px Dosis, sans-serif',
+        font: '25px sans-serif'
     },
     loginLink: {
-        font: '18px Dosis, sans-serif',
+        font: '18px sans-serif',
         color: '#6aa501',
         margin: '20px 0'
     }
@@ -63,11 +61,5 @@ class ForgotPasswordComponent extends React.Component{
         );
     }
 }
-//
-// const mapStateToProps = function(state) {
-//     return {
-//         user: getUserName(state)
-//     };
-// };
-//
+
 export default ForgotPasswordComponent;

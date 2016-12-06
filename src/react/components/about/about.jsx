@@ -5,12 +5,12 @@ const styles = {
         margin: '20px 20px 10px 20px'
     },
     title: {
-        font: '22px Dosis, sans-serif',
+        font: '22px sans-serif',
         textTransform: 'uppercase',
         color: '#6aa501'
     },
     text: {
-        font: '20px Dosis, sans-serif',
+        font: '20px sans-serif',
         color: '#4b4e4f'
     }
 };

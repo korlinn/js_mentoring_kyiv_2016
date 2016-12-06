@@ -9,7 +9,7 @@ const styles = {
         display: 'none'
     },
     text: {
-        font: '18px Dosis, sans-serif',
+        font: '18px sans-serif',
         color: '#d32d31',
         margin: '20px'
     }

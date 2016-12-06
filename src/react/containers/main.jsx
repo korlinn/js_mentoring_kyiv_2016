@@ -7,13 +7,12 @@ import * as actions from '../actions'
 
 const styles = {
     title: {
-        font: '28px Dosis, sans-serif',
+        font: '28px sans-serif',
         color: '#6aa501',
         margin: '10px 20px'
     },
     homeLink: {
-        color: '#6aa501',
-        textDecoration: 'underline'
+        color: '#6aa501'
     }
 };
 
@@ -21,7 +20,10 @@ export class Main extends Component {
     render() {
         return (
             <div>
-                <h1 style={styles.title}>React App for <a href='/' style={styles.homeLink}>FoodAdviser</a></h1>
+                <h1 style={styles.title}>
+                    <a href='/' style={styles.homeLink}>FoodAdviser</a> : <a href='/react/' style={styles.homeLink}>React App</a>
+
+                </h1>
                 <MuiThemeProvider>
                     <Menu />
                 </MuiThemeProvider>

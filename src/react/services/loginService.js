@@ -22,16 +22,3 @@ export const loginUser = (requestData) => {
         });
     }
 };
-
-export function checkAuth(store, nextState, replace, cb) {
-    console.log(store.getState());
-    if (!store.getState().user) {
-        console.log(nextState.location.pathname);
-        replace({
-            pathname: '/react/login',
-            state: { nextPathname: nextState.location.pathname }
-        })
-
-    }
-    cb();
-}

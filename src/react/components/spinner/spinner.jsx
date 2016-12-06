@@ -14,7 +14,7 @@ const styles = {
         position: 'absolute',
         left: '50%',
         top: '50%',
-        margin: '-10px 0 0 -35px',
+        margin: '-10px 0 0 -35px'
    }
 };
 
