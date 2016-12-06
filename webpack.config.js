@@ -6,6 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 const extractCSS = new ExtractTextPlugin('/bundle.css');
+const extractReactCSS = new ExtractTextPlugin('/bundleReact.css');
 const htmlPlugin = new HtmlWebpackPlugin({
     template: './index.html',
     chunksSortMode: 'dependency'
@@ -37,7 +38,7 @@ module.exports = {
         path: PATH.BUILD,
         publicPath: 'http://localhost:3000/',
         filename: '/[name].js',
-        chunkFilename: '[id].[hash].chunk.js'
+        chunkFilename: '[id].chunk.js'
     },
 
     resolve: {
@@ -72,6 +73,14 @@ module.exports = {
             {
                 test: /\.scss$/,
                 loader: extractCSS.extract({
+                        fallbackLoader: 'style-loader',
+                        loader: 'css-loader!sass-loader'
+                    })
+            },
+            {
+                test: /\.scss$/,
+                include: /src\/react/,
+                loader: extractReactCSS.extract({
                         fallbackLoader: 'style-loader',
                         loader: 'css-loader!sass-loader'
                     })

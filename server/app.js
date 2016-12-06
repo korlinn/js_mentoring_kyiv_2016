@@ -47,6 +47,10 @@ app.get('/angular*', function(req, res) {
     res.redirect('/angular');
 });
 
+app.get('/react*', function(req, res) {
+    res.redirect('/react');
+});
+
 app.listen(app.get('port'), function () {
     console.log('Express server listening on ' + app.get('port'));
 });

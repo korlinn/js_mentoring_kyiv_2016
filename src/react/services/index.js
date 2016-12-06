@@ -1,28 +1,20 @@
-import { browserHistory } from 'react-router';
+import thunk from 'redux-thunk'
 
-export const SUBMIT_LOGIN = 'SUBMIT_LOGIN';
-export const RECEIVE_DATA = 'RECEIVE_DATA';
-export const RECEIVE_ERROR = 'RECEIVE_ERROR';
-
-export const submitLoginForm = () => ({
-    type: SUBMIT_LOGIN
-});
-
-export const receiveData = (payload) => {
-    return {
-        type: RECEIVE_DATA,
-        payload
+export const loginService = (requestData) => {
+    return dispatch => {
+        dispatch(submitLoginForm());
+        fetch('/user/authenticate', (response) => {
+            dispatch(doneFetchingBook()); // Hide loading spinner
+            if(response.status == 200){
+                dispatch(setBook(response.json)); // Use a normal function to set the received state
+            }else {
+                dispatch(someError)
+            }
+        })
     }
-};
+}
 
-export const receiveDataError = (payload) => {
-    return {
-        type: RECEIVE_ERROR,
-        payload
-    }
-};
-
-export const getUserData = (requestData) => {
+export const loginService = (requestData) => {
     return function(dispatch) {
         dispatch(submitLoginForm());
         return new Promise(
@@ -34,7 +26,7 @@ export const getUserData = (requestData) => {
                             userName: 'User'
                         });
                     }
-                    return reject(new Error('Please fill up form fields correctly'));
+                    return reject(new Error('Please fiil in form fields correctly'));
                 }, 1000);
 
             }
