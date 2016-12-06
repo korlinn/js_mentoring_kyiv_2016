@@ -6,7 +6,10 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
+import { loginUser } from './../../services';
+import { getApplicationStatus, getErrorData, getUserName } from '../../reducers';
 import { emailFieldValidation, passwordFieldValidation } from './loginValidate';
+import { Spinner } from './../spinner/spinner';
 
 const styles = {
     form: {
@@ -63,6 +66,8 @@ class LoginComponent extends Component {
     render() {
         return (
             <MuiThemeProvider>
+                {/*<Spinner applicationStatus = {this.props.applicationStatus}/>*/}
+
                 <div style={styles.form}>
                     <div style={styles.title}>Login form</div>
                     <div style={styles.formLine}>
@@ -70,7 +75,8 @@ class LoginComponent extends Component {
                             type="text"
                             hintText="Login"
                             id="email"
-                            onKeyDown={this.handleLogin}
+                            onKeyUp={this.handleLogin}
+                            onChange={this.handleLogin}
                             errorText={this.state.emailError} />
                     </div>
                     <div style={styles.formLine}>
@@ -78,7 +84,8 @@ class LoginComponent extends Component {
                             type="password"
                             hintText="Password"
                             id="password"
-                            onKeyDown={this.handlePassword}
+                            onKeyUp={this.handlePassword}
+                            onChange={this.handlePassword}
                             errorText={this.state.passwordError} />
                     </div>
                     <div style={styles.formLine}>
@@ -117,15 +124,15 @@ class LoginComponent extends Component {
 
 const mapStateToProps = function(state) {
     return {
-        // applicationStatus: getApplicationStatus(state),
-        // errorData: getErrorData(state),
-        // user: getUserName(state)
+        applicationStatus: getApplicationStatus(state),
+        errorData: getErrorData(state),
+        user: getUserName(state)
     };
 };
 
 const mapDispatchToProps = (dispatch) => ({
     getData(data) {
-        dispatch(getUserData(data));
+        dispatch(loginUser(data));
     }
 });
 

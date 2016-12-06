@@ -1,5 +1,5 @@
 function validateEmail(emailValue) {
-    let regExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    let regExp = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
     return regExp.test(emailValue);
 }
@@ -27,8 +27,8 @@ export function passwordFieldValidation(field) {
         return false;
     }
 
-    if(fieldValue.length < 6) {
-        this.setState({passwordError: 'Password should be 6 characters or more'});
+    if(fieldValue.length < 5) {
+        this.setState({passwordError: 'Password should be 5 characters or more'});
         return false;
     }
 

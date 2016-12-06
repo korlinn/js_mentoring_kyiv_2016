@@ -14,7 +14,7 @@ injectTapEventPlugin();
 ReactDOM.render(
     <Provider store={store}>
         <Router history={browserHistory}>
-            <Route path='/react/' component={Main}>
+            <Route path='/react' component={Main}>
                 <Route path='/react/login' component={LoginComponent} />
                 <Route path='/react/forgot-password' component={ForgotPassword} />
                 <Route path='/react/about' component={AboutComponent} />

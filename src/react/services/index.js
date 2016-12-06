@@ -1,40 +1,20 @@
-import thunk from 'redux-thunk'
+import { browserHistory } from 'react-router';
+import axios from 'axios';
+import {submitLoginForm, receiveData, receiveDataError} from './../actions';
 
-export const loginService = (requestData) => {
+export const loginUser = (requestData) => {
     return dispatch => {
         dispatch(submitLoginForm());
-        fetch('/user/authenticate', (response) => {
-            dispatch(doneFetchingBook()); // Hide loading spinner
-            if(response.status == 200){
-                dispatch(setBook(response.json)); // Use a normal function to set the received state
-            }else {
-                dispatch(someError)
-            }
+        axios.post('/user/authenticate', {
+            email: requestData.email,
+            password: requestData.password
         })
-    }
-}
-
-export const loginService = (requestData) => {
-    return function(dispatch) {
-        dispatch(submitLoginForm());
-        return new Promise(
-            (resolve, reject) => {
-                setTimeout( () => {
-                    if(requestData.email && requestData.password) {
-                        return resolve({
-                            email: requestData.email,
-                            userName: 'User'
-                        });
-                    }
-                    return reject(new Error('Please fiil in form fields correctly'));
-                }, 1000);
-
-            }
-        ).then((data) =>
-            {dispatch(receiveData(data));
-                browserHistory.push('/')},
-            (error) => {
-                dispatch(receiveDataError(error));
-            } )
+        .then(response => {
+            dispatch(receiveData(response));
+            browserHistory.push('/react');
+        })
+        .catch(error => {
+            dispatch(receiveDataError(error));
+        });
     }
 };
