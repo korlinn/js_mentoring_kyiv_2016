@@ -6,7 +6,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 const extractCSS = new ExtractTextPlugin('/bundle.css');
-const extractReactCSS = new ExtractTextPlugin('/bundleReact.css');
 const htmlPlugin = new HtmlWebpackPlugin({
     template: './index.html',
     chunksSortMode: 'dependency'
@@ -31,7 +30,6 @@ module.exports = {
         app: PATH.SRC + '/app.js',
         angular_app: PATH.SRC + '/angular/app.ts',
         react_app: PATH.SRC + '/react/app.jsx',
-        canvas_app: PATH.SRC + '/canvas/app.js',
         polyfill: PATH.SRC + '/angular/polyfill.ts',
         vendor: PATH.SRC + '/angular/vendor.ts'
     },
