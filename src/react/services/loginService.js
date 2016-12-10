@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { browserHistory } from 'react-router';
-import {submitLoginForm, loginSuccess, loginFailure, receiveDataError} from './../actions';
+import {submitLoginForm, loginSuccess, loginFailure, receiveDataError} from './../actions/loginActions';
 
 export const loginUser = (requestData) => {
     return dispatch => {

@@ -14,6 +14,7 @@ export default class Menu extends Component {
             <div>
                 <Tabs style={styles.tabs}>
                     <Tab label="Login" style={styles.tabs} containerElement={<Link to="/react/login" activeClassName="tab__active"/>}/>
+                    <Tab label="Avatar" style={styles.tabs} containerElement={<Link to="/react/avatar" activeClassName="tab__active"/>}/>
                     <Tab label="About" style={styles.tabs} containerElement={<Link to="/react/about" activeClassName="tab__active"/>}/>
                 </Tabs>
             </div>

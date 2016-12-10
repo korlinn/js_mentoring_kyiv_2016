@@ -1,4 +1,10 @@
-import {SUBMIT_LOGIN, LOGIN_SUCCESS, LOGIN_FAILURE, RECEIVE_ERROR} from './../actions';
+import {SUBMIT_LOGIN, LOGIN_SUCCESS, LOGIN_FAILURE, RECEIVE_ERROR} from './../actions/loginActions';
+import cookie from 'react-cookie';
+
+const AUTH_COOKIE = {
+    NAME: 'loggedUser',
+    EXPIRE_FROM_NOW: 10
+};
 
 const initialState = {
     user: 'Unknown User',
@@ -17,6 +23,10 @@ export default function loginReducer(state = initialState, action) {
             });
 
         case LOGIN_SUCCESS:
+            let expirationDate = new Date();
+            expirationDate.setMinutes(expirationDate.getMinutes() + AUTH_COOKIE.EXPIRE_FROM_NOW);
+            cookie.save(AUTH_COOKIE.NAME, action.payload.user, 10);
+
             return Object.assign({}, state, {
                 user: action.payload.user,
                 isLoggedIn: true,

@@ -31,6 +31,7 @@ module.exports = {
         app: PATH.SRC + '/app.js',
         angular_app: PATH.SRC + '/angular/app.ts',
         react_app: PATH.SRC + '/react/app.jsx',
+        canvas_app: PATH.SRC + '/canvas/app.js',
         polyfill: PATH.SRC + '/angular/polyfill.ts',
         vendor: PATH.SRC + '/angular/vendor.ts'
     },
@@ -78,15 +79,7 @@ module.exports = {
                     })
             },
             {
-                test: /\.scss$/,
-                include: /src\/react/,
-                loader: extractReactCSS.extract({
-                        fallbackLoader: 'style-loader',
-                        loader: 'css-loader!sass-loader'
-                    })
-            },
-            {
-                test: /\.(jpg|png|ttf)$/,
+                test: /\.(jpg|png|ttf|tpl)$/,
                 loader: 'file?name=[path]/[name].[ext]'
             },
             {
