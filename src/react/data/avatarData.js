@@ -21,7 +21,7 @@ export default {
         },
         {
             name: 'glasses',
-            files: ['glasses1.png', 'glasses2.png', 'glasses3.png', 'glasses4.png']
+            files: ['glasses1.png', 'glasses2.png', 'glasses3.png', 'glasses4.png', 'glasses5.png']
         }
     ]
 }

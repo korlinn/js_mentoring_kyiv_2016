@@ -8,7 +8,7 @@ const styles = {
     },
     title: {
         font: '20px sans-serif',
-        color: '#6aa501',
+        color: '#4b4e4f',
         margin: '10px 20px',
         textTransform: 'uppercase'
     }

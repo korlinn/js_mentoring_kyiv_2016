@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import RaisedButton from 'material-ui/RaisedButton';
-
 import data from './../../data/avatarData'
 
 const styles = {
@@ -11,19 +8,18 @@ const styles = {
     },
     title: {
         font: '20px sans-serif',
-        color: '#6aa501',
+        color: '#4b4e4f',
         margin: '10px 20px',
         textTransform: 'uppercase'
     },
     downloadButtonWrapper: {
         margin: '20px 0'
     },
-    downloadButton: {
-        backgroundColor: '#6aa501'
-    },
     downloadButtonLabel: {
-        labelColor: '#fff',
-        font: '25px sans-serif'
+        color: '#6aa501',
+        font: '25px sans-serif',
+        textDecoration: 'underline',
+        cursor: 'pointer'
     }
 };
 
@@ -62,6 +58,14 @@ export default class AvatarComponent extends Component {
         this.canvasContext = this.canvasElem.getContext('2d');
         this.face.src = PATH_TO_IMAGES + data.faceFileName;
 
+        this.parts = {
+            eyes: this.props.avatarData.eyes,
+            nose: this.props.avatarData.nose,
+            mouth: this.props.avatarData.mouth,
+            hair: this.props.avatarData.hair,
+            glasses: this.props.avatarData.glasses
+        };
+
         this.face.onload = function () {
             this.drawImages();
         }.bind(this);
@@ -81,23 +85,23 @@ export default class AvatarComponent extends Component {
 
     render() {
         return (
-            <MuiThemeProvider>
-                <div style={styles.wrapper}>
-                    <h3 style={styles.title}>Avatar</h3>
-                    <div>
-                        <canvas id="avatar" width={data.avatarWidth} height={data.avatarHeight}>Avatar</canvas>
-                    </div>
-                    <div style={styles.downloadButtonWrapper}>
-                        <RaisedButton backgroundColor={styles.downloadButton.backgroundColor}
-                                      labelColor={styles.downloadButtonLabel.labelColor} label="download"
-                                      onClick={this.handleDownload} />
-                    </div>
+            <div style={styles.wrapper}>
+                <h3 style={styles.title}>Avatar</h3>
+                <div>
+                    <canvas id="avatar" width={data.avatarWidth} height={data.avatarHeight}>Avatar</canvas>
                 </div>
-            </MuiThemeProvider>
+                <div style={styles.downloadButtonWrapper}>
+                    <a style={styles.downloadButtonLabel} onClick={this.handleDownload}>Download</a>
+                </div>
+            </div>
         );
     }
 
-    handleDownload() {
-        console.log('Download action is under construction');
+    handleDownload(e) {
+        let link = e.target;
+        let hashSurrogate = new Date().getTime();
+
+        link.href = this.canvasElem.toDataURL();
+        link.download = `avt${hashSurrogate}.png`;
     }
 }
