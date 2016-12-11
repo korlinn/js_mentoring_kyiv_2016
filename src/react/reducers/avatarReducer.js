@@ -1,42 +1,38 @@
 import {SELECT_EYES, SELECT_NOSE, SELECT_MOUTH, SELECT_HAIR, SELECT_GLASSES} from './../actions/avatarActions';
-import data from './../data/avatarData'
 
 const initialState = {
-    avatarWidth: data.avatarWidth,
-    avatarHeight: data.avatarHeight,
-    faceFileName: data.faceFileName,
-    currentEyes: data.eyes[0],
-    currentNose: data.noses[0],
-    currentMouth: data.mouths[0],
-    currentHair: data.hairs[0],
-    currentGlasses: data.glasses[0]
+    eyes: '',
+    nose: '',
+    mouth: '',
+    hair: '',
+    glasses: ''
 };
 
 export default function avatarReducer(state = initialState, action) {
     switch (action.type) {
         case SELECT_EYES:
             return Object.assign({}, state, {
-                currentEyes: action.payload.currentEyes
+                eyes: action.payload.currentEyes
             });
 
         case SELECT_NOSE:
             return Object.assign({}, state, {
-                currentNose: action.payload.currentNose
+                nose: action.payload.currentNose
             });
 
         case SELECT_MOUTH:
             return Object.assign({}, state, {
-                currentMouth: action.payload.currentMouth
+                mouth: action.payload.currentMouth
             });
 
         case SELECT_HAIR:
             return Object.assign({}, state, {
-                currentHair: action.payload.currentHair
+                hair: action.payload.currentHair
             });
 
         case SELECT_GLASSES:
             return Object.assign({}, state, {
-                currentGlasses: action.payload.currentGlasses
+                glasses: action.payload.currentGlasses
             });
 
         default:
@@ -44,34 +40,22 @@ export default function avatarReducer(state = initialState, action) {
     }
 }
 
-export function getAvatarWidth(state) {
-    return state.avatarReducer.avatarWidth;
-}
-
-export function getAvatarHeight(state) {
-    return state.avatarReducer.avatarHeight;
-}
-
-export function getFace(state) {
-    return state.avatarReducer.faceFileName;
-}
-
 export function getCurrentEyes(state) {
-    return state.currentEyes;
+    return state.eyes;
 }
 
 export function getCurrentNose(state) {
-    return state.currentNose;
+    return state.nose;
 }
 
 export function getCurrentMouth(state) {
-    return state.currentMouth;
+    return state.mouth;
 }
 
 export function getCurrentHair(state) {
-    return state.currentHair;
+    return state.hair;
 }
 
 export function getCurrentGlasses(state) {
-    return state.currentGlasses;
+    return state.glasses;
 }

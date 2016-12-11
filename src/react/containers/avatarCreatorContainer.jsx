@@ -5,7 +5,10 @@ import { getAvatarWidth, getAvatarHeight, getFace, getCurrentEyes, getCurrentNos
          getCurrentMouth, getCurrentHair, getCurrentGlasses
        } from '../reducers/avatarReducer';
 
-import AvatarComponent from './../components/avatar/avatar'
+import AvatarComponent from './../components/avatar/avatar';
+import AvatarPartsList from './../components/avatarPartsList/avatarPartsList';
+
+import data from './../data/avatarData'
 
 const styles = {
     title: {
@@ -14,7 +17,8 @@ const styles = {
         margin: '10px 20px'
     },
     avatar: {
-        display: 'inline-block',
+        float: 'left',
+        textAlign: 'center',
         width: '30%'
     },
     parts: {
@@ -29,13 +33,18 @@ class AvatarCreatorContainer extends Component {
             <div>
                 <h1 style={styles.title}>Avatar Creator</h1>
 
-                <section>
+                <div style={styles.avatar}>
                     <AvatarComponent avatarData={this.props.avatarData} />
-                </section>
+                </div>
 
-                <aside>
-
-                </aside>
+                <div style={styles.parts}>
+                    {
+                        data.parts.map((item) =>
+                            <AvatarPartsList key={item.name} name={item.name} files={item.files}
+                                             onSendAction={this.props.onSendAction}/>
+                        )
+                    }
+                </div>
             </div>
         )
     }
@@ -44,14 +53,11 @@ class AvatarCreatorContainer extends Component {
 const mapStateToProps = function(state) {
     return {
         avatarData: {
-            avatarWidth: getAvatarWidth(state),
-            avatarHeight: getAvatarHeight(state),
-            faceFileName: getFace(state),
-            currentEyes: getCurrentEyes(state),
-            currentNose: getCurrentNose(state),
-            currentMouth: getCurrentMouth(state),
-            currentHair: getCurrentHair(state),
-            currentGlasses: getCurrentGlasses(state)
+            eyes: getCurrentEyes(state),
+            nose: getCurrentNose(state),
+            mouth: getCurrentMouth(state),
+            hair: getCurrentHair(state),
+            glasses: getCurrentGlasses(state)
         }
     };
 };
