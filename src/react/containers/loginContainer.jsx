@@ -1,17 +1,27 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { loginUser } from './../services/loginService';
+import { loginUser, logoutUser, getLoggedUser } from './../services/loginService';
 import { getApplicationStatus, getErrorData, getUserName } from '../reducers/loginReducer';
 
 import LoginComponent from '../components/login/login';
+import LogoutComponent from '../components/logout/logout';
 
 export class LoginContainer extends Component {
     render() {
+        const isLoggedUser = getLoggedUser();
+
+        let button = null;
+        if (isLoggedUser) {
+            button = <LogoutComponent onClick={this.props.onSendLogout} onSendAction={this.props.onSendLogout}/>;
+        } else {
+            button = <LoginComponent applicationStatus={this.props.applicationStatus} onSendAction={this.props.onSendLogin}/>;
+        }
+
         return (
             <div>
-                <LoginComponent applicationStatus={this.props.applicationStatus} onSendAction={this.props.onSendAction}/>
+                {button}
             </div>
-        )
+        );
     }
 }
 
@@ -24,8 +34,11 @@ const mapStateToProps = function(state) {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    onSendAction(data) {
+    onSendLogin(data) {
         dispatch(loginUser(data));
+    },
+    onSendLogout(data) {
+        dispatch(logoutUser(data));
     }
 });
 

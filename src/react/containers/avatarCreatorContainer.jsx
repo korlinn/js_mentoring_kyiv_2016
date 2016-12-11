@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
+import { getLoggedUser } from './../services/loginService';
 
 import { selectEyes, selectNose, selectMouth, selectHair, selectGlasses } from './../actions/avatarActions'
 
@@ -29,13 +31,20 @@ const styles = {
 };
 
 class AvatarCreatorContainer extends Component {
+    componentWillMount() {
+        this.loggedUser = getLoggedUser();
+        if (!this.loggedUser) {
+            browserHistory.push('/react/login');
+            return null;
+        }     }
+
     render() {
         return (
             <div>
                 <h1 style={styles.title}>Avatar Creator</h1>
 
                 <div style={styles.avatar}>
-                    <AvatarComponent avatarData={this.props.avatarData} />
+                    <AvatarComponent avatarData={this.props.avatarData}/>
                 </div>
 
                 <div style={styles.parts}>
@@ -47,7 +56,7 @@ class AvatarCreatorContainer extends Component {
                     }
                 </div>
             </div>
-        )
+        );
     }
 }
 
