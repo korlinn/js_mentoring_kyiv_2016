@@ -62,6 +62,12 @@ export default class AvatarComponent extends Component {
         this.canvasContext = this.canvasElem.getContext('2d');
         this.face.src = PATH_TO_IMAGES + data.faceFileName;
 
+        this.face.onload = function () {
+            this.drawImages();
+        }.bind(this);
+    }
+
+    componentDidUpdate() {
         this.parts = {
             eyes: this.props.avatarData.eyes,
             nose: this.props.avatarData.nose,
@@ -70,9 +76,7 @@ export default class AvatarComponent extends Component {
             glasses: this.props.avatarData.glasses
         };
 
-        this.face.onload = function () {
-            this.drawImages();
-        }.bind(this);
+        this.drawImages();
     }
 
     render() {

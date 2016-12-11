@@ -12,27 +12,27 @@ export default function avatarReducer(state = initialState, action) {
     switch (action.type) {
         case SELECT_EYES:
             return Object.assign({}, state, {
-                eyes: action.payload.currentEyes
+                eyes: action.payload
             });
 
         case SELECT_NOSE:
             return Object.assign({}, state, {
-                nose: action.payload.currentNose
+                nose: action.payload
             });
 
         case SELECT_MOUTH:
             return Object.assign({}, state, {
-                mouth: action.payload.currentMouth
+                mouth: action.payload
             });
 
         case SELECT_HAIR:
             return Object.assign({}, state, {
-                hair: action.payload.currentHair
+                hair: action.payload
             });
 
         case SELECT_GLASSES:
             return Object.assign({}, state, {
-                glasses: action.payload.currentGlasses
+                glasses: action.payload
             });
 
         default:
@@ -41,21 +41,21 @@ export default function avatarReducer(state = initialState, action) {
 }
 
 export function getCurrentEyes(state) {
-    return state.eyes;
+    return state.avatarReducer.eyes;
 }
 
 export function getCurrentNose(state) {
-    return state.nose;
+    return state.avatarReducer.nose;
 }
 
 export function getCurrentMouth(state) {
-    return state.mouth;
+    return state.avatarReducer.mouth;
 }
 
 export function getCurrentHair(state) {
-    return state.hair;
+    return state.avatarReducer.hair;
 }
 
 export function getCurrentGlasses(state) {
-    return state.glasses;
+    return state.avatarReducer.glasses;
 }

@@ -1,8 +1,8 @@
 export const SELECT_EYES = 'SELECT_EYES';
-export const SELECT_NOSE = 'SELECT_SELECT_NOSE';
-export const SELECT_MOUTH = 'SELECT_SELECT_MOUTH';
-export const SELECT_HAIR = 'SELECT_SELECT_HAIR';
-export const SELECT_GLASSES = 'SELECT_SELECT_GLASSES';
+export const SELECT_NOSE = 'SELECT_NOSE';
+export const SELECT_MOUTH = 'SELECT_MOUTH';
+export const SELECT_HAIR = 'SELECT_HAIR';
+export const SELECT_GLASSES = 'SELECT_GLASSES';
 
 export const selectEyes = (payload) => {
     return {

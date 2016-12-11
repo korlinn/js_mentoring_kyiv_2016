@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { getAvatarWidth, getAvatarHeight, getFace, getCurrentEyes, getCurrentNose,
-         getCurrentMouth, getCurrentHair, getCurrentGlasses
-       } from '../reducers/avatarReducer';
+import { selectEyes, selectNose, selectMouth, selectHair, selectGlasses } from './../actions/avatarActions'
+
+import { getCurrentEyes, getCurrentNose, getCurrentMouth,
+         getCurrentHair, getCurrentGlasses } from '../reducers/avatarReducer';
 
 import AvatarComponent from './../components/avatar/avatar';
 import AvatarPartsList from './../components/avatarPartsList/avatarPartsList';
@@ -64,7 +65,19 @@ const mapStateToProps = function(state) {
 
 const mapDispatchToProps = (dispatch) => ({
     onSendAction(data) {
-        dispatch(data);
+        let sendFunction;
+
+        switch (data.partName) {
+            case 'eyes': sendFunction = selectEyes; break;
+            case 'nose': sendFunction = selectNose; break;
+            case 'mouth': sendFunction = selectMouth; break;
+            case 'hair': sendFunction = selectHair; break;
+            case 'glasses': sendFunction = selectGlasses; break;
+            default:
+                sendFunction = console.error;
+                data.part = `Can not recognize ${data.partName} like part of face`;
+        }
+        dispatch(sendFunction(data.part));
     }
 });
 

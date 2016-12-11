@@ -45,7 +45,11 @@ export default class AvatarPartComponent extends Component {
     }
 
     sendAction() {
-        console.log('Send part');
-        //this.props.onSendAction(this.part);
+        let data = {
+            partName: this.props.name,
+            part: this.part
+        };
+
+        this.props.onSendAction(data);
     }
 }
