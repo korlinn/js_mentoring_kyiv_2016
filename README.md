@@ -58,6 +58,27 @@ For build frontend webpack has used.
 
 # Description of implementation
 
+## Description of data visualization in application
+
+Data visualization via Canvas presented in Avatar Creator.
+This functionality realized in React part of application and accessible for logged in users.
+
+http://localhost:3000/react - select menu item "Avatar"
+
+### Avatar Creator rovides such functionality:
+- select eyes
+- select nose
+- select mouth
+- select hair
+- select/de-select glasses
+- download avatar
+
+### Used technology:
+- canvas with 2d context
+- react
+- redux
+
+
 ## Description of React + Redux part of application
 
 http://localhost:3000/react
