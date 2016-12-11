@@ -37,6 +37,8 @@ export default class AvatarComponent extends Component {
         let width = this.face.width,
             height = this.face.height;
 
+        this.canvasContext.fillStyle="#FFF";
+        this.canvasContext.fillRect(0, 0, width, height);
         this.canvasContext.drawImage(this.face, 0, 0, width, height);
 
         for (let key in this.parts) {

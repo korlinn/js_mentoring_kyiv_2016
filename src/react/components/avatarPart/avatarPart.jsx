@@ -31,7 +31,10 @@ export default class AvatarPartComponent extends Component {
 
         this.face.onload = function () {
             this.canvasContext.drawImage(this.face, 0, 0, this.face.width, this.face.height);
-            this.canvasContext.drawImage(this.part, 0, 0, this.part.width, this.part.height);
+
+            this.part.onload = function () {
+                this.canvasContext.drawImage(this.part, 0, 0, this.part.width, this.part.height);
+            }.bind(this);
         }.bind(this);
     }
 
