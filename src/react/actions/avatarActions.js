@@ -1,40 +1,8 @@
-export const SELECT_EYES = 'SELECT_EYES';
-export const SELECT_NOSE = 'SELECT_NOSE';
-export const SELECT_MOUTH = 'SELECT_MOUTH';
-export const SELECT_HAIR = 'SELECT_HAIR';
-export const SELECT_GLASSES = 'SELECT_GLASSES';
+export const SELECT_PART = 'SELECT_PART';
 
-export const selectEyes = (payload) => {
+export const selectPart = (payload) => {
     return {
-        type: SELECT_EYES,
-        payload
-    }
-};
-
-export const selectNose = (payload) => {
-    return {
-        type: SELECT_NOSE,
-        payload
-    }
-};
-
-export const selectMouth = (payload) => {
-    return {
-        type: SELECT_MOUTH,
-        payload
-    }
-};
-
-export const selectHair = (payload) => {
-    return {
-        type: SELECT_HAIR,
-        payload
-    }
-};
-
-export const selectGlasses = (payload) => {
-    return {
-        type: SELECT_GLASSES,
+        type: SELECT_PART,
         payload
     }
 };

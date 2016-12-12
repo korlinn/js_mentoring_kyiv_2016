@@ -1,4 +1,12 @@
-import {SELECT_EYES, SELECT_NOSE, SELECT_MOUTH, SELECT_HAIR, SELECT_GLASSES} from './../actions/avatarActions';
+import {SELECT_PART} from './../actions/avatarActions';
+
+const PARTS = {
+    EYES: 'eyes',
+    NOSE: 'nose',
+    MOUTH: 'mouth',
+    HAIR: 'hair',
+    GLASSES: 'glasses'
+};
 
 const initialState = {
     eyes: '',
@@ -8,33 +16,41 @@ const initialState = {
     glasses: ''
 };
 
+function getNewState(state, payload) {
+    switch (payload.partName) {
+        case PARTS.EYES:
+            return Object.assign({}, state, {
+                eyes: payload.part
+            });
+
+        case PARTS.NOSE:
+            return Object.assign({}, state, {
+                nose: payload.part
+            });
+
+        case PARTS.MOUTH:
+            return Object.assign({}, state, {
+                mouth: payload.part
+            });
+
+        case PARTS.HAIR:
+            return Object.assign({}, state, {
+                hair: payload.part
+            });
+
+        case PARTS.GLASSES:
+            return Object.assign({}, state, {
+                glasses: payload.part
+            });
+        default:
+            return state;
+    }
+}
+
 export default function avatarReducer(state = initialState, action) {
     switch (action.type) {
-        case SELECT_EYES:
-            return Object.assign({}, state, {
-                eyes: action.payload
-            });
-
-        case SELECT_NOSE:
-            return Object.assign({}, state, {
-                nose: action.payload
-            });
-
-        case SELECT_MOUTH:
-            return Object.assign({}, state, {
-                mouth: action.payload
-            });
-
-        case SELECT_HAIR:
-            return Object.assign({}, state, {
-                hair: action.payload
-            });
-
-        case SELECT_GLASSES:
-            return Object.assign({}, state, {
-                glasses: action.payload
-            });
-
+        case SELECT_PART:
+            return getNewState(state, action.payload);
         default:
             return state;
     }

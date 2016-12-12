@@ -24,6 +24,7 @@ const styles = {
 };
 
 const PATH_TO_IMAGES = new URL(document.URL).origin + '/img/faces/';
+const CANVAS_ELEMENT_ID = 'avatar';
 
 export default class AvatarComponent extends Component {
     constructor(props) {
@@ -56,7 +57,7 @@ export default class AvatarComponent extends Component {
     }
 
     componentDidMount() {
-        this.canvasElem = document.getElementById('avatar');
+        this.canvasElem = document.getElementById(CANVAS_ELEMENT_ID);
         this.canvasContext = this.canvasElem.getContext('2d');
         this.face.src = PATH_TO_IMAGES + data.faceFileName;
 
@@ -68,9 +69,7 @@ export default class AvatarComponent extends Component {
             glasses: this.props.avatarData.glasses
         };
 
-        this.face.onload = function () {
-            this.drawImages();
-        }.bind(this);
+        this.face.onload = this.drawImages.bind(this);
     }
 
     componentDidUpdate() {
@@ -90,7 +89,7 @@ export default class AvatarComponent extends Component {
             <div style={styles.wrapper}>
                 <h3 style={styles.title}>Avatar</h3>
                 <div>
-                    <canvas id="avatar" width={data.avatarWidth} height={data.avatarHeight}>Avatar</canvas>
+                    <canvas id={CANVAS_ELEMENT_ID} width={data.avatarWidth} height={data.avatarHeight}>Avatar</canvas>
                 </div>
                 <div style={styles.downloadButtonWrapper}>
                     <a style={styles.downloadButtonLabel} onClick={this.handleDownload}>Download</a>

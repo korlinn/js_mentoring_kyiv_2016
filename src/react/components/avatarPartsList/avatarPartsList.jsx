@@ -14,7 +14,7 @@ const styles = {
     }
 };
 
-export default class AvatarPartsContainer extends Component {
+export default class AvatarPartsList extends Component {
     render() {
         return (
             <div style={styles.wrapper}>
