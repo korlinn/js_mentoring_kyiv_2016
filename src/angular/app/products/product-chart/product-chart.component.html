@@ -1,0 +1,26 @@
+<button class="btn btn-primary"
+        (click)="showChart()">Show/Hide Graphic Chart
+</button>
+
+<div *ngIf="isShown">
+    <h1>Product chart</h1>
+    <h3>Select source for chart:</h3>
+    <select [(ngModel)]="chartSource" (ngModelChange)="buildChart()">
+        <option value="calories">Calories</option>
+        <option value="protein">Proteins</option>
+        <option value="fats">Fats</option>
+        <option value="carbohydrate">Carbohydrates</option>
+    </select>
+    <h3>Select chart type</h3>
+    <select [(ngModel)]="chartType" (ngModelChange)="buildChart()">
+        <option value="bar">Bars</option>
+        <option value="bubble">Bubbles</option>
+    </select>
+    <div>
+        <div id="bar-chart" width="800" height="500"></div>
+
+        <svg id="bubble-chart" width="800" height="500">
+            Sorry, your browser does not support inline SVG.
+        </svg>
+    </div>
+</div>

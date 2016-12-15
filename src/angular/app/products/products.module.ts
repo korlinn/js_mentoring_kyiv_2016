@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 
 import { ProductComponent } from './product/product.component';
 import { ProductListComponent } from './product-list/product-list.component';
+import { ProductChartComponent } from './product-chart/product-chart.component';
 import { ProductFormComponent } from './product-form/product-form.component';
 import { ProductSearchFormComponent } from './product-search-form/product-search-form.component';
 import { ProductCalorieResultComponent } from './product-calorie-result/product-calorie-result.component';
@@ -25,6 +26,7 @@ import { ProductRoutingModule } from './products.routing';
         ProductSearchFormComponent,
         ProductCalorieResultComponent,
         ProductListComponent,
+        ProductChartComponent,
         ProductComponent,
         ProductsComponent
     ],
