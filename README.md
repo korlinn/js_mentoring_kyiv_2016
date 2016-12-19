@@ -60,7 +60,18 @@ For build frontend webpack has used.
 
 ## Description of data visualization in application
 
-Data visualization via Canvas presented in Avatar Creator.
+Data visualization via D3 library presented in product charts and can be reached at:
+
+http://localhost:3000/angular -> products
+
+To display graphics enable checkbox "Show Graph".
+
+User can choose:
+1) Source for chart (show products by calories, by proteins, by fats, by carbohydrates)
+2) Type of chart (bar chart or bubble chart)
+3) Colors (one of three defined color scheme or use multicolor)
+
+Second data visualization via Canvas presented in Avatar Creator.
 This functionality realized in React part of application and accessible for logged in users.
 
 http://localhost:3000/react - select menu item "Avatar"
