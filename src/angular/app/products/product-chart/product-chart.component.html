@@ -1,26 +1,41 @@
-<button class="btn btn-primary"
-        (click)="showChart()">Show/Hide Graphic Chart
-</button>
-
-<div *ngIf="isShown">
-    <h1>Product chart</h1>
-    <h3>Select source for chart:</h3>
-    <select [(ngModel)]="chartSource" (ngModelChange)="buildChart()">
-        <option value="calories">Calories</option>
-        <option value="protein">Proteins</option>
-        <option value="fats">Fats</option>
-        <option value="carbohydrate">Carbohydrates</option>
-    </select>
-    <h3>Select chart type</h3>
-    <select [(ngModel)]="chartType" (ngModelChange)="buildChart()">
-        <option value="bar">Bars</option>
-        <option value="bubble">Bubbles</option>
-    </select>
+<div id="product-chart-container" class="product-chart">
     <div>
-        <div id="bar-chart" width="800" height="500"></div>
+        <input type="checkbox" [(ngModel)]="isShown" (change)="toggleChartShown()">Show Graph
+    </div>
 
-        <svg id="bubble-chart" width="800" height="500">
-            Sorry, your browser does not support inline SVG.
-        </svg>
+    <div [ngClass]="{hidden: isShown===false}">
+        <h1>Product chart</h1>
+        <div>
+            <input type="checkbox" [(ngModel)]="isMulticolor" (change)="toggleMulticolor()">Use Multicolor
+
+            <select *ngIf="!isMulticolor"
+                    [(ngModel)]="currentColorSchema" (ngModelChange)="changeColorSchema()">
+                <option value="RED">Red</option>
+                <option value="GREEN">Green</option>
+                <option value="GRAYBLUE">Gray Blue</option>
+            </select>
+        </div>
+
+        <div>
+            <h3>Select source for chart:</h3>
+            <select [(ngModel)]="chartSource" (ngModelChange)="showChart()">
+                <option value="calories">Calories</option>
+                <option value="protein">Proteins</option>
+                <option value="fats">Fats</option>
+                <option value="carbohydrate">Carbohydrates</option>
+            </select>
+        </div>
+
+        <div>
+            <h3>Select chart type:</h3>
+            <select [(ngModel)]="chartType" (ngModelChange)="showChart()">
+                <option value="bar">Bars</option>
+                <option value="bubble">Bubbles</option>
+            </select>
+        </div>
+
+        <div class="chart-wrapper">
+            <svg id="chart">Sorry, your browser does not support inline SVG.</svg>
+        </div>
     </div>
 </div>

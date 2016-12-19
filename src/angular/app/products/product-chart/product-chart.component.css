@@ -1,8 +1,11 @@
-.bar rect {
-    fill: steelblue;
+.product-chart {
+    margin: 20px 0;
 }
 
-.bar text {
-    fill: #fff;
-    font: 10px sans-serif;
+.chart-wrapper {
+    margin: 20px 0;
+}
+
+.hidden {
+    display: none;
 }

@@ -1,10 +1,10 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import 'rxjs/add/operator/toPromise';
 import * as d3 from 'd3';
-import { scaleLinear } from "d3-scale";
+import { scaleLinear, scaleOrdinal, schemeCategory20 } from 'd3-scale';
+import { hierarchy, pack } from 'd3-hierarchy';
 
 import { ProductModel } from './../product.model';
-import { ProductArrayService } from './../product-array-service/product-array.service';
 
 const CONST = {
     CHART_TYPE: {
@@ -16,7 +16,29 @@ const CONST = {
         PROTEINS: 'protein',
         FATS: 'fats',
         CARBOHYDRATES: 'carbohydrate'
+    },
+    BAR_CHART: {
+        COLOR: 'steelblue',
+        HEIGHT: 30
     }
+};
+
+const COLOR_SCHEMA = {
+    RED: {
+        NAME: 'RED',
+        DARK: '#cc5555',
+        LIGHT: '#cc9999'
+    },
+    GREEN: {
+        NAME: 'GREEN',
+        DARK: '#55cc77',
+        LIGHT: '#77cc99'
+    },
+    GRAYBLUE: {
+        NAME: 'GRAYBLUE',
+        DARK: '#aabbcc',
+        LIGHT: '#ccddee'
+    },
 };
 
 @Component({
@@ -31,29 +53,33 @@ export class ProductChartComponent implements OnInit, OnDestroy {
     public chartWidth: number = 800;
     public chartHeight: number = 400;
     public isShown: boolean = false;
+    public currentColorSchema: string = COLOR_SCHEMA.GRAYBLUE.NAME;
+    public multiColorFunction: any;
+    public isMulticolor: boolean = true;
 
-    constructor(
-        private productService: ProductArrayService
-    ) { }
-
-    ngOnInit() {
-        // this.getProducts()
-        //     .then(() => {
-        //         this.buildChart();
-        //     });
-        //this.buildChart();
+    constructor() {
+        this.multiColorFunction = scaleOrdinal(schemeCategory20);
     }
 
-    getProducts(): Promise<void> {
-        return this.productService.getProducts()
-            .then(products => {
-                this.products = products;
-            });
+    ngOnInit() {
+        this.showChart();
+    }
+
+    changeColorSchema() {
+        this.showChart();
+    }
+
+    toggleMulticolor() {
+        this.isMulticolor = !this.isMulticolor;
+        this.showChart();
+    }
+
+    toggleChartShown() {
+        this.isShown = !this.isShown;
+        this.showChart();
     }
 
     showChart() {
-        this.isShown = !this.isShown;
-
         if (this.isShown) {
             this.buildChart();
         }
@@ -69,37 +95,91 @@ export class ProductChartComponent implements OnInit, OnDestroy {
                 this.barChart();
                 break;
             case CONST.CHART_TYPE.BUBBLE:
-                this.bubleChart();
+                this.bubbleChart();
                 break;
         }
     }
 
     barChart() {
-        d3.select('#bar-chart').html('');
-        d3.select('#bar-bubbles').html('');
+        let chart = d3.select('#chart');
+        chart.html('');
 
-        let data = this.products.map((item) => item[this.chartSource]);
-        let names = this.products.map((item) => item.name);
+        let barWidth = parseInt(getComputedStyle(document.getElementById('product-chart-container')).width);
+        let dataTransform =scaleLinear()
+            .domain([0, d3.max(this.products.map((item) => item[this.chartSource]))])
+            .range([0, barWidth]);
 
-        let x =scaleLinear()
-            .domain([0, d3.max(data)])
-            .range([0, this.chartWidth]);
+        chart.attr('width', '100%')
+            .attr('height', CONST.BAR_CHART.HEIGHT * this.products.length);
 
-        d3.select('#bar-chart')
-            .selectAll('div')
+        let bar = chart.selectAll('g')
             .data(this.products)
-            .enter().append('div')
-            .style('width', (d) => x(d[this.chartSource]) + 'px')
-            .style('background-color', 'steelblue')
-            .text((d) => d.name);
+            .enter()
+            .append('g')
+            .style('height', (d) => CONST.BAR_CHART.HEIGHT)
+            .style('width', (d) => dataTransform(d[this.chartSource]) + 'px')
+            .attr('transform', (d, i) => `translate(0,${i * CONST.BAR_CHART.HEIGHT + 1})`)
+
+        bar.append('rect')
+            .attr('height', (d) => `${CONST.BAR_CHART.HEIGHT}px`)
+            .attr('width', (d) => dataTransform(d[this.chartSource]) + 'px')
+            .style('fill', (d, i) => {
+                if (this.isMulticolor) {
+                    return this.multiColorFunction(i.toString());
+                } else {
+                    return (i % 2)
+                        ? COLOR_SCHEMA[this.currentColorSchema].DARK
+                        : COLOR_SCHEMA[this.currentColorSchema].LIGHT
+                }
+            });
+
+        bar.append('text')
+            .attr('x', 5)
+            .attr('y', CONST.BAR_CHART.HEIGHT / 2)
+            .attr('dy', '.35em')
+            .text((d) => `${d.name}: ${d[this.chartSource]}`);
 
     }
 
-    bubleChart() {
-        d3.select('#bar-chart').html('');
-        d3.select('#bar-bubbles').html('');
+    bubbleChart() {
+        let diameter = parseInt(getComputedStyle(document.getElementById('product-chart-container')).width);
+        let chart = d3.select('#chart');
 
-        // <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="white" />
+        chart.html('')
+            .attr('height', diameter)
+            .attr('width', diameter)
+            .attr('class', 'bubble');
+
+        let root = hierarchy({children: this.products})
+            .sum((d) => d[this.chartSource]);
+
+        let packFunction = pack()
+            .size([diameter, diameter])
+            .padding(1.5);
+
+        let node = chart.selectAll('.node')
+            .data(packFunction(root).leaves())
+            .enter()
+            .append('g')
+            .attr('class', 'node')
+            .attr('transform', (d) => `translate(${d.x},${d.y})`);
+
+        node.append('circle')
+            .attr('r', (d) => d.r)
+            .style('fill', (d, i) => {
+                if (this.isMulticolor) {
+                    return this.multiColorFunction(i.toString());
+                } else {
+                    return (i % 2)
+                        ? COLOR_SCHEMA[this.currentColorSchema].DARK
+                        : COLOR_SCHEMA[this.currentColorSchema].LIGHT
+                }
+            });
+
+        node.append('text')
+            .attr('dy', '.3em')
+            .style('text-anchor', 'middle')
+            .text((d) => `${d.data['name']}: ${d.value}`);
     }
 
     ngOnDestroy() {
